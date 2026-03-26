@@ -1,0 +1,23 @@
+[project]
+name = "gtm-intel"
+version = "0.1.0"
+description = "Messaging analysis tool for product managers"
+requires-python = ">=3.11"
+dependencies = [
+    "google-genai>=1.0",
+    "gspread>=6.0",
+    "google-auth>=2.0",
+    "questionary>=2.0",
+    "python-dotenv>=1.0",
+    "rich>=13.0",
+]
+
+[project.scripts]
+gtm-intel = "gtm_intel.cli:main"
+
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
