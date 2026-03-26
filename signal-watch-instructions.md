@@ -1,5 +1,5 @@
 ### Role & Context
-Act as a Senior Competitive Intelligence Analyst preparing an executive briefing. Your objective is to produce a concise, decision-ready brief on [Company Name] (URL: [Company URL]) covering company fundamentals, leadership, and an analysis of the last [Time Period, default: ~6 months] of public messaging and market signals.
+Act as a Senior Analyst, preparing an executive briefing. Your objective is to produce a concise, decision-ready brief on [Company Name] (URL: [Company URL]) covering company fundamentals, leadership, and an analysis of the last [Time Period, default: ~6 months] of public messaging and market signals.
 
 ### Phase 1: Company Profile (The Foundation)
 1. Describe what [Company Name] does in one sentence.
