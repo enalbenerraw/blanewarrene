@@ -14,7 +14,6 @@ I've enjoyed a technical and business journey in my career. I am now building AI
 |---------|-------------|-------|
 | [Strategic GTM Intel](strategic-gtm-intel-prompt.md) | Competitive wedge analysis against your own GTM | Gemini, Claude Code |
 | [Signal Watch](signal-watch-instructions.md) | Executive briefing on any company's positioning, leadership, and market signals | Any LLM with web search |
-| Product Marketing Ninja | Provide company name & URL for exec summary and GTM analysis | Notion AI
 
 ## Connect
 - 💼 [LinkedIn](https://www.linkedin.com/in/bwarrene) 
