@@ -12,13 +12,13 @@ I've enjoyed a technical and business journey in my career. I am now building AI
 
 | Project | What It Does | Stack |
 |---------|-------------|-------|
-| Strategic GTM Intel mega-prompt | Competitive analysis against your own GTM | Gemini |
-| Product Marketing Ninja | Provide company name & URL for exec summary and GTM analysis | Notion
+| [Strategic GTM Intel mega-prompt](https://github.com/enalbenerraw/blanewarrene/commit/d9ca932b6a4b1b9cf08abf24db2f33864906cd40) | Competitive analysis against your own GTM | Gemini, Claude Code |
+| Product Marketing Ninja | Provide company name & URL for exec summary and GTM analysis | Notion AI
 
 ## Connect
-- 💼 https://www.linkedin.com/in/bwarrene
-- 📝 https://blanewarrene.substack.com/
-- 📧 blane@blanewarrene.com
+- 💼 [LinkedIn](https://www.linkedin.com/in/bwarrene) 
+- 📝 [Substack](https://blanewarrene.substack.com/)
+- 📧 [Email](mailto:blane@blanewarrene.com) 
 
 ---
 *PM who builds things. Currently exploring MCP automation from success & support data to PM analysis.*
