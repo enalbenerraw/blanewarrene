@@ -13,9 +13,9 @@ I've enjoyed a technical and business journey in my career. I am now building AI
 | Project | What It Does | Stack |
 |---------|-------------|-------|
 | [GTM Intel CLI](src/gtm_intel/) | Messaging analysis tool — analyze competitor, partner, and your own messaging | Python, Gemini, Google Sheets |
-| [Strategic GTM Intel](strategic-gtm-intel-prompt.md) | Competitive wedge analysis against your own GTM | Gemini, Claude Code |
-| [Signal Watch](signal-watch-instructions.md) | Executive briefing on any company's positioning, leadership, and market signals | Any LLM with web search |
-| [Morning News Brief](morning-news-brief-prompt.md) | Automated daily news brief with content opportunities tied to your themes | Any LLM with web search |
+| [Strategic GTM Intel](prompts/strategic-gtm-intel-prompt.md) | Competitive wedge analysis against your own GTM | Gemini, Claude Code |
+| [Signal Watch](prompts/signal-watch-instructions.md) | Executive briefing on any company's positioning, leadership, and market signals | Any LLM with web search |
+| [Morning News Brief](prompts/morning-news-brief-prompt.md) | Automated daily news brief with content opportunities tied to your themes | Any LLM with web search |
 
 ## Connect
 - 💼 [LinkedIn](https://www.linkedin.com/in/bwarrene) 
