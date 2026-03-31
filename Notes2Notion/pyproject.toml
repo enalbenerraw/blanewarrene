@@ -1,0 +1,21 @@
+[project]
+name = "notes2notion"
+version = "0.1.0"
+description = "Convert Apple Notes to Notion-importable Markdown with attachments"
+requires-python = ">=3.11"
+dependencies = [
+    "questionary>=2.0",
+    "rich>=13.0",
+    "markdownify>=0.13",
+    "beautifulsoup4>=4.12",
+]
+
+[project.scripts]
+notes2notion = "notes2notion.cli:main"
+
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
