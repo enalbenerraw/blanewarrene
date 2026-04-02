@@ -1,3 +1,12 @@
+COPY AND PASTE INTO YOUR PREFERRED LLM.  You can change the items in [] to customize it for you.  My recommendation is:
+
+- Create this as a Gem in Gemini so you can just ask the Gem to run with a company name and URL
+- Create the same in Claude CoWork as a Skill
+- Likewise, in ChatGPT
+- This also works in Notion with Notion AI  
+
+
+
 ### Role & Context
 Act as a Senior Analyst, preparing an executive briefing. Your objective is to produce a concise, decision-ready brief on [Company Name] (URL: [Company URL]) covering company fundamentals, leadership, and an analysis of the last [Time Period, default: ~6 months] of public messaging and market signals.
 
