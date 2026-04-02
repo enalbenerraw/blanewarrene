@@ -114,3 +114,4 @@ folder: "Work"
 - [ ] Filter notes by date range
 - [ ] Selective note export within folders
 - [ ] Direct Notion API import (skip ZIP upload)
+- [ ] Add retry logic with backoff for AppleScript and file operations
