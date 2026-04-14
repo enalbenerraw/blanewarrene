@@ -4,7 +4,7 @@
 I've enjoyed a technical and business journey in my career. I am now building AI prompt recipes and agents to automate product and product marketing workflows. Also prototyping web and native Mac OS X apps to extend automations to a readiness state for productizing.
 
 ## What I'm Working On
-- 🔨 Current Projects — GTM Intel CLI, Notes2Notion, Strategic GTM Intel prompt, Signal Watch prompt, Morning News Brief prompt, and LLM Memory Audit prompt recipes
+- 🔨 Current Projects — GTM Intel CLI, Notes2Notion, Strategic GTM Intel prompt, Signal Watch prompt, Morning News Brief prompt, LLM Memory Audit prompt recipes, and Teachable Course Builder prompt
 - 📚 I am exploring and learning agent automation within Notion
 - 🤝 I am looking to simplify how product managers can build Gemini Gems, and leverage GitHub and AI
 
@@ -17,6 +17,7 @@ I've enjoyed a technical and business journey in my career. I am now building AI
 | [Signal Watch](prompts/signal-watch-instructions.md) | Executive briefing on any company's positioning, leadership, and market signals | Any LLM with web search |
 | [Morning News Brief](prompts/morning-news-brief-prompt.md) | Automated daily news brief with content opportunities tied to your themes | Any LLM with web search |
 | [LLM Memory Audit](prompts/llm-memory-audit-prompts.md) | Copy-paste prompt recipes to audit persistent memory and instructions in ChatGPT, Claude, Copilot, and Gemini | Any LLM |
+| [Teachable Course Builder](prompts/teachable-course-builder-prompt.md) | Generate an end-to-end, Teachable-ready free course on expert prompting for non-technical learners | Claude |
 | [Notes2Notion](Notes2Notion/) | Export Apple Notes to Notion-importable Markdown with attachments — CLI and native macOS GUI app | Python, AppleScript |
 
 ## Connect
