@@ -1,0 +1,49 @@
+name: New prompt idea
+description: Propose a new prompt recipe or project for this repo.
+title: "[New prompt] "
+labels: ["new-prompt"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Ideas are welcome. The strongest proposals name a specific workflow, a specific user, and a specific outcome the prompt should produce.
+
+  - type: input
+    id: name
+    attributes:
+      label: Working name for the prompt
+      placeholder: e.g. Board Update Generator
+    validations:
+      required: true
+
+  - type: textarea
+    id: use-case
+    attributes:
+      label: Use case
+      description: What is the situation where someone would reach for this prompt?
+    validations:
+      required: true
+
+  - type: textarea
+    id: audience
+    attributes:
+      label: Who is it for?
+      description: Role, seniority, and the context they are operating in. Be concrete.
+    validations:
+      required: true
+
+  - type: textarea
+    id: outcome
+    attributes:
+      label: What outcome should it produce?
+      description: A single concrete deliverable or decision the user can act on after running the prompt.
+    validations:
+      required: true
+
+  - type: textarea
+    id: prior-art
+    attributes:
+      label: Prior art or inspiration
+      description: Optional. Existing prompts in this repo that are adjacent, or external references.
+    validations:
+      required: false
