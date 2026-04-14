@@ -1,0 +1,28 @@
+name: Documentation issue
+description: Flag a typo, unclear instruction, broken link, or gap in a README or CONTRIBUTING file.
+title: "[Docs] "
+labels: ["documentation"]
+body:
+  - type: input
+    id: file
+    attributes:
+      label: Which file?
+      description: Path from the repo root.
+      placeholder: e.g. pre-call-briefing/README.md
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What is wrong, unclear, or missing?
+    validations:
+      required: true
+
+  - type: textarea
+    id: fix
+    attributes:
+      label: Suggested fix
+      description: Optional. If you already have wording in mind, paste it here.
+    validations:
+      required: false

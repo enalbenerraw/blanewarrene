@@ -1,0 +1,50 @@
+name: Prompt improvement
+description: Suggest a tweak, addition, or refinement to an existing prompt.
+title: "[Improvement] "
+labels: ["improvement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this when you have a specific change in mind that made (or would make) a prompt better. If you want to open a pull request directly, that is welcome too.
+
+  - type: dropdown
+    id: prompt
+    attributes:
+      label: Which prompt would this improve?
+      options:
+        - Strategic GTM Intel
+        - Signal Watch
+        - Morning News Brief
+        - LLM Memory Audit
+        - Teachable Course Builder
+        - Pre-Call Briefing
+        - GTM Intel CLI
+        - Notes2Notion
+        - Other or not listed
+    validations:
+      required: true
+
+  - type: textarea
+    id: change
+    attributes:
+      label: Proposed change
+      description: Describe the edit. If it is a phrase swap or a new section, paste the before and after.
+    validations:
+      required: true
+
+  - type: textarea
+    id: rationale
+    attributes:
+      label: Why is this better?
+      description: What failure mode does it fix, or what quality bar does it raise?
+    validations:
+      required: true
+
+  - type: textarea
+    id: tested
+    attributes:
+      label: What did you test it against?
+      description: Optional but helpful. Naming one or two real targets or scenarios where the improved prompt outperformed the original makes this easier to merge.
+    validations:
+      required: false

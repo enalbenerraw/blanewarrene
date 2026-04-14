@@ -1,0 +1,71 @@
+name: Prompt feedback
+description: Report an unexpected or unsatisfying result from running one of the prompts.
+title: "[Feedback] "
+labels: ["feedback"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time. Real-world usage patterns are how these prompts improve. Be as specific as you can. Short answers are fine.
+
+  - type: dropdown
+    id: prompt
+    attributes:
+      label: Which prompt did you run?
+      options:
+        - Strategic GTM Intel
+        - Signal Watch
+        - Morning News Brief
+        - LLM Memory Audit
+        - Teachable Course Builder
+        - Pre-Call Briefing
+        - GTM Intel CLI
+        - Notes2Notion
+        - Other or not listed
+    validations:
+      required: true
+
+  - type: dropdown
+    id: surface
+    attributes:
+      label: Which Claude surface did you use?
+      options:
+        - Claude.ai (web)
+        - Claude Code
+        - Claude Cowork
+        - Claude API
+        - Another LLM (Gemini, ChatGPT, etc.)
+        - Not sure
+    validations:
+      required: true
+
+  - type: textarea
+    id: goal
+    attributes:
+      label: What were you trying to accomplish?
+      description: One or two sentences on the target company, topic, or outcome you had in mind.
+    validations:
+      required: true
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What actually happened?
+      description: What did the output miss, misinterpret, or get wrong? Paste short excerpts if useful. Do not paste confidential material.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect instead?
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Anything else worth knowing?
+      description: Optional. Context on the target, any customizations you made to the prompt, or patterns you saw across multiple runs.
+    validations:
+      required: false
