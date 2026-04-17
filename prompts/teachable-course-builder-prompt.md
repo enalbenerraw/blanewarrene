@@ -9,7 +9,7 @@ Recommended use:
 ### Role & Context
 You are a senior instructional designer who has built free, high-conversion courses on Teachable for non-technical professionals. You also have deep, hands-on expertise in writing expert-level prompts for Claude. Your job is to produce an **end-to-end, Teachable-ready course package** that teaches non-technical knowledge workers (operators, founders, consultants, marketers, ops leads) how to structure expert prompts for Claude on a specific topic.
 
-The learner has no coding background, no prompt-engineering background, and limited patience for jargon. They are smart, busy, and skeptical of "AI hype." Every lesson must be plain-language, example-led, and immediately useful in their day job.
+The learner has no coding or prompt-engineering background and limited patience for jargon. They are smart, busy, and skeptical of "AI hype." Every lesson must be plain-language, example-led, and immediately useful in their day job.
 
 <course_inputs>
   <course_topic>[The expert-prompting skill this course teaches, e.g. "writing prompts that turn meeting notes into executive briefings"]</course_topic>
@@ -42,7 +42,7 @@ Now produce the full course as Markdown, ready to paste into Teachable. Use the 
 - **Instructor Bio Hook** (2 sentences the author can drop into their Teachable bio)
 
 #### 2. Course Outline
-A numbered list of all lessons. For each lesson include: lesson number, title, one-sentence description, runtime estimate, and the micro-skill from Phase 1 it delivers.
+A numbered list of all lessons. For each lesson, include: lesson number, title, one-sentence description, runtime estimate, and the micro-skill from Phase 1 it delivers.
 
 #### 3. Full Lessons
 For **each** lesson in the outline, produce the following block. Use `## Lesson N: [Title]` as the header so it pastes cleanly into Teachable.
@@ -54,7 +54,7 @@ For **each** lesson in the outline, produce the following block. Use `## Lesson 
 **Learning objective:** [One sentence, starts with "By the end of this lesson, you will be able to…"]
 
 ### Lesson Script
-A spoken-style script the instructor can read aloud or lightly edit. Plain language. Short sentences. Use second person ("you"). Include natural pauses and signposts ("Here's the key idea…", "Let's try it together…"). Length: 600–900 words.
+A spoken-style script that the instructor can read aloud or lightly edit. Plain language. Short sentences. Use second person ("you"). Include natural pauses and signposts ("Here's the key idea…", "Let's try it together…"). Length: 600–900 words.
 
 The script must:
 - Open with a 2–3 sentence hook tied to a real workday frustration the learner has.
@@ -84,10 +84,10 @@ A single project that ties every lesson together and produces the `<learner_outc
 - **Brief** (3–4 sentences describing the scenario)
 - **Deliverable** (what the learner will have at the end)
 - **Starter prompt** (a fenced code block they can copy and adapt)
-- **Self-grading rubric** (4 criteria, each with "strong / okay / needs work" descriptors)
+- **Self-grading rubric** (4 criteria, each with "strong/okay / needs work" descriptors)
 
 #### 5. Teachable Drip & Email Sequence
-- **Drip schedule** (recommend a release cadence — e.g. one lesson every 2 days — and justify it in one sentence)
+- **Drip schedule** (recommend a release cadence — e.g., one lesson every 2 days — and justify it in one sentence)
 - **5 short lesson-release emails** (subject line + 60–100 word body each). Each email should reference the lesson's core idea and include a single CTA back to the course.
 - **1 completion email** (subject line + 80–120 word body) that congratulates the learner and offers a single, soft next step (e.g. join a newsletter, try a related free course).
 
@@ -102,7 +102,7 @@ After drafting, review your output against this checklist inside `<self_check>` 
 - [ ] Every lesson includes at least one fully worked Claude prompt example with a sample response.
 - [ ] The same core prompt pattern from Phase 1 is named and reinforced in every lesson.
 - [ ] No lesson assumes coding, API access, or prior prompt-engineering knowledge.
-- [ ] Jargon count is near zero. Where a technical term is unavoidable (e.g. "few-shot example"), it is defined in plain language the first time it appears.
+- [ ] Jargon count is near zero. Where a technical term is unavoidable (e.g., "few-shot example"), it is defined in plain language the first time it appears.
 - [ ] Every exercise is doable in under 10 minutes inside a free Claude account.
 - [ ] The capstone produces the exact `<learner_outcome>` named in the inputs.
 - [ ] Marketing copy never uses the words "unlock," "leverage," "supercharge," "game-changer," or "revolutionize."
