@@ -24,7 +24,8 @@ I've enjoyed a technical and business journey in my career. I am now building AI
 ## Connect
 - 💼 [LinkedIn](https://www.linkedin.com/in/bwarrene) 
 - 📝 [Substack](https://blanewarrene.substack.com/)
-- 📧 [Email](mailto:blane@blanewarrene.com) 
+- 📧 [Email](mailto:blane@blanewarrene.com)
+- 📚 [AI Courses on Teachable](https://modprod.teachable.com/l/dashboard) 
 
 ---
 *PM who builds things. Currently exploring MCP automation from success & support data to PM analysis.*
