@@ -72,16 +72,37 @@ end tell
 
 
 def list_notes_in_folder(folder_name: str) -> list[dict[str, str]]:
-    """Return metadata for all notes in a given folder."""
+    """Return metadata for all notes in a given folder.
+
+    Dates are emitted in ISO 8601 form (YYYY-MM-DD HH:MM:SS) built from
+    numeric components, so the output does not depend on the system's
+    locale-specific date formatting.
+    """
     script = f'''
+on pad2(n)
+    set s to (n as string)
+    if length of s < 2 then return "0" & s
+    return s
+end pad2
+
+on isoDate(d)
+    set y to (year of d) as string
+    set mo to my pad2(month of d as integer)
+    set dy to my pad2(day of d)
+    set h to my pad2(hours of d)
+    set m to my pad2(minutes of d)
+    set s to my pad2(seconds of d)
+    return y & "-" & mo & "-" & dy & " " & h & ":" & m & ":" & s
+end isoDate
+
 tell application "Notes"
     set output to ""
     set targetFolder to folder "{folder_name}"
     repeat with n in every note in targetFolder
         set nId to id of n
         set nName to name of n
-        set nCreated to creation date of n as string
-        set nModified to modification date of n as string
+        set nCreated to my isoDate(creation date of n)
+        set nModified to my isoDate(modification date of n)
         set output to output & nId & "{DELIMITER}" & nName & "{DELIMITER}" & nCreated & "{DELIMITER}" & nModified & "{RECORD_DELIMITER}"
     end repeat
     return output

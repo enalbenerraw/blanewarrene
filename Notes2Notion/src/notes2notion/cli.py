@@ -68,6 +68,28 @@ def _select_folders(folders) -> list[str] | None:
     return selected
 
 
+def _select_date_range() -> int | None:
+    """Interactive date-range selection. Returns days-back window, or None for all."""
+    # Use a string sentinel for "all" so we can distinguish that choice from
+    # a Ctrl-C abort (which questionary signals by returning None).
+    choice = questionary.select(
+        "Include notes created within:",
+        choices=[
+            questionary.Choice("All time (no filter)", value="all"),
+            questionary.Choice("Last 30 days", value=30),
+            questionary.Choice("Last 90 days", value=90),
+            questionary.Choice("Last 180 days", value=180),
+        ],
+        default="all",
+    ).ask()
+
+    if choice is None:
+        console.print("[yellow]Export cancelled.[/]")
+        sys.exit(0)
+
+    return None if choice == "all" else choice
+
+
 def _get_output_dir() -> Path:
     """Prompt for the output directory."""
     default = str(Path.home() / "Desktop" / "notes2notion_export")
@@ -110,6 +132,13 @@ def _parse_args() -> argparse.Namespace:
         default=None,
         help="Output directory path (batch mode)",
     )
+    parser.add_argument(
+        "--last-days",
+        type=int,
+        choices=[30, 90, 180],
+        default=None,
+        help="Only export notes created within the last N days (30, 90, or 180)",
+    )
     return parser.parse_args()
 
 
@@ -146,9 +175,14 @@ def _run_batch(args: argparse.Namespace):
     else:
         total = sum(f.note_count for f in folders if f.name in selected_folders)
 
-    console.print(f"Exporting {total} notes to {output_dir}")
+    date_note = f" (created within last {args.last_days} days)" if args.last_days else ""
+    console.print(f"Exporting up to {total} notes{date_note} to {output_dir}")
 
-    config = ExportConfig(output_dir=output_dir, folders=selected_folders)
+    config = ExportConfig(
+        output_dir=output_dir,
+        folders=selected_folders,
+        created_within_days=args.last_days,
+    )
     warnings: list[str] = []
 
     with Progress(
@@ -228,6 +262,9 @@ def main():
     # Select folders
     selected_folders = _select_folders(folders)
 
+    # Date range filter (optional)
+    created_within_days = _select_date_range()
+
     if selected_folders is None:
         total = sum(f.note_count for f in folders)
         folder_label = "all folders"
@@ -237,8 +274,12 @@ def main():
         )
         folder_label = ", ".join(selected_folders)
 
+    date_label = (
+        f", created within last {created_within_days} days"
+        if created_within_days else ""
+    )
     console.print(
-        f"\nFound [bold]{total}[/] notes in {folder_label}."
+        f"\nFound [bold]{total}[/] notes in {folder_label}{date_label}."
     )
 
     # Confirm
@@ -253,6 +294,7 @@ def main():
     config = ExportConfig(
         output_dir=output_dir,
         folders=selected_folders,
+        created_within_days=created_within_days,
     )
 
     warnings: list[str] = []
@@ -296,8 +338,11 @@ def main():
     summary.add_column()
     summary.add_row("Notes exported:", str(len(notes)))
     summary.add_row("Attachments:", str(attachment_count))
+    if created_within_days:
+        summary.add_row("Date filter:", f"last {created_within_days} days")
     if skipped_count > 0:
-        summary.add_row("Skipped:", f"[yellow]{skipped_count}[/]")
+        label = "Skipped or filtered:" if created_within_days else "Skipped:"
+        summary.add_row(label, f"[yellow]{skipped_count}[/]")
     summary.add_row("Output:", str(out_dir))
     if zip_path:
         summary.add_row("ZIP:", str(zip_path))

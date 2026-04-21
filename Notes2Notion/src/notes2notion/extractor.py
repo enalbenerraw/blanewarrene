@@ -1,5 +1,6 @@
 """Orchestrates extraction of notes and attachments from Apple Notes."""
 
+from datetime import datetime, timedelta
 from typing import Callable
 
 from . import applescript
@@ -38,6 +39,10 @@ def extract_notes(
     else:
         target_folders = all_folders
 
+    cutoff: datetime | None = None
+    if config.created_within_days is not None:
+        cutoff = datetime.now() - timedelta(days=config.created_within_days)
+
     # Count total notes for progress tracking
     total_notes = sum(f.note_count for f in target_folders)
     current = 0
@@ -52,6 +57,16 @@ def extract_notes(
                 on_warning(f"Skipped folder '{folder.name}': {e}")
             current += folder.note_count
             continue
+
+        if cutoff is not None:
+            filtered = [
+                m for m in note_metas
+                if datetime.fromisoformat(m["creation_date"]) >= cutoff
+            ]
+            # Advance progress past notes excluded by the date filter so the
+            # bar still fills to 100% — they were counted in total_notes.
+            current += len(note_metas) - len(filtered)
+            note_metas = filtered
 
         for meta in note_metas:
             current += 1
