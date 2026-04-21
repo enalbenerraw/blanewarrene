@@ -47,3 +47,4 @@ class ExportConfig:
     output_dir: Path
     folders: list[str] | None = None  # None = all folders
     create_zip: bool = True
+    created_within_days: int | None = None  # None = no date filter

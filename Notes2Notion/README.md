@@ -69,6 +69,9 @@ notes2notion --batch --all --output ~/Desktop/notes2notion_export
 
 # Export specific folders
 notes2notion --batch --folders "Work,Personal" --output ~/Desktop/my_export
+
+# Only export notes created in the last 30, 90, or 180 days
+notes2notion --batch --all --last-days 30 --output ~/Desktop/recent_export
 ```
 
 ### Importing into Notion
@@ -111,7 +114,8 @@ folder: "Work"
 
 ## Backlog
 
-- [ ] Filter notes by date range
+- [x] Filter notes by date range (last 30 / 90 / 180 days, by creation date)
+- [ ] Surface date filter in the Notes2NotionUX GUI
 - [ ] Selective note export within folders
 - [ ] Direct Notion API import (skip ZIP upload)
 - [ ] Add retry logic with backoff for AppleScript and file operations
