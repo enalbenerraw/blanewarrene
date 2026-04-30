@@ -1,4 +1,4 @@
-# Hello, I'm Blane Warrene 👋
+# Hello, I'm Blane Warrene 
 
 ## What I Build
 I've enjoyed a technical and business journey in my career. I am now building AI prompt recipes and agents to automate product and product marketing workflows. Also prototyping web and native Mac OS X apps to extend automations to a readiness state for productizing.
@@ -28,4 +28,4 @@ I've enjoyed a technical and business journey in my career. I am now building AI
 - 📚 [AI Courses on Teachable](https://modprod.teachable.com/l/dashboard) 
 
 ---
-*PM who builds things. Currently exploring MCP automation from success & support data to PM analysis.*
+*Product & Operations Executive who builds things. Currently exploring MCP automation from commercial model, success, and support data for GTM analysis.*
