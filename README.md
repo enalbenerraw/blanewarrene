@@ -21,6 +21,12 @@ I've enjoyed a technical and business journey in my career. I am now building AI
 | [Pre-Call Briefing](pre-call-briefing/) | Executive-grade pre-call briefing on any target company for sales, BD, partnerships, and GTM teams | Claude with web search |
 | [Notes2Notion](Notes2Notion/) | Export Apple Notes to Notion-importable Markdown with attachments — CLI and native macOS GUI app | Python, AppleScript |
 
+## Claude Code Plugins
+
+| Plugin | What It Does | Install |
+|--------|-------------|---------|
+| [Product in Acquisitions OS](plugins/product-in-acquisitions-os/) | 90-Day Product Integration Framework as a working operating system for product leaders running post-acquisition integrations | `claude plugin install enalbenerraw/blanewarrene` |
+
 ## Connect
 - 💼 [LinkedIn](https://www.linkedin.com/in/bwarrene) 
 - 📝 [Substack](https://blanewarrene.substack.com/)

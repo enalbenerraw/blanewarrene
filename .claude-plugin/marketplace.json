@@ -1,0 +1,34 @@
+{
+  "name": "blanewarrene-marketplace",
+  "owner": {
+    "name": "Blane Warrene",
+    "url": "https://blanewarrene.substack.com"
+  },
+  "metadata": {
+    "description": "Operating systems and skills for product, operations, and AI-forward leaders. Built by Blane Warrene.",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "product-in-acquisitions-os",
+      "source": "./plugins/product-in-acquisitions-os",
+      "description": "An operating system for product leaders accountable for post-acquisition integration outcomes. Walks acquiring-company product leaders through the 90-day framework: Week 0 readiness, roadmap convergence, market positioning stability, and people integration.",
+      "version": "0.1.0",
+      "category": "product-leadership",
+      "tags": [
+        "product",
+        "acquisition",
+        "integration",
+        "m-and-a",
+        "saas",
+        "post-merger"
+      ],
+      "homepage": "https://blanewarrene.substack.com",
+      "license": "Proprietary",
+      "author": {
+        "name": "Blane Warrene",
+        "url": "https://blanewarrene.com"
+      }
+    }
+  ]
+}
