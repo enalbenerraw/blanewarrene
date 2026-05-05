@@ -1,0 +1,78 @@
+name: Bug report
+description: Something in the Product in Acquisitions OS plugin produced a wrong, broken, or low-quality result.
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report this. The plugin is intentionally bounded, so specific repro details help me decide whether the fix belongs in a SKILL.md, a reference template, or the framework itself.
+
+  - type: dropdown
+    id: skill
+    attributes:
+      label: Which skill?
+      options:
+        - week-0-readiness
+        - roadmap-convergence
+        - positioning-stability
+        - people-integration
+        - not skill-specific (plugin install, marketplace, workflow, etc.)
+    validations:
+      required: true
+
+  - type: input
+    id: deliverable
+    attributes:
+      label: Which deliverable or template?
+      description: e.g., "decision rights one-pager", "30/60/90 plan", "sales FAQ", "decision map session". Leave blank if not applicable.
+      placeholder: decision rights one-pager
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What did Claude produce, and what was wrong about it? Paste the relevant output if you can.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect instead?
+    validations:
+      required: true
+
+  - type: textarea
+    id: prompt
+    attributes:
+      label: How did you invoke the skill?
+      description: The phrase or prompt that triggered Claude. Helps me tune trigger phrasing if the wrong skill fired.
+      render: text
+
+  - type: input
+    id: version
+    attributes:
+      label: Plugin version
+      description: From plugins/product-in-acquisitions-os/.claude-plugin/plugin.json or the release tag you installed.
+      placeholder: v0.1.0
+    validations:
+      required: true
+
+  - type: dropdown
+    id: client
+    attributes:
+      label: Where are you running it?
+      options:
+        - Claude Code (CLI)
+        - Claude Cowork
+        - Claude desktop app
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: anything-else
+    attributes:
+      label: Anything else
+      description: Context about the integration you were running, the company stage, whatever helps me judge whether this is an edge case or a real gap.

@@ -1,0 +1,65 @@
+name: Feature request or framework gap
+description: A deliverable, template, or scenario the plugin should handle but does not. Or a sharper version of one that exists.
+title: "[Request] "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The four skills produce a fixed set of deliverables on purpose. New deliverables are rare. But sharper templates, better trigger phrasing, and missing edge cases (cross-border, regulated industries, distressed acquisitions, etc.) are exactly the kind of field signal that should drive the next release.
+
+  - type: dropdown
+    id: type
+    attributes:
+      label: What kind of request?
+      options:
+        - Sharper version of an existing template
+        - Missing edge case in an existing skill
+        - New scenario the framework should cover
+        - Trigger phrasing or skill discoverability
+        - Documentation or install
+    validations:
+      required: true
+
+  - type: dropdown
+    id: skill
+    attributes:
+      label: Which skill is this about?
+      options:
+        - week-0-readiness
+        - roadmap-convergence
+        - positioning-stability
+        - people-integration
+        - cross-cutting or new skill
+    validations:
+      required: true
+
+  - type: textarea
+    id: situation
+    attributes:
+      label: The situation
+      description: What were you trying to do, on what kind of integration? The more specific (deal size, stage, regulated vs. not, friendly vs. distressed), the better.
+    validations:
+      required: true
+
+  - type: textarea
+    id: gap
+    attributes:
+      label: What was missing or wrong
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What would good look like?
+      description: Optional. A sketch of the deliverable, template field, or behavior you wish existed.
+
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Scope check
+      description: Quick sanity check before I read the rest.
+      options:
+        - label: I have read the README for the relevant skill and confirmed this is not already covered.
+          required: true
