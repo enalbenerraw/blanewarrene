@@ -58,6 +58,16 @@ jobs:
           fi
           echo "PASS: no em dashes found"
 
+      - name: Verify framework PDF exists
+        run: |
+          PDF="articles/The-90-Day-Product-Integration-Framework.pdf"
+          if [ ! -f "$PDF" ]; then
+            echo "ERROR: framework PDF not found at $PDF"
+            echo "The release expects this file as a public lead-magnet asset."
+            exit 1
+          fi
+          ls -la "$PDF"
+
       - name: Package plugin
         run: |
           cd plugins/product-in-acquisitions-os
@@ -104,5 +114,6 @@ jobs:
           files: |
             /tmp/product-in-acquisitions-os.plugin
             /tmp/product-in-acquisitions-os-${{ github.ref_name }}.plugin
+            articles/The-90-Day-Product-Integration-Framework.pdf
           draft: false
           prerelease: false

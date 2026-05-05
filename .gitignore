@@ -9,3 +9,6 @@ build/
 .venv/
 .claude/
 .mcp.json
+.Ulysses-*.plist
+articles/*
+!articles/The-90-Day-Product-Integration-Framework.pdf
