@@ -5,8 +5,9 @@ I've enjoyed a technical and business journey in my career. I am now building AI
 
 ## What I'm Working On
 - 🔨 Current Projects — GTM Intel CLI, Notes2Notion, Strategic GTM Intel prompt, Signal Watch prompt, Morning News Brief prompt, LLM Memory Audit prompt recipes, Teachable Course Builder prompt, and Pre-Call Briefing prompt
-- 📚 I am exploring and learning agent automation within Notion
+- 📚 I am shipping agents for automation in Notion
 - 🤝 I am looking to simplify how product managers can build Gemini Gems, and leverage GitHub and AI
+- 🧩 Building and deploying Skills Plugins for Claude
 
 ## Featured Projects
 
