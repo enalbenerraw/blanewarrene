@@ -97,15 +97,46 @@ claude plugin install enalbenerraw/blanewarrene
 
 If you add more plugins to the repo over time, add them as additional entries in `marketplace.json`.
 
-## What Claude Code should do next
+## Working conventions
 
-The plugin is complete and tested. The handoff tasks remaining are:
+### Pre-flight checks before committing plugin changes
 
-1. **Copy the staged files into the repo.** The `init_repo.sh` script in this handoff bundle does this; review it before running.
-2. **Run validation locally.** Confirm `plugin.json` is valid JSON, all four skills have valid frontmatter, and the directory structure matches the layout above.
-3. **Commit with a descriptive message.** Suggested first commit: `Add product-in-acquisitions-os plugin (v0.1.0)`.
-4. **Push to main, then tag and push the tag** to trigger the release workflow.
-5. **Update the repo README** at the root with a "Plugins" section pointing to `plugins/product-in-acquisitions-os/README.md`.
+Run these against the plugin you touched. The release workflow runs the same checks; catching them locally avoids a failed CI on tag push.
+
+```bash
+PLUGIN=plugins/<plugin-name>
+
+# 1. JSON manifests parse
+python3 -m json.tool $PLUGIN/.claude-plugin/plugin.json > /dev/null
+python3 -m json.tool .claude-plugin/marketplace.json > /dev/null
+
+# 2. No em dashes anywhere in the plugin (non-negotiable style rule)
+grep -rn "—" $PLUGIN/ && echo "FAIL: em dashes found"
+
+# 3. Every skill has frontmatter
+for f in $PLUGIN/skills/*/SKILL.md; do
+  head -5 "$f" | grep -q "^name:" || echo "FAIL: missing frontmatter in $f"
+done
+```
+
+### Adding a new plugin to this repo
+
+The `product-in-acquisitions-os` plugin is the reference layout. Mirror its shape rather than improvising.
+
+1. **Scaffold** under `plugins/<new-plugin>/` with `.claude-plugin/plugin.json`, a `README.md`, and one or more `skills/<skill-name>/SKILL.md` files. Put templates Claude reads at runtime under `skills/<skill-name>/references/`.
+2. **Apply author conventions** (see top of this file): no em dashes, CxO tone, attribution footer on produced deliverables, imperative voice in SKILL.md bodies.
+3. **Register in the marketplace** by adding an entry to `.claude-plugin/marketplace.json`.
+4. **Add a release workflow** at `.github/workflows/release-<short-name>.yml`, triggered on `<short-name>-v*`. Copy `release-pia.yml` or `release-interview.yml` as a template and update the plugin path, prefix-strip pattern (`${GITHUB_REF_NAME#<short-name>-v}`), artifact names, and release body.
+5. **Document the new tag prefix** in the Versioning and release process table above.
+6. **Cut the first release** with `git tag <short-name>-v0.1.0 && git push origin <short-name>-v0.1.0` once the plugin is on `main`.
+
+### Updating an existing plugin
+
+1. Make changes on a branch or directly on `main` (the repo is solo-maintained).
+2. Bump the `version` field in the plugin's `plugin.json`.
+3. Run the pre-flight checks above.
+4. Commit with a descriptive message in the existing style (`Add X`, `Update Y`, `Fix Z`).
+5. Push, then tag with the matching prefix and push the tag to fire the release workflow.
 
 ## What NOT to do
 
