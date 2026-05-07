@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Meeting Brief: Taylor Brooks, Westfield Capital (sample)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #14110F;
+    --ink-soft: #4A4540;
+    --ink-mute: #7A736C;
+    --paper: #FAF7F2;
+    --line: #D8D2C8;
+    --accent: #7B2D26;
+    --accent-soft: #F2E6E2;
+    --highlight: #E8DDC9;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: #ECE7DD;
+    font-family: 'Inter Tight', sans-serif;
+    color: var(--ink);
+    font-size: 14px;
+    line-height: 1.4;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 850px;
+    margin: 24px auto;
+    background: var(--paper);
+    padding: 32px 40px 28px 40px;
+    box-shadow: 0 2px 24px rgba(20, 17, 15, 0.08);
+    position: relative;
+  }
+
+  .meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--ink-mute);
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 10px;
+    margin-bottom: 18px;
+  }
+  .meta strong { color: var(--accent); font-weight: 600; }
+
+  .name {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 38px;
+    line-height: 1;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .name .creds {
+    font-size: 18px;
+    color: var(--ink-mute);
+    font-weight: 400;
+    letter-spacing: 0;
+    font-style: italic;
+  }
+
+  .role {
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin-top: 6px;
+    font-weight: 500;
+  }
+  .role .org { color: var(--accent); font-weight: 600; }
+
+  .factstrip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-top: 18px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 12px 0;
+  }
+  .fact {
+    padding: 0 14px;
+    border-left: 1px solid var(--line);
+  }
+  .fact:first-child { border-left: none; padding-left: 0; }
+  .fact .label {
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-mute);
+    margin-bottom: 3px;
+    font-weight: 600;
+  }
+  .fact .value {
+    font-family: 'Fraunces', serif;
+    font-size: 14px;
+    color: var(--ink);
+    font-weight: 500;
+    line-height: 1.25;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+    margin-top: 18px;
+  }
+
+  .col h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--accent);
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 4px;
+    margin-bottom: 8px;
+  }
+  .col h2 + h2 { margin-top: 16px; }
+
+  .snapshot {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+  .snapshot strong { font-weight: 600; }
+
+  .tells { margin-top: 8px; }
+  .tell {
+    display: grid;
+    grid-template-columns: 22px 1fr;
+    gap: 8px;
+    margin-bottom: 8px;
+    font-size: 12.5px;
+    line-height: 1.4;
+  }
+  .tell .num {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    color: var(--accent);
+    font-size: 14px;
+    line-height: 1.3;
+  }
+  .tell .body strong { font-weight: 600; color: var(--ink); }
+  .tell .body span { color: var(--ink-soft); }
+
+  .context {
+    background: var(--highlight);
+    padding: 12px 14px;
+    margin-top: 6px;
+    border-left: 3px solid var(--accent);
+  }
+  .context .ctx-title {
+    font-family: 'Fraunces', serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 6px;
+    font-style: italic;
+  }
+  .context ul {
+    list-style: none;
+    font-size: 12px;
+    line-height: 1.45;
+    color: var(--ink);
+  }
+  .context ul li {
+    padding-left: 12px;
+    position: relative;
+    margin-bottom: 3px;
+  }
+  .context ul li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  .hooks { counter-reset: hookcount; }
+  .hook {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 10px;
+    padding: 9px 0;
+    border-bottom: 1px dotted var(--line);
+    font-size: 12.5px;
+    line-height: 1.4;
+  }
+  .hook:last-child { border-bottom: none; }
+  .hook .badge {
+    counter-increment: hookcount;
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    color: var(--paper);
+    background: var(--accent);
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+  }
+  .hook .badge::before { content: counter(hookcount); }
+  .hook .body strong {
+    font-weight: 600;
+    color: var(--ink);
+    display: block;
+    margin-bottom: 1px;
+  }
+  .hook .body span {
+    color: var(--ink-soft);
+    font-size: 11.5px;
+    line-height: 1.4;
+  }
+
+  .avoid {
+    background: #FFFFFF;
+    border: 1px solid var(--line);
+    padding: 12px 14px;
+    margin-top: 8px;
+  }
+  .avoid .row {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 10px;
+    font-size: 12px;
+    line-height: 1.4;
+    margin-bottom: 6px;
+  }
+  .avoid .row:last-child { margin-bottom: 0; }
+  .avoid .tag {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .avoid .tag.no { color: #8B0000; }
+  .avoid .tag.yes { color: #2D5A2D; }
+  .avoid .row span { color: var(--ink-soft); }
+
+  .close-list { margin-top: 6px; }
+  .close-q {
+    font-size: 12.5px;
+    line-height: 1.4;
+    padding: 8px 0;
+    border-top: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: 18px 1fr;
+    gap: 8px;
+    color: var(--ink);
+  }
+  .close-q:first-child { border-top: none; }
+  .close-q .qmark {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 600;
+    color: var(--accent);
+    font-size: 16px;
+    line-height: 1;
+  }
+  .close-q em {
+    font-style: italic;
+    color: var(--ink-soft);
+    display: block;
+    margin-top: 2px;
+    font-size: 11px;
+  }
+
+  footer {
+    margin-top: 18px;
+    padding-top: 10px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-mute);
+  }
+  footer .pull {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    text-transform: none;
+    letter-spacing: 0;
+    color: var(--accent);
+    font-size: 12px;
+  }
+
+  @media print {
+    html, body { background: white; }
+    .page {
+      box-shadow: none;
+      margin: 0;
+      max-width: 100%;
+      padding: 0.4in 0.5in;
+    }
+    @page { size: letter portrait; margin: 0.4in; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="meta">
+    <span>Interview Brief &nbsp;·&nbsp; Sample (fictional)</span>
+    <span><strong>Tuesday 10:00 AM</strong> &nbsp;·&nbsp; Zoom</span>
+  </div>
+
+  <h1 class="name">Taylor Brooks <span class="creds"></span></h1>
+  <div class="role">
+    Senior Executive Recruiter &nbsp;·&nbsp; <span class="org">Westfield Capital</span> &nbsp;·&nbsp; New York, NY
+  </div>
+
+  <div class="factstrip">
+    <div class="fact">
+      <div class="label">Tenure</div>
+      <div class="value">14 months at Westfield</div>
+    </div>
+    <div class="fact">
+      <div class="label">Came From</div>
+      <div class="value">Tier-1 enterprise software search firm</div>
+    </div>
+    <div class="fact">
+      <div class="label">Search</div>
+      <div class="value">VP Product, Helios Compliance Systems</div>
+    </div>
+    <div class="fact">
+      <div class="label">Hot Signal</div>
+      <div class="value">Cited NorthBay Trust in initial outreach</div>
+    </div>
+  </div>
+
+  <div class="grid">
+
+    <div class="col">
+
+      <h2>Snapshot</h2>
+      <p class="snapshot">Westfield-side owner of a confidential VP Product search at Helios Compliance Systems, a long-held PE portfolio company in mid-AI-productization arc. Surfaced your NorthBay Trust tenure in initial outreach, signaling cross-portfolio operating fluency is on the rubric. This screen is about storyline coherence and pattern fit; substance comes with the hiring manager and operating partner later.</p>
+
+      <h2>Four Tells That Shape How They'll Hear You</h2>
+      <div class="tells">
+        <div class="tell"><span class="num">1</span><div class="body"><strong>First Westfield impression, not the hiring manager's.</strong> <span>Job is to qualify storyline, level, portfolio fit, and "why now." Frame for narrative, not technical depth.</span></div></div>
+        <div class="tell"><span class="num">2</span><div class="body"><strong>Pre-pattern-matched your NorthBay tenure.</strong> <span>Already pre-sold on the cross-portfolio operating fluency angle. Confirm; don't oversell.</span></div></div>
+        <div class="tell"><span class="num">3</span><div class="body"><strong>Inclusive-recruiting orientation runs through history.</strong> <span>Distributed-team and inclusive-hiring evidence will land. You have it (US, EU, India teams).</span></div></div>
+        <div class="tell"><span class="num">4</span><div class="body"><strong>Treat as peer, not gatekeeper.</strong> <span>Will be deferential to the OP's read but confident in own screen. Don't drop names; will be spotted.</span></div></div>
+      </div>
+
+      <h2>The Strategic Moment</h2>
+      <div class="context">
+        <div class="ctx-title">What Taylor is recruiting against at Helios</div>
+        <ul>
+          <li>Westfield has held Helios since 2018; long hold, value-creation chapter underway.</li>
+          <li>AI-assisted workflow adoption jumped 6x YoY; AI is the central narrative.</li>
+          <li>First international add-on closed Q2; post-merger integration unfinished.</li>
+          <li>Co-founder CPO/CIO carries dual hat; VP Product is operational lieutenant.</li>
+          <li>Trust Center, Agent Studio, AI scoring framework are the three product anchors.</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="col">
+
+      <h2>Five Conversation Hooks (in order)</h2>
+      <div class="hooks">
+        <div class="hook">
+          <span class="badge"></span>
+          <div class="body">
+            <strong>Lead with cross-portfolio operating fluency.</strong>
+            <span>"NorthBay and Helios were in commercial relationship before Westfield owned Helios; the founder was an early angel and NorthBay was a customer. I came up inside the Westfield thesis on the regulated-data side."</span>
+          </div>
+        </div>
+        <div class="hook">
+          <span class="badge"></span>
+          <div class="body">
+            <strong>Five-acquisition integration parallel.</strong>
+            <span>The new add-on is Helios's first cross-border integration. You led product diligence and PMI on five at NorthBay, including AI/ML capability mapping. Precise match.</span>
+          </div>
+        </div>
+        <div class="hook">
+          <span class="badge"></span>
+          <div class="body">
+            <strong>Customer-facing AI in regulated environments.</strong>
+            <span>Same pattern Helios is running with AI scoring, Agent Studio, Trust Center. You've already done the AI-meets-regulated-buyer translation problem.</span>
+          </div>
+        </div>
+        <div class="hook">
+          <span class="badge"></span>
+          <div class="body">
+            <strong>The 6x AI adoption data point as a probe.</strong>
+            <span>"That kind of curve usually means either the product caught up to demand or customers are now feeling the trust ceiling. Where is the team focused next?"</span>
+          </div>
+        </div>
+        <div class="hook">
+          <span class="badge"></span>
+          <div class="body">
+            <strong>Distributed-team operating cadence.</strong>
+            <span>Helios runs four global offices; you ran 12 PMs and 119 engineers across three time zones with sustained EU-India overlap. State as a fact, not a brag.</span>
+          </div>
+        </div>
+      </div>
+
+      <h2>What to Avoid · What to Use</h2>
+      <div class="avoid">
+        <div class="row">
+          <span class="tag no">Avoid</span>
+          <span>Naming Westfield execs unprompted; product theory jargon; "I've done all this before"; negative framing of last role; over-formatted answers.</span>
+        </div>
+        <div class="row">
+          <span class="tag yes">Use</span>
+          <span>"Westfield operating model"; "category leadership"; "EBITDA-aware roadmap"; "post-merger product convergence"; "player-coach"; concrete numbers.</span>
+        </div>
+      </div>
+
+      <h2>Close With (Pick One)</h2>
+      <div class="close-list">
+        <div class="close-q">
+          <span class="qmark">Q.</span>
+          <div>What does your process look like from here, and who do I see next? <em>Standard process question; get the shape clear.</em></div>
+        </div>
+        <div class="close-q">
+          <span class="qmark">Q.</span>
+          <div>What separates the Westfield-portfolio operators who succeed in a cross-portfolio move from the ones who don't quite land? <em>Surfaces real screening criteria.</em></div>
+        </div>
+        <div class="close-q">
+          <span class="qmark">Q.</span>
+          <div>If you put yourself in the CPO's chair on day 90, what is the one capability gap on the current product team that would make this hire feel like a clear win? <em>The high-leverage one. Will outlive the call and get repeated upstream.</em></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <span>Sample output · Fictional scenario for illustration</span>
+    <span class="pull">Confirm fit; don't audition. The firm already has a thesis on you.</span>
+  </footer>
+
+</div>
+</body>
+</html>
