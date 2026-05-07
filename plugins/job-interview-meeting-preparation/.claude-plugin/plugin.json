@@ -1,0 +1,19 @@
+{
+  "name": "job-interview-meeting-preparation",
+  "version": "0.1.0",
+  "description": "Prepare a candidate, advisor, or operator for a high-stakes professional meeting. Researches the company and stakeholder, synthesizes the strategic picture, and produces two deliverables: a detailed in-conversation brief and a printable one-pager rendered to HTML and PDF. Covers four meeting types: interview (default), advisory or consulting, partnership or BD, and sales discovery.",
+  "author": {
+    "name": "Blane Warrene",
+    "url": "https://blanewarrene.com"
+  },
+  "homepage": "https://blanewarrene.substack.com",
+  "license": "MIT",
+  "keywords": [
+    "interview",
+    "meeting-prep",
+    "stakeholder-research",
+    "executive-briefing",
+    "sales-discovery",
+    "advisory"
+  ]
+}
