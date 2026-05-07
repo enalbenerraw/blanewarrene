@@ -62,16 +62,30 @@ Each skill produces 4 to 6 named deliverables. Do not invent new deliverables; t
 
 ## Versioning and release process
 
-The repo uses semver in `plugin.json`. Releases are cut by tagging:
+Each plugin versions and ships independently using a plugin-specific tag prefix. The repo uses semver in each plugin's `plugin.json`.
+
+| Plugin | Tag pattern | Workflow |
+|---|---|---|
+| `product-in-acquisitions-os` | `pia-v<version>` | `.github/workflows/release-pia.yml` |
+| `job-interview-meeting-preparation` | `interview-v<version>` | `.github/workflows/release-interview.yml` |
+
+Cut a release by tagging with the right prefix and pushing the tag:
 
 ```bash
-git tag v0.1.0
-git push origin v0.1.0
+# Product in Acquisitions OS
+git tag pia-v0.1.1
+git push origin pia-v0.1.1
+
+# Job Interview Meeting Preparation
+git tag interview-v0.1.0
+git push origin interview-v0.1.0
 ```
 
-The GitHub Actions workflow at `.github/workflows/release-plugin.yml` triggers on tag push, packages the plugin into a `.plugin` file (which is just a zip with a custom extension), and attaches it to the GitHub release. Subscribers always download the latest from the stable Releases URL.
+Each workflow triggers only on its prefix, packages just its own plugin into a `.plugin` file (which is a zip with a custom extension), and attaches it to a plugin-specific GitHub release. Subscribers download the latest from the stable Releases URL.
 
-When you bump the version in `plugin.json`, make the same bump in the git tag.
+When you bump the version in a plugin's `plugin.json`, make the same bump in that plugin's git tag.
+
+When adding another plugin in the future, follow the same pattern: pick a short tag prefix (e.g. `<short-name>-v*`), add a dedicated `release-<short-name>.yml` workflow, and the existing workflows are unaffected.
 
 ## Marketplace install
 
