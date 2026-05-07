@@ -3,7 +3,7 @@ name: Release Product in Acquisitions OS plugin
 on:
   push:
     tags:
-      - 'v*'
+      - 'pia-v*'
 
 permissions:
   contents: write
@@ -29,7 +29,7 @@ jobs:
         id: version
         run: |
           VERSION=$(python3 -c "import json; print(json.load(open('plugins/product-in-acquisitions-os/.claude-plugin/plugin.json'))['version'])")
-          TAG_VERSION="${GITHUB_REF_NAME#v}"
+          TAG_VERSION="${GITHUB_REF_NAME#pia-v}"
           echo "manifest_version=$VERSION" >> "$GITHUB_OUTPUT"
           echo "tag_version=$TAG_VERSION" >> "$GITHUB_OUTPUT"
           echo "Manifest version: $VERSION"
@@ -76,7 +76,7 @@ jobs:
 
       - name: Also create versioned filename
         run: |
-          cp "/tmp/product-in-acquisitions-os.plugin" "/tmp/product-in-acquisitions-os-${GITHUB_REF_NAME}.plugin"
+          cp "/tmp/product-in-acquisitions-os.plugin" "/tmp/product-in-acquisitions-os-v${{ steps.version.outputs.tag_version }}.plugin"
           ls -la /tmp/*.plugin
 
       - name: Create GitHub release
@@ -113,7 +113,7 @@ jobs:
             *Built by Blane Warrene · blanewarrene.substack.com*
           files: |
             /tmp/product-in-acquisitions-os.plugin
-            /tmp/product-in-acquisitions-os-${{ github.ref_name }}.plugin
+            /tmp/product-in-acquisitions-os-v${{ steps.version.outputs.tag_version }}.plugin
             articles/The-90-Day-Product-Integration-Framework.pdf
           draft: false
           prerelease: false

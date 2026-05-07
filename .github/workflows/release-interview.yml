@@ -1,0 +1,108 @@
+name: Release Job Interview Meeting Preparation plugin
+
+on:
+  push:
+    tags:
+      - 'interview-v*'
+
+permissions:
+  contents: write
+
+jobs:
+  package-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Validate plugin manifest
+        run: |
+          MANIFEST="plugins/job-interview-meeting-preparation/.claude-plugin/plugin.json"
+          if [ ! -f "$MANIFEST" ]; then
+            echo "ERROR: plugin.json not found at $MANIFEST"
+            exit 1
+          fi
+          python3 -m json.tool "$MANIFEST" > /dev/null
+          echo "plugin.json is valid JSON"
+
+      - name: Extract plugin version
+        id: version
+        run: |
+          VERSION=$(python3 -c "import json; print(json.load(open('plugins/job-interview-meeting-preparation/.claude-plugin/plugin.json'))['version'])")
+          TAG_VERSION="${GITHUB_REF_NAME#interview-v}"
+          echo "manifest_version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "tag_version=$TAG_VERSION" >> "$GITHUB_OUTPUT"
+          echo "Manifest version: $VERSION"
+          echo "Tag version: $TAG_VERSION"
+          if [ "$VERSION" != "$TAG_VERSION" ]; then
+            echo "WARNING: tag ($TAG_VERSION) does not match manifest version ($VERSION)"
+            echo "Continuing, but consider keeping them in sync."
+          fi
+
+      - name: Verify all skills have frontmatter
+        run: |
+          for skill_md in plugins/job-interview-meeting-preparation/skills/*/SKILL.md; do
+            if ! head -5 "$skill_md" | grep -q "^name:"; then
+              echo "ERROR: missing 'name:' frontmatter in $skill_md"
+              exit 1
+            fi
+            echo "OK: $skill_md"
+          done
+
+      - name: Check for em dashes (style rule)
+        run: |
+          if grep -r "—" plugins/job-interview-meeting-preparation/ > /dev/null 2>&1; then
+            echo "ERROR: found em dashes in plugin content (style rule violation)"
+            grep -rn "—" plugins/job-interview-meeting-preparation/ | head -10
+            exit 1
+          fi
+          echo "PASS: no em dashes found"
+
+      - name: Package plugin
+        run: |
+          cd plugins/job-interview-meeting-preparation
+          zip -r "/tmp/job-interview-meeting-preparation.plugin" . -x "*.DS_Store"
+          ls -la /tmp/job-interview-meeting-preparation.plugin
+
+      - name: Also create versioned filename
+        run: |
+          cp "/tmp/job-interview-meeting-preparation.plugin" "/tmp/job-interview-meeting-preparation-v${{ steps.version.outputs.tag_version }}.plugin"
+          ls -la /tmp/*.plugin
+
+      - name: Create GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: "Job Interview Meeting Preparation ${{ github.ref_name }}"
+          body: |
+            **Job Interview Meeting Preparation** ${{ github.ref_name }}
+
+            Claude plugin for preparing a candidate, advisor, or operator for a high-stakes professional meeting. Researches the company and stakeholder, synthesizes the strategic picture, and produces two deliverables: a detailed in-conversation brief and a printable one-pager rendered to HTML and PDF.
+
+            ## Install
+
+            Download `job-interview-meeting-preparation.plugin` below, then in Claude Cowork or Claude Code:
+
+            1. Open the plugin install panel
+            2. Drop in the `.plugin` file
+            3. Confirm install
+
+            The skill triggers automatically when you mention an upcoming meeting at a specific company. Covers four meeting types: interview (default), advisory or consulting, partnership or BD, and sales discovery.
+
+            ## Marketplace install
+
+            ```bash
+            claude plugin install enalbenerraw/blanewarrene
+            ```
+
+            ## What's in this release
+
+            See `plugins/job-interview-meeting-preparation/README.md` for full details.
+
+            ---
+
+            *Built by Blane Warrene · blanewarrene.substack.com*
+          files: |
+            /tmp/job-interview-meeting-preparation.plugin
+            /tmp/job-interview-meeting-preparation-v${{ steps.version.outputs.tag_version }}.plugin
+          draft: false
+          prerelease: false
