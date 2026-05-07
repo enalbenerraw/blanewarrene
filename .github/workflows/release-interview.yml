@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Validate plugin manifest
         run: |
@@ -70,7 +70,7 @@ jobs:
           ls -la /tmp/*.plugin
 
       - name: Create GitHub release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           name: "Job Interview Meeting Preparation ${{ github.ref_name }}"
           body: |
