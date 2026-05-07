@@ -24,9 +24,16 @@ I've enjoyed a technical and business journey in my career. I am now building AI
 
 ## Claude Code Plugins
 
-| Plugin | What It Does | Install |
-|--------|-------------|---------|
-| [Product in Acquisitions OS](plugins/product-in-acquisitions-os/) | 90-Day Product Integration Framework as a working operating system for product leaders running post-acquisition integrations | `claude plugin install enalbenerraw/blanewarrene` |
+Both plugins ship from the same marketplace and install with one command:
+
+```bash
+claude plugin install enalbenerraw/blanewarrene
+```
+
+| Plugin | What It Does |
+|--------|-------------|
+| [Product in Acquisitions OS](plugins/product-in-acquisitions-os/) | 90-Day Product Integration Framework as a working operating system for product leaders running post-acquisition integrations |
+| [Job Interview Meeting Preparation](plugins/job-interview-meeting-preparation/) | Prep a candidate, advisor, or operator for a high-stakes meeting (interview, advisory, partnership, or sales discovery). Produces an in-chat brief and a printable HTML/PDF one-pager. |
 
 ## Connect
 - 💼 [LinkedIn](https://www.linkedin.com/in/bwarrene) 
