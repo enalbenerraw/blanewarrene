@@ -3,12 +3,11 @@
   "version": "0.1.0",
   "description": "An operating system for product leaders running post-acquisition integrations. Walks acquiring-company product leaders through the 90-day framework: Week 0 readiness, roadmap convergence, market positioning stability, and people integration.",
   "author": {
-    "name": "Blane Warrene",
-    "url": "https://blanewarrene.com"
+    "name": "Blane Warrene"
   },
   "homepage": "https://blanewarrene.substack.com",
   "repository": "https://github.com/enalbenerraw/blanewarrene",
-  "license": "Proprietary",
+  "license": "LicenseRef-Proprietary",
   "keywords": [
     "product",
     "acquisition",

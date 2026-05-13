@@ -1,13 +1,10 @@
 {
   "name": "blanewarrene-marketplace",
   "owner": {
-    "name": "Blane Warrene",
-    "url": "https://blanewarrene.substack.com"
+    "name": "Blane Warrene"
   },
-  "metadata": {
-    "description": "Operating systems and skills for product, operations, and AI-forward leaders. Built by Blane Warrene.",
-    "version": "0.1.0"
-  },
+  "description": "Operating systems and skills for product, operations, and AI-forward leaders. Built by Blane Warrene.",
+  "version": "0.1.0",
   "plugins": [
     {
       "name": "product-in-acquisitions-os",
@@ -24,10 +21,9 @@
         "post-merger"
       ],
       "homepage": "https://blanewarrene.substack.com",
-      "license": "Proprietary",
+      "license": "LicenseRef-Proprietary",
       "author": {
-        "name": "Blane Warrene",
-        "url": "https://blanewarrene.com"
+        "name": "Blane Warrene"
       }
     },
     {
@@ -47,8 +43,7 @@
       "homepage": "https://blanewarrene.substack.com",
       "license": "MIT",
       "author": {
-        "name": "Blane Warrene",
-        "url": "https://blanewarrene.com"
+        "name": "Blane Warrene"
       }
     },
     {
@@ -68,8 +63,7 @@
       "homepage": "https://blanewarrene.substack.com",
       "license": "MIT",
       "author": {
-        "name": "Blane Warrene",
-        "url": "https://blanewarrene.com"
+        "name": "Blane Warrene"
       }
     }
   ]

@@ -3,8 +3,7 @@
   "version": "0.1.0",
   "description": "Produce a structured briefing document that compares a set of 3 to 8 organizations, products, or initiatives for a third-party audience (investors, board, exec team, M&A committee, partner steering group). Researches each entity, analyzes recent public messaging, runs a third-party verification pass on quantitative claims, and writes a single markdown brief with per-entity sections, cross-cutting observations, and discussion prompts ready for the meeting.",
   "author": {
-    "name": "Blane Warrene",
-    "url": "https://blanewarrene.com"
+    "name": "Blane Warrene"
   },
   "homepage": "https://blanewarrene.substack.com",
   "repository": "https://github.com/enalbenerraw/blanewarrene",
