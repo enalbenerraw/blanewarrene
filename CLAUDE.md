@@ -68,6 +68,7 @@ Each plugin versions and ships independently using a plugin-specific tag prefix.
 |---|---|---|
 | `product-in-acquisitions-os` | `pia-v<version>` | `.github/workflows/release-pia.yml` |
 | `job-interview-meeting-preparation` | `interview-v<version>` | `.github/workflows/release-interview.yml` |
+| `comparative-landscape-brief` | `clb-v<version>` | `.github/workflows/release-clb.yml` |
 
 Cut a release by tagging with the right prefix and pushing the tag:
 
