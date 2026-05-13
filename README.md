@@ -29,6 +29,8 @@ Or add the marketplace and pick which to install:
 | [Job Interview Meeting Preparation](plugins/job-interview-meeting-preparation/) | Prep a candidate, advisor, or operator for a high-stakes meeting (interview, advisory, partnership, or sales discovery). Produces an in-chat brief and a printable HTML/PDF one-pager. |
 | [Comparative Landscape Brief](plugins/comparative-landscape-brief/) | Produce a structured briefing document comparing 3 to 8 organizations, products, or initiatives for a third-party audience (investors, board, exec team, M&A committee, partner steering group). Includes a third-party verification pass on quantitative claims. |
 
+Plugin privacy policy: [blanewarrene.com/plugins-privacy](https://blanewarrene.com/plugins-privacy/).
+
 ## Featured Projects
 
 | Project | What It Does | Stack |
