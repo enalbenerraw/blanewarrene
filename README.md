@@ -9,6 +9,26 @@ I've enjoyed a technical and business journey in my career. I am now building AI
 - 🤝 I am looking to simplify how product managers can build Gemini Gems, and leverage GitHub and AI
 - 🧩 Building and deploying Skills Plugins for Claude
 
+## Claude Code Plugins
+
+Three plugins ship from one marketplace. Install all three with a single command:
+
+```bash
+claude plugin install enalbenerraw/blanewarrene
+```
+
+Or add the marketplace and pick which to install:
+
+```bash
+/plugin marketplace add enalbenerraw/blanewarrene
+```
+
+| Plugin | What It Does |
+|--------|-------------|
+| [Product in Acquisitions OS](plugins/product-in-acquisitions-os/) | 90-Day Product Integration Framework as a working operating system for product leaders running post-acquisition integrations. Covers Week 0 readiness, roadmap convergence, positioning stability, and people integration. |
+| [Job Interview Meeting Preparation](plugins/job-interview-meeting-preparation/) | Prep a candidate, advisor, or operator for a high-stakes meeting (interview, advisory, partnership, or sales discovery). Produces an in-chat brief and a printable HTML/PDF one-pager. |
+| [Comparative Landscape Brief](plugins/comparative-landscape-brief/) | Produce a structured briefing document comparing 3 to 8 organizations, products, or initiatives for a third-party audience (investors, board, exec team, M&A committee, partner steering group). Includes a third-party verification pass on quantitative claims. |
+
 ## Featured Projects
 
 | Project | What It Does | Stack |
@@ -21,19 +41,6 @@ I've enjoyed a technical and business journey in my career. I am now building AI
 | [Teachable Course Builder](prompts/teachable-course-builder-prompt.md) | Generate an end-to-end, Teachable-ready free course on expert prompting for non-technical learners | Claude |
 | [Pre-Call Briefing](pre-call-briefing/) | Executive-grade pre-call briefing on any target company for sales, BD, partnerships, and GTM teams | Claude with web search |
 | [Notes2Notion](Notes2Notion/) | Export Apple Notes to Notion-importable Markdown with attachments — CLI and native macOS GUI app | Python, AppleScript |
-
-## Claude Code Plugins
-
-Both plugins ship from the same marketplace and install with one command:
-
-```bash
-claude plugin install enalbenerraw/blanewarrene
-```
-
-| Plugin | What It Does |
-|--------|-------------|
-| [Product in Acquisitions OS](plugins/product-in-acquisitions-os/) | 90-Day Product Integration Framework as a working operating system for product leaders running post-acquisition integrations |
-| [Job Interview Meeting Preparation](plugins/job-interview-meeting-preparation/) | Prep a candidate, advisor, or operator for a high-stakes meeting (interview, advisory, partnership, or sales discovery). Produces an in-chat brief and a printable HTML/PDF one-pager. |
 
 ## Connect
 - 💼 [LinkedIn](https://www.linkedin.com/in/bwarrene) 

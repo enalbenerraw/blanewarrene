@@ -1,0 +1,108 @@
+name: Release Comparative Landscape Brief plugin
+
+on:
+  push:
+    tags:
+      - 'clb-v*'
+
+permissions:
+  contents: write
+
+jobs:
+  package-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Validate plugin manifest
+        run: |
+          MANIFEST="plugins/comparative-landscape-brief/.claude-plugin/plugin.json"
+          if [ ! -f "$MANIFEST" ]; then
+            echo "ERROR: plugin.json not found at $MANIFEST"
+            exit 1
+          fi
+          python3 -m json.tool "$MANIFEST" > /dev/null
+          echo "plugin.json is valid JSON"
+
+      - name: Extract plugin version
+        id: version
+        run: |
+          VERSION=$(python3 -c "import json; print(json.load(open('plugins/comparative-landscape-brief/.claude-plugin/plugin.json'))['version'])")
+          TAG_VERSION="${GITHUB_REF_NAME#clb-v}"
+          echo "manifest_version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "tag_version=$TAG_VERSION" >> "$GITHUB_OUTPUT"
+          echo "Manifest version: $VERSION"
+          echo "Tag version: $TAG_VERSION"
+          if [ "$VERSION" != "$TAG_VERSION" ]; then
+            echo "WARNING: tag ($TAG_VERSION) does not match manifest version ($VERSION)"
+            echo "Continuing, but consider keeping them in sync."
+          fi
+
+      - name: Verify all skills have frontmatter
+        run: |
+          for skill_md in plugins/comparative-landscape-brief/skills/*/SKILL.md; do
+            if ! head -5 "$skill_md" | grep -q "^name:"; then
+              echo "ERROR: missing 'name:' frontmatter in $skill_md"
+              exit 1
+            fi
+            echo "OK: $skill_md"
+          done
+
+      - name: Check for em dashes (style rule)
+        run: |
+          if grep -r "—" plugins/comparative-landscape-brief/ > /dev/null 2>&1; then
+            echo "ERROR: found em dashes in plugin content (style rule violation)"
+            grep -rn "—" plugins/comparative-landscape-brief/ | head -10
+            exit 1
+          fi
+          echo "PASS: no em dashes found"
+
+      - name: Package plugin
+        run: |
+          cd plugins/comparative-landscape-brief
+          zip -r "/tmp/comparative-landscape-brief.plugin" . -x "*.DS_Store"
+          ls -la /tmp/comparative-landscape-brief.plugin
+
+      - name: Also create versioned filename
+        run: |
+          cp "/tmp/comparative-landscape-brief.plugin" "/tmp/comparative-landscape-brief-v${{ steps.version.outputs.tag_version }}.plugin"
+          ls -la /tmp/*.plugin
+
+      - name: Create GitHub release
+        uses: softprops/action-gh-release@v3
+        with:
+          name: "Comparative Landscape Brief ${{ github.ref_name }}"
+          body: |
+            **Comparative Landscape Brief** ${{ github.ref_name }}
+
+            Claude plugin that produces a structured briefing document comparing a set of 3 to 8 organizations, products, or initiatives for a third-party audience (investors, board, exec team, M&A committee, partner steering group). Researches each entity, analyzes the last 90 days of public messaging, runs a third-party verification pass on quantitative claims, and writes a single markdown brief with per-entity sections, cross-cutting observations, and discussion prompts ready for the meeting.
+
+            ## Install
+
+            Download `comparative-landscape-brief.plugin` below, then in Claude Cowork or Claude Code:
+
+            1. Open the plugin install panel
+            2. Drop in the `.plugin` file
+            3. Confirm install
+
+            The skill triggers automatically when you ask for a comparison, landscape brief, competitive analysis, or executive summary across a named set of entities for a named audience.
+
+            ## Marketplace install
+
+            ```bash
+            claude plugin install enalbenerraw/blanewarrene
+            ```
+
+            ## What's in this release
+
+            See `plugins/comparative-landscape-brief/README.md` for full details.
+
+            ---
+
+            *Built by Blane Warrene · blanewarrene.substack.com*
+          files: |
+            /tmp/comparative-landscape-brief.plugin
+            /tmp/comparative-landscape-brief-v${{ steps.version.outputs.tag_version }}.plugin
+          draft: false
+          prerelease: false
