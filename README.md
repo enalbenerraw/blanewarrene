@@ -42,7 +42,7 @@ Plugin privacy policy: [blanewarrene.com/plugins-privacy](https://blanewarrene.c
 | [LLM Memory Audit](prompts/llm-memory-audit-prompts.md) | Copy-paste prompt recipes to audit persistent memory and instructions in ChatGPT, Claude, Copilot, and Gemini | Any LLM |
 | [Teachable Course Builder](prompts/teachable-course-builder-prompt.md) | Generate an end-to-end, Teachable-ready free course on expert prompting for non-technical learners | Claude |
 | [Pre-Call Briefing](pre-call-briefing/) | Executive-grade pre-call briefing on any target company for sales, BD, partnerships, and GTM teams | Claude with web search |
-| [Notes2Notion](Notes2Notion/) | Export Apple Notes to Notion-importable Markdown with attachments — CLI and native macOS GUI app | Python, AppleScript |
+| [Notes2Notion](Notes2Notion/) | Export Apple Notes to Notion-importable Markdown — CLI and native macOS GUI app | Python, AppleScript |
 
 ## Connect
 - 💼 [LinkedIn](https://www.linkedin.com/in/bwarrene) 
