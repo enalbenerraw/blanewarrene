@@ -136,3 +136,7 @@ folder: "Work"
 - [ ] Selective note export within folders
 - [ ] Direct Notion API import (skip ZIP upload)
 - [ ] Add retry logic with backoff for AppleScript and file operations
+
+## License
+
+Notes2Notion is released under the [MIT License](LICENSE). Copyright (c) 2026 Blane Warrene.
