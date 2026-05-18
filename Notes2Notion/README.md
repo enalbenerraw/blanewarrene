@@ -128,7 +128,7 @@ folder: "Work"
 
 - [x] Filter notes by date range (last 30 / 90 / 180 days, by creation date)
 - [x] Resolve attachments via `NoteStore.sqlite` (replaces unreliable name matching)
-- [ ] **Notes2NotionUX: detect missing Full Disk Access before export** and show a native dialog with the exact System Settings steps, instead of silently producing an attachment-free export
+- [x] **Notes2NotionUX: detect missing Full Disk Access before export** via a `notes2notion --check-access` preflight and a native dialog (Open Settings / Continue Without Attachments / Cancel), instead of silently producing an attachment-free export
 - [ ] **Notes2NotionUX: document the Full Disk Access grant in `install_app.sh`** output, since the bundle (not Terminal) is the process that needs it when run as a GUI
 - [ ] **Notes2NotionUX: surface per-note attachment warnings** in the results dialog (currently only visible on the CLI)
 - [ ] Embed images inline at their original position (blocked: AppleScript does not expose attachment placement; would require parsing the note's protobuf body in `NoteStore.sqlite`)

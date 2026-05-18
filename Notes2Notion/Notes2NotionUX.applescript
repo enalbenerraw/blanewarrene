@@ -32,6 +32,28 @@ on run
 		return
 	end if
 
+	-- Step 2b: Verify Full Disk Access (required to export attachments)
+	-- Apple Notes keeps attachments in a TCC-protected container. Without
+	-- Full Disk Access the export still runs but every attachment is
+	-- silently skipped, so warn before the user invests any effort.
+	-- "|| true" forces exit 0 so the token line is captured regardless
+	-- of the CLI's exit code.
+	set accessOutput to ""
+	try
+		set accessOutput to do shell script quoted form of cliPath & " --check-access 2>&1 || true"
+	end try
+
+	if accessOutput does not contain "FULL_DISK_ACCESS: OK" then
+		set fdaChoice to button returned of (display dialog "Notes2NotionUX cannot read your Apple Notes attachments." & return & return & "Apple Notes stores attachments in a protected location. Open Full Disk Access, enable Notes2NotionUX, then fully quit and reopen this app (the permission only applies after a relaunch)." & return & return & "If you continue now, your notes will export but every attachment will be skipped." with title appTitle buttons {"Cancel", "Continue Without Attachments", "Open Settings"} default button "Open Settings" with icon caution)
+		if fdaChoice is "Open Settings" then
+			do shell script "open 'x-apple.systempreferences:com.apple.preference.security?Privacy_AllFiles'"
+			return
+		else if fdaChoice is "Cancel" then
+			return
+		end if
+		-- "Continue Without Attachments" falls through to a normal export
+	end if
+
 	-- Step 3: Folder selection dialog
 	set folderChoices to {"All Notes"} & folderList
 	set selectedItems to choose from list folderChoices with title appTitle with prompt "Select folders to export:" with multiple selections allowed
