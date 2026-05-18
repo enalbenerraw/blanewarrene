@@ -118,14 +118,26 @@ def convert_note(note: Note) -> str:
     markdown_body = converter.convert(html)
     markdown_body = _clean_markdown(markdown_body)
 
-    # Add any non-image attachments as links at the bottom
-    non_image_attachments = [
-        a for a in note.attachments if a.media_type != "image"
-    ]
-    if non_image_attachments:
+    # AppleScript does not expose where attachments sit inline, so append
+    # them per note: images as embeds, other files as links. Display the
+    # original filename; link to the note-prefixed asset on disk.
+    images = [a for a in note.attachments if a.media_type == "image"]
+    other = [a for a in note.attachments if a.media_type != "image"]
+
+    if images:
+        markdown_body += "\n## Images\n\n"
+        for att in images:
+            markdown_body += (
+                f"![{att.original_path.name}](assets/{att.filename})\n\n"
+            )
+        markdown_body = markdown_body.rstrip() + "\n"
+
+    if other:
         markdown_body += "\n## Attachments\n\n"
-        for att in non_image_attachments:
-            markdown_body += f"- [{att.filename}](assets/{att.filename})\n"
+        for att in other:
+            markdown_body += (
+                f"- [{att.original_path.name}](assets/{att.filename})\n"
+            )
 
     frontmatter = _generate_frontmatter(note)
     return frontmatter + "\n" + markdown_body

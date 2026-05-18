@@ -16,7 +16,19 @@ A macOS tool that exports Apple Notes to Notion-importable Markdown files with f
 
 - macOS (Apple Notes.app access)
 - Python 3.11+
-- Terminal must have Automation permission for Notes.app (System Settings > Privacy & Security > Automation)
+- **Automation permission** for Notes.app, so the tool can read note text via AppleScript (System Settings > Privacy & Security > Automation)
+- **Full Disk Access** for whatever runs the export, so it can resolve attachments
+
+### Why Full Disk Access is required
+
+Apple Notes stores attachment files and its index database (`NoteStore.sqlite`) inside `~/Library/Group Containers/group.com.apple.notes/`, a TCC-protected location. The scriptable note body does not contain attachment file references, so attachments can only be resolved by reading that container directly. Without Full Disk Access the export still runs and note text comes through, but **zero attachments are exported** and the tool prints a diagnostic explaining why.
+
+Grant it under System Settings > Privacy & Security > Full Disk Access, then add the process that runs the export and relaunch it:
+
+- Running the CLI: add your terminal app (Terminal.app, iTerm, etc.)
+- Running the GUI: add `Notes2NotionUX.app`
+
+The grant only applies to newly launched processes, so fully quit and reopen the terminal or app after enabling it.
 
 ## Installation
 
@@ -106,15 +118,20 @@ folder: "Work"
 ## How It Works
 
 1. Connects to Notes.app via AppleScript (`osascript`)
-2. Enumerates folders and notes
-3. Extracts HTML content and resolves attachments from `~/Library/Group Containers/group.com.apple.notes/Media/`
+2. Enumerates folders and notes, and extracts each note's HTML body
+3. Resolves attachments through `NoteStore.sqlite`: each AppleScript attachment id carries a Core Data primary key, which is mapped to its media row (`ZMEDIA`) to find the file under `~/Library/Group Containers/group.com.apple.notes/Accounts/*/Media/<uuid>/`. AppleScript attachment names are unreliable (often empty), so this database join is the only robust path.
 4. Converts HTML to Markdown using `markdownify`
-5. Rewrites attachment paths and copies files to output
+5. Copies attachment files to `assets/`, embeds images and links other files at the end of each note (AppleScript does not expose where attachments sit inline)
 6. Packages everything into a Notion-ready ZIP
 
 ## Backlog
 
 - [x] Filter notes by date range (last 30 / 90 / 180 days, by creation date)
+- [x] Resolve attachments via `NoteStore.sqlite` (replaces unreliable name matching)
+- [ ] **Notes2NotionUX: detect missing Full Disk Access before export** and show a native dialog with the exact System Settings steps, instead of silently producing an attachment-free export
+- [ ] **Notes2NotionUX: document the Full Disk Access grant in `install_app.sh`** output, since the bundle (not Terminal) is the process that needs it when run as a GUI
+- [ ] **Notes2NotionUX: surface per-note attachment warnings** in the results dialog (currently only visible on the CLI)
+- [ ] Embed images inline at their original position (blocked: AppleScript does not expose attachment placement; would require parsing the note's protobuf body in `NoteStore.sqlite`)
 - [ ] Surface date filter in the Notes2NotionUX GUI
 - [ ] Selective note export within folders
 - [ ] Direct Notion API import (skip ZIP upload)
