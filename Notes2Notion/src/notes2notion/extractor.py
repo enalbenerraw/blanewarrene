@@ -90,7 +90,7 @@ def extract_notes(
             attachments: list[Attachment] = []
             try:
                 attachments = resolve_attachments(
-                    html_body, meta["id"], note_name
+                    html_body, meta["id"], note_name, on_warning=on_warning
                 )
             except Exception as e:
                 if on_warning:
