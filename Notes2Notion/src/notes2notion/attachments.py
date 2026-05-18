@@ -158,6 +158,19 @@ def _report_status(on_warning: Callable[[str], None] | None) -> None:
         _db_status_reported = True
 
 
+def probe_notestore_access() -> tuple[bool, str | None]:
+    """Check whether NoteStore.sqlite can be opened (Full Disk Access).
+
+    Returns ``(ok, message)``; ``message`` is the actionable diagnostic
+    when access is unavailable. Backs the CLI ``--check-access`` preflight
+    so the GUI can warn before a user invests effort in an export that
+    would silently drop every attachment.
+    """
+    if _open_notestore() is not None:
+        return True, None
+    return False, get_resolver_status()
+
+
 def _parse_attachment_pk(coredata_id: str) -> int | None:
     """Extract the Core Data Z_PK from an AppleScript attachment id.
 

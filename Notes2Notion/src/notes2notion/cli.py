@@ -11,6 +11,7 @@ from rich.progress import Progress, SpinnerColumn, TextColumn, BarColumn
 from rich.table import Table
 
 from . import applescript
+from .attachments import probe_notestore_access
 from .extractor import discover_folders, extract_notes
 from .models import ExportConfig
 from .writer import write_export
@@ -139,7 +140,32 @@ def _parse_args() -> argparse.Namespace:
         default=None,
         help="Only export notes created within the last N days (30, 90, or 180)",
     )
+    parser.add_argument(
+        "--check-access",
+        action="store_true",
+        help="Preflight: verify Full Disk Access for attachment export, "
+        "then exit (0 = OK, 2 = missing). Prints a FULL_DISK_ACCESS: line.",
+    )
     return parser.parse_args()
+
+
+def _run_access_check() -> None:
+    """Preflight check used by the GUI before an export.
+
+    Prints a machine-parseable token line plus a human message and exits
+    0 when attachments are reachable, 2 when Full Disk Access is missing.
+    Uses plain print (not the rich console) so the contract text is
+    unstyled and unwrapped for the AppleScript caller.
+    """
+    _check_platform()
+    ok, message = probe_notestore_access()
+    if ok:
+        print("FULL_DISK_ACCESS: OK")
+        print("Notes2Notion can read Apple Notes attachments.")
+        sys.exit(0)
+    print("FULL_DISK_ACCESS: MISSING")
+    print(message or "NoteStore.sqlite is not readable.")
+    sys.exit(2)
 
 
 def _run_batch(args: argparse.Namespace):
@@ -226,6 +252,10 @@ def _run_batch(args: argparse.Namespace):
 def main():
     """Entry point for Notes2Notion CLI."""
     args = _parse_args()
+
+    if args.check_access:
+        _run_access_check()
+        return
 
     if args.batch:
         _run_batch(args)
