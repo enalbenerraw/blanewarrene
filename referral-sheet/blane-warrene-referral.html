@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<!--
+  Blane Warrene · Forwardable Referral One-Pager
+  ==============================================
+  Purpose: a sheet a first-tier LinkedIn connection can forward to anyone in
+  their network who might need fractional or contract product leadership.
+  Brand aesthetic matches the editorial / financial-briefing house style.
+  Edit the BOOKING LINK placeholder before sharing.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Blane Warrene · Fractional &amp; Contract Head of Product</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter+Tight:wght@400;500;600;700&display=swap');
+
+  :root {
+    --ink: #14110F;
+    --ink-soft: #4A4540;
+    --ink-mute: #7A736C;
+    --paper: #FAF7F2;
+    --line: #D8D2C8;
+    --accent: #7B2D26;
+    --highlight: #E8DDC9;
+    --serif: 'Fraunces', 'Charter', 'Bitstream Charter', Georgia, 'Times New Roman', serif;
+    --sans: 'Inter Tight', 'DejaVu Sans', system-ui, 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: #ECE7DD;
+    font-family: var(--sans);
+    color: var(--ink);
+    font-size: 14px;
+    line-height: 1.45;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 850px;
+    margin: 24px auto;
+    background: var(--paper);
+    padding: 28px 44px 20px 44px;
+    box-shadow: 0 2px 24px rgba(20, 17, 15, 0.08);
+    position: relative;
+  }
+
+  .meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--ink-mute);
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 10px;
+    margin-bottom: 16px;
+  }
+  .meta strong { color: var(--accent); font-weight: 600; }
+
+  .name {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 42px;
+    line-height: 1;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .role {
+    font-family: var(--sans);
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    margin-top: 9px;
+    font-weight: 500;
+  }
+  .role .hl { color: var(--accent); font-weight: 600; }
+
+  .factstrip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-top: 16px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 13px 0;
+  }
+  .fact {
+    padding: 0 14px;
+    border-left: 1px solid var(--line);
+  }
+  .fact:first-child { border-left: none; padding-left: 0; }
+  .fact .label {
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-mute);
+    margin-bottom: 3px;
+    font-weight: 600;
+  }
+  .fact .value {
+    font-family: var(--serif);
+    font-size: 13px;
+    color: var(--ink);
+    font-weight: 500;
+    line-height: 1.25;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 26px;
+    margin-top: 16px;
+  }
+
+  h2 {
+    font-family: var(--serif);
+    font-size: 11.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--accent);
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 5px;
+    margin-bottom: 8px;
+  }
+  h2 + .after { margin-top: 0; }
+  .col h2:not(:first-child) { margin-top: 13px; }
+
+  .snapshot {
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--ink);
+  }
+  .snapshot strong { font-weight: 600; }
+
+  .modes { margin-top: 2px; }
+  .mode {
+    display: grid;
+    grid-template-columns: 92px 1fr;
+    gap: 10px;
+    padding: 6px 0;
+    border-bottom: 1px dotted var(--line);
+    font-size: 12.5px;
+    line-height: 1.42;
+  }
+  .mode:last-child { border-bottom: none; }
+  .mode .k {
+    font-family: var(--serif);
+    font-weight: 600;
+    color: var(--ink);
+    font-size: 12px;
+  }
+  .mode .v { color: var(--ink-soft); }
+
+  .context {
+    background: var(--highlight);
+    padding: 12px 16px;
+    margin-top: 10px;
+    border-left: 3px solid var(--accent);
+  }
+  .context .ctx-title {
+    font-family: var(--serif);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 6px;
+    font-style: italic;
+  }
+  .context ul {
+    list-style: none;
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+  .context ul li {
+    padding-left: 14px;
+    position: relative;
+    margin-bottom: 6px;
+  }
+  .context ul li:last-child { margin-bottom: 0; }
+  .context ul li::before {
+    content: '\201C';
+    position: absolute;
+    left: 0;
+    top: 1px;
+    color: var(--accent);
+    font-weight: 700;
+    font-family: var(--serif);
+  }
+
+  .value-list { margin-top: 4px; }
+  .vrow {
+    display: grid;
+    grid-template-columns: 22px 1fr;
+    gap: 9px;
+    margin-bottom: 9px;
+    font-size: 12.5px;
+    line-height: 1.45;
+  }
+  .vrow:last-child { margin-bottom: 0; }
+  .vrow .num {
+    font-family: var(--serif);
+    font-weight: 700;
+    color: var(--accent);
+    font-size: 14px;
+    line-height: 1.25;
+  }
+  .vrow .body strong { font-weight: 600; color: var(--ink); }
+  .vrow .body span { color: var(--ink-soft); }
+
+  .proof {
+    font-size: 12px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin-top: 2px;
+  }
+  .proof .p {
+    padding: 7px 0;
+    border-bottom: 1px dotted var(--line);
+  }
+  .proof .p:last-child { border-bottom: none; }
+  .proof a, .cta a { color: var(--accent); text-decoration: none; font-weight: 600; }
+  .proof strong { color: var(--ink); font-weight: 600; }
+
+  .cta {
+    background: #FFFFFF;
+    border: 1px solid var(--line);
+    padding: 12px 14px;
+    margin-top: 8px;
+  }
+  .cta .lead {
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: var(--ink);
+    margin-bottom: 10px;
+  }
+  .cta .lead em { font-style: italic; color: var(--ink-soft); }
+  .cta .contact {
+    display: grid;
+    grid-template-columns: 74px 1fr;
+    gap: 8px 10px;
+    font-size: 12.5px;
+    line-height: 1.4;
+  }
+  .cta .contact .lbl {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 600;
+    color: var(--ink-mute);
+    font-size: 11px;
+  }
+  .cta .contact .val { color: var(--ink); }
+  .cta .contact .ph { color: var(--ink-mute); font-style: italic; }
+
+  footer {
+    margin-top: 18px;
+    padding-top: 11px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-mute);
+  }
+  footer .pull {
+    font-family: var(--serif);
+    font-style: italic;
+    text-transform: none;
+    letter-spacing: 0;
+    color: var(--accent);
+    font-size: 12px;
+  }
+
+  @page { size: letter portrait; margin: 0.45in; }
+  @media print {
+    html, body { background: white; }
+    .page { box-shadow: none; margin: 0; max-width: 100%; padding: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="meta">
+    <span>Fractional &amp; Contract Product Leadership</span>
+    <span><strong>Forwardable referral sheet</strong> &nbsp;·&nbsp; Please pass along</span>
+  </div>
+
+  <h1 class="name">Blane Warrene</h1>
+  <div class="role">
+    <span class="hl">Fractional &amp; Contract Head of Product</span> &nbsp;·&nbsp; Product &amp; Operations Executive &nbsp;·&nbsp; US Eastern, remote
+  </div>
+
+  <div class="factstrip">
+    <div class="fact">
+      <div class="label">Available for</div>
+      <div class="value">Fractional, contract, project, advisory</div>
+    </div>
+    <div class="fact">
+      <div class="label">Capacity</div>
+      <div class="value">1 to 2 new engagements</div>
+    </div>
+    <div class="fact">
+      <div class="label">Best fit</div>
+      <div class="value">B2B SaaS, PE backed, post-acquisition</div>
+    </div>
+    <div class="fact">
+      <div class="label">Start</div>
+      <div class="value">This quarter</div>
+    </div>
+  </div>
+
+  <div class="grid">
+
+    <div class="col">
+
+      <h2>Who I Am</h2>
+      <p class="snapshot">
+        A senior product and operations executive with a technical and business career. I have led
+        product end to end and owned the seam where product meets go to market. I do not stop at the
+        strategy deck; I build the operating systems, frameworks, and automations a product org
+        actually runs on, then leave the team able to run them without me.
+      </p>
+
+      <h2>How I Plug In</h2>
+      <div class="modes">
+        <div class="mode">
+          <span class="k">Fractional</span>
+          <span class="v">Ongoing, one to two days a week. Carry the product leadership seat while you hire, or permanently for a lean team.</span>
+        </div>
+        <div class="mode">
+          <span class="k">Contract</span>
+          <span class="v">Embedded full time for a fixed term, typically three to six months, to land a specific outcome.</span>
+        </div>
+        <div class="mode">
+          <span class="k">Project</span>
+          <span class="v">Scoped work: a post-acquisition product integration, a roadmap reset, a positioning teardown, an AI automation build.</span>
+        </div>
+        <div class="mode">
+          <span class="k">Advisory</span>
+          <span class="v">Monthly, low hours. Operator sounding board for a founder or a first-time product leader.</span>
+        </div>
+      </div>
+
+      <div class="context">
+        <div class="ctx-title">Refer me when you hear someone say:</div>
+        <ul>
+          <li>We need a Head of Product now, and the hire will take six months.</li>
+          <li>We just acquired a product and nobody owns the integration.</li>
+          <li>Our roadmap and our go-to-market story have drifted apart.</li>
+          <li>Product ships, but there is no operating rhythm.</li>
+          <li>We want AI wired into how product and GTM run, not another pilot.</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="col">
+
+      <h2>Where I Create Value</h2>
+      <div class="value-list">
+        <div class="vrow">
+          <span class="num">1</span>
+          <div class="body"><strong>Roadmap convergence.</strong> <span>Turn competing priorities into one sequenced plan the team and the board both believe.</span></div>
+        </div>
+        <div class="vrow">
+          <span class="num">2</span>
+          <div class="body"><strong>The product-to-GTM seam.</strong> <span>Positioning, sales enablement, and launch that match what the product actually does.</span></div>
+        </div>
+        <div class="vrow">
+          <span class="num">3</span>
+          <div class="body"><strong>Operating cadence.</strong> <span>Install the planning, reviews, and decision rights so product runs without heroics.</span></div>
+        </div>
+        <div class="vrow">
+          <span class="num">4</span>
+          <div class="body"><strong>Post-acquisition integration.</strong> <span>Own the product seat M&amp;A usually misses. Author of the 90-Day Product Integration Framework.</span></div>
+        </div>
+        <div class="vrow">
+          <span class="num">5</span>
+          <div class="body"><strong>AI automation that compounds.</strong> <span>Build agents and automations that take real work off the product and GTM team.</span></div>
+        </div>
+      </div>
+
+      <h2>Proof of Work</h2>
+      <div class="proof">
+        <div class="p"><strong>GitHub</strong> &nbsp;github.com/enalbenerraw &nbsp;·&nbsp; shipped Claude plugins, a GTM intel CLI, and published frameworks. Working code, not slides.</div>
+        <div class="p"><strong>LinkedIn</strong> &nbsp;linkedin.com/in/bwarrene &nbsp;·&nbsp; full career arc, roles, and recommendations.</div>
+      </div>
+
+      <h2>How to Refer Me</h2>
+      <div class="cta">
+        <div class="lead">
+          A good intro is one line: <em>who they are, what they are trying to do, and that you think we should talk.</em> I take it from there.
+        </div>
+        <div class="contact">
+          <span class="lbl">Email</span><span class="val">blane@blanewarrene.com</span>
+          <span class="lbl">LinkedIn</span><span class="val">linkedin.com/in/bwarrene</span>
+          <span class="lbl">Book 20m</span><span class="val ph">[ add your booking link here ]</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <span>Blane Warrene &nbsp;·&nbsp; Fractional &amp; Contract Head of Product</span>
+    <span class="pull">Product leadership you can plug in this quarter.</span>
+  </footer>
+
+</div>
+</body>
+</html>
