@@ -12,3 +12,4 @@ build/
 .Ulysses-*.plist
 articles/*
 !articles/The-90-Day-Product-Integration-Framework.pdf
+!articles/Product-in-Acquisitions-Executive-Briefing.pdf

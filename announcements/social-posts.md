@@ -6,7 +6,7 @@ Voice rules: no em dashes, CxO peer voice, no exclamation marks, no emoji except
 
 ---
 
-# WEEK 1: Public article + free framework
+# WEEK 1: Public article + free briefing
 
 ## LinkedIn: Week 1
 
@@ -27,7 +27,7 @@ By the time someone notices, the conversation has shifted from "how do we integr
 
 I wrote about why this happens, what due diligence misses, and the five things that actually decide outcomes in the first 90 days.
 
-Free framework PDF for anyone subscribing.
+Free executive briefing for anyone subscribing. The full 17-page framework links from inside.
 
 [ARTICLE_URL]
 
@@ -57,7 +57,7 @@ Different conversations. One has owners. The other has finger-pointing.
 
 5/ I wrote about why this happens, what due diligence misses, and the five things that actually decide outcomes in the first 90 days.
 
-Free framework PDF for subscribers.
+Free executive briefing for subscribers. Full framework linked inside.
 
 [ARTICLE_URL]
 ```
@@ -75,7 +75,7 @@ Finance has integration plans. HR has onboarding. Legal has mapped the liabiliti
 
 I wrote about why this gap exists, what due diligence misses, and the five things that decide whether the integration compounds value or quietly leaks it.
 
-Free 17-page framework PDF for anyone subscribing.
+Free executive briefing for anyone subscribing. The full 17-page framework links from inside.
 
 [ARTICLE_URL]
 ```

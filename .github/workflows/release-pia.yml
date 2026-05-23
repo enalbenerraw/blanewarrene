@@ -68,6 +68,16 @@ jobs:
           fi
           ls -la "$PDF"
 
+      - name: Verify executive briefing PDF exists
+        run: |
+          PDF="articles/Product-in-Acquisitions-Executive-Briefing.pdf"
+          if [ ! -f "$PDF" ]; then
+            echo "ERROR: executive briefing PDF not found at $PDF"
+            echo "The release expects this file as the primary lead-magnet asset."
+            exit 1
+          fi
+          ls -la "$PDF"
+
       - name: Package plugin
         run: |
           cd plugins/product-in-acquisitions-os
@@ -115,5 +125,6 @@ jobs:
             /tmp/product-in-acquisitions-os.plugin
             /tmp/product-in-acquisitions-os-v${{ steps.version.outputs.tag_version }}.plugin
             articles/The-90-Day-Product-Integration-Framework.pdf
+            articles/Product-in-Acquisitions-Executive-Briefing.pdf
           draft: false
           prerelease: false

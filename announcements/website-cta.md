@@ -1,6 +1,6 @@
 # Website CTA copy: blanewarrene.com
 
-CTA blocks for placing on blanewarrene.com that drive traffic to the Substack subscribe → framework PDF flow.
+CTA blocks for placing on blanewarrene.com that drive traffic to the Substack subscribe → executive briefing flow. The long-form 17-page framework PDF is linked from inside the briefing as a depth reward.
 
 Note: I have not seen your current site, so these are content + structure. Adapt typography, color, and layout to your existing design system. Copy is the load-bearing part.
 
@@ -12,13 +12,13 @@ Use this as the primary CTA on your homepage, ideally as the first thing visitor
 The 90-Day Product Integration Framework
 
 **Sub-headline:**
-A free, deal-tested operating plan for the first 90 days after a product acquisition closes. Five levers, week-by-week sequence, reusable checklists.
+A free executive briefing on what decides post-acquisition outcomes in the first 90 days. Five levers, the failure modes, the work that has to ship.
 
 **Body (one paragraph):**
-Most product integrations fail because Product is not represented at the deal table. The framework names the gap, sequences the work, and tells you what to ship in Week 0, Weeks 1-4, and Weeks 5-12. Used by VPs of Product, Heads of Product, and CPOs at acquiring companies. 17 pages. Free.
+Most product integrations fail because Product is not represented at the deal table. The briefing names the gap, sequences the work, and tells you what to ship in Week 0, Weeks 1-4, and Weeks 5-12. Used by VPs of Product, Heads of Product, and CPOs at acquiring companies. Free download. The long-form 17-page version with reusable checklists links from inside.
 
 **Button:**
-Get the Framework (free PDF)
+Get the Briefing (free)
 
 **Button link:** `https://blanewarrene.substack.com/subscribe` (or whatever URL captures the email and triggers the welcome email)
 
@@ -32,10 +32,10 @@ Tighter version for a sidebar, between sections, or as a sticky element on long 
 Running a product integration?
 
 **Body:**
-Get the 90-Day Framework. Free. Five levers, week-by-week plan, reusable checklists.
+Get the 90-Day Integration Briefing. Free. Five levers, the failure modes, the first 90 days.
 
 **Button:**
-Download the PDF
+Download the Briefing
 
 **Button link:** same as above
 
@@ -46,7 +46,7 @@ Download the PDF
 Lightest variant. Drops at the bottom of articles, the about page, or the site footer.
 
 **Single line:**
-Building or inheriting an acquired product team? [Get the 90-Day Product Integration Framework, free.](https://blanewarrene.substack.com/subscribe)
+Building or inheriting an acquired product team? [Get the 90-Day Product Integration Briefing, free.](https://blanewarrene.substack.com/subscribe)
 
 ---
 
@@ -68,7 +68,7 @@ Upgrade to Premium
 **Button link:** `https://blanewarrene.substack.com/subscribe?type=paid`
 
 **Secondary line below button:**
-Already premium? [Download the plugin →](https://github.com/enalbenerraw/blanewarrene/releases/latest/download/product-in-acquisitions-os.plugin)
+Already premium? [Download the plugin →](https://github.com/enalbenerraw/blanewarrene/releases/download/pia-v0.1.0/product-in-acquisitions-os.plugin)
 
 ---
 
