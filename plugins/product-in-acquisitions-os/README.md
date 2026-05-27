@@ -17,6 +17,15 @@ Each skill produces real, reusable artifacts you can paste into Notion, Confluen
 
 Acquiring-company product leaders (VP Product, Head of Product, CPO) who own integration outcomes. Also useful for Corp Dev leads, integration program managers, and GTM leaders who need product-aligned messaging through a transition.
 
+## Where this fits best
+
+Built for acquirers with enterprise value up to $5B. The framework calibrates well to two common shapes:
+
+- **Well-funded early stage.** Sub-$100M ARR, often a tuck-in or talent-and-tech acquisition where narrative coherence and speed matter more than governance depth.
+- **Mature growth stage.** $100M to $500M ARR, where integration carries real political and customer surface area and the decision rights work is load-bearing.
+
+Outside that band the deliverables still produce useful drafts, but multi-BU enterprises ($1B+ ARR) should expect to layer their own governance on top, and sub-$10M ARR acquisitions usually don't need the full 90-day cadence.
+
 ## How to use it
 
 After installing, ask Claude any of these:
@@ -28,6 +37,8 @@ After installing, ask Claude any of these:
 - "Design the first 90 days for our acquired product team."
 
 Claude will load the relevant skill and walk you through the framework step by step, producing the deliverables along the way.
+
+Each skill opens with three calibration questions (about 60 seconds) covering company stage, acquisition shape, and your prior integration experience. Answer them precisely; they tune the depth, stakeholder breadth, and pacing of every deliverable downstream. The difference between a $40M ARR tuck-in and a $400M ARR platform play is not cosmetic.
 
 ## Installation
 

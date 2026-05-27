@@ -1,7 +1,7 @@
 {
   "name": "product-in-acquisitions-os",
-  "version": "0.1.0",
-  "description": "An operating system for product leaders running post-acquisition integrations. Walks acquiring-company product leaders through the 90-day framework: Week 0 readiness, roadmap convergence, market positioning stability, and people integration.",
+  "version": "0.2.0",
+  "description": "An operating system for product leaders running post-acquisition integrations. Walks acquiring-company product leaders through the 90-day framework: Week 0 readiness, roadmap convergence, market positioning stability, and people integration. Calibrated for acquirers up to $5B enterprise value, from sub-$100M ARR well-funded early stage through $100-500M ARR growth stage.",
   "author": {
     "name": "Blane Warrene"
   },
