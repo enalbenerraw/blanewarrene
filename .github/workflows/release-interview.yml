@@ -14,6 +14,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
 
       - name: Validate plugin manifest
         run: |
@@ -57,6 +59,35 @@ jobs:
             exit 1
           fi
           echo "PASS: no em dashes found"
+
+      - name: Sync marketplace.json on main
+        run: |
+          PLUGIN_VERSION="${{ steps.version.outputs.manifest_version }}"
+          git worktree add /tmp/main-worktree main
+          cd /tmp/main-worktree
+          MARKETPLACE_FILE=".claude-plugin/marketplace.json"
+          CURRENT=$(python3 -c "import json; d=json.load(open('$MARKETPLACE_FILE')); print([p['version'] for p in d['plugins'] if p['name']=='job-interview-meeting-preparation'][0])")
+          if [ "$CURRENT" = "$PLUGIN_VERSION" ]; then
+            echo "marketplace.json already at $PLUGIN_VERSION; no update needed"
+            exit 0
+          fi
+          python3 -c "
+          import json
+          path = '$MARKETPLACE_FILE'
+          with open(path) as f:
+              data = json.load(f)
+          for p in data['plugins']:
+              if p['name'] == 'job-interview-meeting-preparation':
+                  p['version'] = '$PLUGIN_VERSION'
+          with open(path, 'w') as f:
+              json.dump(data, f, indent=2)
+              f.write('\n')
+          "
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$MARKETPLACE_FILE"
+          git commit -m "Sync marketplace.json to job-interview-meeting-preparation v$PLUGIN_VERSION"
+          git push origin main
 
       - name: Package plugin
         run: |
