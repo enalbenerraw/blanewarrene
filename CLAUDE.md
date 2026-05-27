@@ -78,7 +78,7 @@ claude plugin tag plugins/product-in-acquisitions-os
 git push origin pia-v<version>
 ```
 
-The release-pia workflow also auto-syncs `marketplace.json` on `main` after the tag fires, so a slip is recoverable, but it is much cleaner to catch the mismatch before pushing the tag. The sibling release workflows do not yet have the auto-sync step; add it when they next ship.
+All three release workflows also auto-sync `marketplace.json` on `main` after the tag fires, so a slip is recoverable, but it is much cleaner to catch the mismatch before pushing the tag.
 
 If `claude plugin tag` is unavailable in your environment, fall back to plain git tags:
 
