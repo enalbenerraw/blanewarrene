@@ -25,6 +25,10 @@ The acquired product leader thriving at six months is not the one who has most s
 
 ## Step-by-step flow
 
+### Step 0: Calibrate scope
+
+Open `../../references/calibration.md` and run the three calibration questions (stage band, acquisition shape, integration maturity) before the skill-specific context questions below. The answers tune depth of artifact, stakeholder breadth, and pacing for everything downstream. If the user already calibrated in a recent skill run, accept their summary ("same as before") and move on.
+
 ### Step 1: Establish context
 
 Ask the user:

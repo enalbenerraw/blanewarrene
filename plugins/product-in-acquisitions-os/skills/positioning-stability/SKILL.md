@@ -26,6 +26,10 @@ Sales enablement must be ready at close, not 30 days after. If it is not ready a
 
 ## Step-by-step flow
 
+### Step 0: Calibrate scope
+
+Open `../../references/calibration.md` and run the three calibration questions (stage band, acquisition shape, integration maturity) before the skill-specific context questions below. The answers tune depth of artifact, stakeholder breadth, and pacing for everything downstream. If the user already calibrated in a recent skill run, accept their summary ("same as before") and move on.
+
 ### Step 1: Establish context
 
 Ask the user:
