@@ -37,8 +37,8 @@ blanewarrene.com
 
 [Download the briefing][1] · [Read the long-form (17 pages)][2]
 
-[1]: https://github.com/enalbenerraw/blanewarrene/releases/download/pia-v0.1.0/Product-in-Acquisitions-Executive-Briefing.pdf
-[2]: https://github.com/enalbenerraw/blanewarrene/releases/download/pia-v0.1.0/The-90-Day-Product-Integration-Framework.pdf
+[1]: https://github.com/enalbenerraw/blanewarrene/releases/download/pia-v0.2.0/Product-in-Acquisitions-Executive-Briefing.pdf
+[2]: https://github.com/enalbenerraw/blanewarrene/releases/download/pia-v0.2.0/The-90-Day-Product-Integration-Framework.pdf
 
 ---
 
@@ -49,6 +49,6 @@ blanewarrene.com
 1. **Host both PDFs on a public URL** (GitHub Releases is the existing path). Cleanest. Recommended.
 2. **Embed in a Substack "welcome post"** that new subs are auto-routed to. Substack's welcome email can link to a Substack-hosted post that has the download buttons.
 
-Both `Product-in-Acquisitions-Executive-Briefing.pdf` and `The-90-Day-Product-Integration-Framework.pdf` are attached to the `pia-v0.1.0` GitHub release. The marketing URLs use tag-specific paths (`/releases/download/pia-v0.1.0/...`) instead of `/latest/` because this repo hosts multiple plugins and `/latest/` resolves to whichever plugin released most recently. When PIA cuts a new tag, update the tag in the URLs throughout this folder.
+Both `Product-in-Acquisitions-Executive-Briefing.pdf` and `The-90-Day-Product-Integration-Framework.pdf` are attached to the `pia-v0.2.0` GitHub release. The marketing URLs use tag-specific paths (`/releases/download/pia-v0.2.0/...`) instead of `/latest/` because this repo hosts multiple plugins and `/latest/` resolves to whichever plugin released most recently. When PIA cuts a new tag, update the tag in the URLs throughout this folder.
 
 **Substack Settings → Email → Welcome email** is where this copy goes. Make sure the links in [1] and [2] resolve before turning on the welcome flow.

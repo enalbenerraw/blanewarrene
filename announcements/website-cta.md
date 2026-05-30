@@ -68,7 +68,7 @@ Upgrade to Premium
 **Button link:** `https://blanewarrene.substack.com/subscribe?type=paid`
 
 **Secondary line below button:**
-Already premium? [Download the plugin →](https://github.com/enalbenerraw/blanewarrene/releases/download/pia-v0.1.0/product-in-acquisitions-os.plugin)
+Already premium? [Download the plugin →](https://github.com/enalbenerraw/blanewarrene/releases/download/pia-v0.2.0/product-in-acquisitions-os.plugin)
 
 ---
 

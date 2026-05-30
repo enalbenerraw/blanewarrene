@@ -9,8 +9,7 @@ Two-week staggered launch. Week 1 is the public hook and free executive briefing
 
 | When | Asset | Action |
 |------|-------|--------|
-| Mon AM | Briefing PDF | Confirm `Product-in-Acquisitions-Executive-Briefing.pdf` is attached to the `pia-v0.1.0` GitHub release. Test the `/releases/download/pia-v0.1.0/...` URL in an incognito browser. |
-| Mon AM | Long-form PDF | Confirm `The-90-Day-Product-Integration-Framework.pdf` is still attached to the same release. Test that URL too. |
+| Mon AM | Release assets | The `pia-v0.2.0` release auto-bundles the executive briefing, the long-form framework PDF, and the plugin file (all confirmed live). Smoke-test each `/releases/download/pia-v0.2.0/...` URL from the Links section in an incognito browser. |
 | Mon AM | Substack welcome email | Paste copy from `welcome-email.md` into Substack Settings → Email → Welcome email. Test by subscribing with a throwaway address. Verify both PDF links resolve from the email. |
 | Mon AM | Substack premium tier | Confirm the paid subscription is active and the price is set. |
 | Mon AM | Website CTA | Add the hero CTA from `website-cta.md` to blanewarrene.com pointing at the Substack subscribe URL. |
@@ -32,7 +31,7 @@ Two-week staggered launch. Week 1 is the public hook and free executive briefing
 
 | Date / Time | Asset | Action |
 |-------------|-------|--------|
-| Mon 2026-06-08 | Plugin announcement draft | Final read-through of `announcements/v0.1.0-substack.md`. Confirm the public article URL is correct in footnote [2]. Schedule for 2026-06-09 at 8:00 AM ET, **paid-only audience**. |
+| Mon 2026-06-08 | Plugin announcement draft | Final read-through of `announcements/v0.2.0-substack.md`. Confirm the public article URL is correct in footnote [2]. Schedule for 2026-06-09 at 8:00 AM ET, **paid-only audience**. |
 | Tue 2026-06-09 · 8:00 AM ET | Substack premium post | "The working version of last week's framework" goes out to premium subscribers only. |
 | Tue 2026-06-09 · 9:00 AM ET | Public teaser post (optional) | Optional: a short Substack note (free + paid) saying "the plugin is live for premium" with a one-line teaser and an upgrade button. Drives last-chance free-to-paid conversion. |
 | Tue 2026-06-09 · 10:00 AM ET | LinkedIn | Post the LinkedIn version from `social-posts.md` (Week 2). |
@@ -46,7 +45,7 @@ Two-week staggered launch. Week 1 is the public hook and free executive briefing
 |------|--------|
 | Fri 2026-06-12 | Audit signups, free-to-paid conversion rate, briefing downloads, long-form downloads, plugin downloads (GitHub release asset stats). |
 | Week of 2026-06-15 | Decide whether the next post extends the framework series (e.g., a deep-dive on one lever) or pivots to a different topic. Target Tuesday 2026-06-23 for next major post if continuing. |
-| Ongoing | Field feedback feeds the v0.1.1 plugin release. Cut the new tag when you have enough signal. The release workflow now bundles the framework PDF automatically. |
+| Ongoing | Field feedback feeds the next plugin release (`pia-v0.2.1` or `pia-v0.3.0`). Cut the new tag when you have enough signal. The release workflow bundles the briefing, framework PDF, and plugin automatically. |
 
 ## Links to wire (collect once, paste everywhere)
 
@@ -54,15 +53,15 @@ Two-week staggered launch. Week 1 is the public hook and free executive briefing
 - **Premium announcement URL** (after publish): `https://blanewarrene.substack.com/p/...`
 - **Subscribe URL**: `https://blanewarrene.substack.com/subscribe`
 - **Premium upgrade URL**: `https://blanewarrene.substack.com/subscribe?type=paid`
-- **Briefing PDF download** (the magnet): `https://github.com/enalbenerraw/blanewarrene/releases/download/pia-v0.1.0/Product-in-Acquisitions-Executive-Briefing.pdf`
-- **Long-form framework PDF** (depth reward, linked inside the briefing): `https://github.com/enalbenerraw/blanewarrene/releases/download/pia-v0.1.0/The-90-Day-Product-Integration-Framework.pdf`
-- **Plugin download**: `https://github.com/enalbenerraw/blanewarrene/releases/download/pia-v0.1.0/product-in-acquisitions-os.plugin`
+- **Briefing PDF download** (the magnet): `https://github.com/enalbenerraw/blanewarrene/releases/download/pia-v0.2.0/Product-in-Acquisitions-Executive-Briefing.pdf`
+- **Long-form framework PDF** (depth reward, linked inside the briefing): `https://github.com/enalbenerraw/blanewarrene/releases/download/pia-v0.2.0/The-90-Day-Product-Integration-Framework.pdf`
+- **Plugin download**: `https://github.com/enalbenerraw/blanewarrene/releases/download/pia-v0.2.0/product-in-acquisitions-os.plugin`
 - **GitHub repo**: `https://github.com/enalbenerraw/blanewarrene`
 
 ## Risks to watch
 
-- **Marketing URLs are pinned to `pia-v0.1.0`.** This repo hosts multiple plugins, so `/releases/latest/` resolves to whichever plugin released most recently, not necessarily PIA. The fix is tag-specific URLs (`/releases/download/pia-v0.1.0/...`). When a future PIA release ships (`pia-v0.1.1`, etc.), bump the tag in every URL in this folder before the next post goes out. The release workflow now bundles both PDFs on every `pia-v*` tag, so the assets will exist; only the tag in the URL needs updating.
-- **Briefing PDF asset on `pia-v0.1.0`.** The release was cut before the briefing existed, so the briefing must be uploaded manually to the `pia-v0.1.0` release as a one-time step. Verify it resolves at `https://github.com/enalbenerraw/blanewarrene/releases/download/pia-v0.1.0/Product-in-Acquisitions-Executive-Briefing.pdf` before Mon 2026-06-01.
+- **Marketing URLs are pinned to `pia-v0.2.0`.** This repo hosts multiple plugins, so `/releases/latest/` resolves to whichever plugin released most recently, not necessarily PIA. The fix is tag-specific URLs (`/releases/download/pia-v0.2.0/...`). When the next PIA release ships (`pia-v0.2.1`, etc.), bump the tag in every URL in this folder before the next post goes out. The release workflow bundles the briefing, the framework PDF, and the plugin on every `pia-v*` tag, so the assets always exist; only the tag in the URL needs updating.
+- **Release assets auto-bundle on `pia-v0.2.0`.** The release workflow attached the executive briefing, the long-form framework PDF, and the plugin automatically (verified on the live release), so no manual upload step is needed. Still confirm each download URL in the Links section resolves before Mon 2026-06-01.
 - **Substack welcome email lag.** Welcome emails sometimes take 5-10 minutes. If subscribers are unhappy, mention "check spam, give it a few minutes" in the article CTA.
 - **Premium leaks.** The plugin URL is public on GitHub. Some readers will figure out they can grab it without paying. Accept this. The premium tier sells the support, the templates roadmap, and the relationship, not the bytes.
 - **Briefing-vs-long-form confusion.** Some subscribers will expect the long-form by default and feel shortchanged by a deck. The welcome email and the briefing itself both link to the long-form, so the depth signal is preserved if anyone goes looking. Watch reply volume in Week 1 for confusion signals; if it surfaces, add a one-line clarification to the welcome email.
