@@ -23,6 +23,13 @@ The acquired product leader thriving at six months is not the one who has most s
 4. Retention risk review (purpose and influence, not compensation)
 5. 1:1 coaching question library (built into the operating rhythm)
 
+## Deliver the artifacts durably
+
+Do not leave these deliverables in chat only. As you finalize each one, save it as its own file in a single run folder. Open `../../references/durable-output.md` and follow it. For this skill:
+
+- Run folder: `<deal-slug>-people`
+- One file per deliverable: `decision-map-session.md`, `mentor-pairing-matrix.md`, `30-60-90-ownership-plan.md`, `retention-risk-review.md`, `coaching-question-library.md`
+
 ## Step-by-step flow
 
 ### Step 0: Calibrate scope

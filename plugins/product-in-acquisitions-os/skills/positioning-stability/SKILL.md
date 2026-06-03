@@ -24,6 +24,13 @@ Sales enablement must be ready at close, not 30 days after. If it is not ready a
 5. Top-20 outreach plan (named accounts, named senior leaders, scheduled in week 1-2)
 6. Advisory council charter (lightweight, first 90 days)
 
+## Deliver the artifacts durably
+
+Do not leave these deliverables in chat only. As you finalize each one, save it as its own file in a single run folder. Open `../../references/durable-output.md` and follow it. For this skill:
+
+- Run folder: `<deal-slug>-positioning`
+- One file per deliverable: `positioning-statement.md`, `sales-faq.md`, `talk-track.md`, `competitive-response-scripts.md`, `top-20-outreach-plan.md`, `advisory-council-charter.md`
+
 ## Step-by-step flow
 
 ### Step 0: Calibrate scope
