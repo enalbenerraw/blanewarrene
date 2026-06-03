@@ -49,6 +49,19 @@ prep me for an interview at <company> on <date>
 with a LinkedIn PDF attached if you have one. The skill loads
 automatically based on the description in the frontmatter.
 
+### PDF one-pager (local sessions only)
+
+The skill produces an HTML one-pager plus a PDF. In local Claude Code,
+rendering the PDF to spec (Letter, portrait, 0.4in margins) needs a
+browser engine. Install Playwright once:
+
+```
+pip install playwright && playwright install chromium
+```
+
+Without it, the skill falls back to any installed browser, which may
+not match the designed margins. Web and Cowork sessions need no setup.
+
 ## Inputs
 
 Required:
