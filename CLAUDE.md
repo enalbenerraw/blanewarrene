@@ -70,22 +70,21 @@ Each plugin versions and ships independently using a plugin-specific tag prefix.
 | `job-interview-meeting-preparation` | `interview-v<version>` | `.github/workflows/release-interview.yml` |
 | `comparative-landscape-brief` | `clb-v<version>` | `.github/workflows/release-clb.yml` |
 
-Cut a release with `claude plugin tag`, which validates that the plugin's `plugin.json` and the marketplace entry in `.claude-plugin/marketplace.json` agree on version before creating the tag. This is the preferred path because it prevents the "phantom release" bug where a tag ships v0.2.0 but the marketplace resolver still installs v0.1.0:
+The release workflows trigger on the short prefix tags above (`pia-v*`, `interview-v*`, `clb-v*`). That short prefix is the convention; the tag you push must use it or no workflow fires.
+
+Note that `claude plugin tag` emits a different tag name, `<plugin-name>--v<version>` (e.g. `product-in-acquisitions-os--v0.3.0`), which does NOT match the workflow triggers. Do not push its tag to release. Use it only as a pre-flight validator, because it checks that the plugin's `plugin.json` and the marketplace entry in `.claude-plugin/marketplace.json` agree on version. This prevents the "phantom release" bug where a tag ships v0.2.0 but the marketplace resolver still installs v0.1.0:
 
 ```bash
-# From repo root, with both manifests bumped to the new version
-claude plugin tag plugins/product-in-acquisitions-os
+# From repo root, with both manifests bumped to the new version.
+# 1. Validate the two manifests agree (does not create the release tag):
+claude plugin tag --dry-run plugins/product-in-acquisitions-os
+
+# 2. Create and push the short-prefix tag the workflow actually listens on:
+git tag -a pia-v<version> -m "product-in-acquisitions-os <version>"
 git push origin pia-v<version>
 ```
 
-All three release workflows also auto-sync `marketplace.json` on `main` after the tag fires, so a slip is recoverable, but it is much cleaner to catch the mismatch before pushing the tag.
-
-If `claude plugin tag` is unavailable in your environment, fall back to plain git tags:
-
-```bash
-git tag pia-v0.1.1
-git push origin pia-v0.1.1
-```
+All three release workflows also auto-sync `marketplace.json` on `main` after the tag fires, so a slip is recoverable, but it is much cleaner to catch a version mismatch with the dry run before pushing the tag.
 
 Each workflow triggers only on its prefix, packages just its own plugin into a `.plugin` file (which is a zip with a custom extension), and attaches it to a plugin-specific GitHub release. Subscribers download the latest from the stable Releases URL.
 
@@ -132,7 +131,7 @@ The `product-in-acquisitions-os` plugin is the reference layout. Mirror its shap
 3. **Register in the marketplace** by adding an entry to `.claude-plugin/marketplace.json`.
 4. **Add a release workflow** at `.github/workflows/release-<short-name>.yml`, triggered on `<short-name>-v*`. Copy `release-pia.yml` or `release-interview.yml` as a template and update the plugin path, prefix-strip pattern (`${GITHUB_REF_NAME#<short-name>-v}`), artifact names, and release body.
 5. **Document the new tag prefix** in the Versioning and release process table above.
-6. **Cut the first release** with `claude plugin tag plugins/<new-plugin>` once the plugin is on `main`, then push the resulting tag.
+6. **Cut the first release** once the plugin is on `main`: validate with `claude plugin tag --dry-run plugins/<new-plugin>`, then create and push the short-prefix tag (`<short-name>-v<version>`) the workflow listens on.
 
 ### Updating an existing plugin
 
@@ -140,7 +139,7 @@ The `product-in-acquisitions-os` plugin is the reference layout. Mirror its shap
 2. Bump the `version` field in **both** the plugin's `plugin.json` and the matching entry in `.claude-plugin/marketplace.json`. Both must agree, or the marketplace resolver will keep serving the old version.
 3. Run the pre-flight checks above.
 4. Commit with a descriptive message in the existing style (`Add X`, `Update Y`, `Fix Z`).
-5. Push to `main`, then run `claude plugin tag plugins/<plugin-name>` from the repo root and push the resulting tag. The tag command validates the two manifests agree before creating the tag, which is the right place to catch version skew.
+5. Push to `main`. Validate the manifests agree with `claude plugin tag --dry-run plugins/<plugin-name>` from the repo root (the right place to catch version skew), then create and push the short-prefix tag (`<short-name>-v<version>`) the release workflow triggers on. Do not push the `<plugin-name>--v<version>` tag the command would create; it does not match any workflow trigger.
 
 ## What NOT to do
 
