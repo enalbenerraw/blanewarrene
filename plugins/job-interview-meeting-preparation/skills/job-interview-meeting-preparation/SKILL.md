@@ -185,11 +185,13 @@ Use prose, not bullet-heavy lists, except for the conversation architecture whic
 
 Read the template at `references/one-pager-template.html` and populate it with content drawn from the brief. The template uses placeholder regions with comments like `<!-- HEADER_NAME -->` indicating where each piece of content goes.
 
-After populating, save the result as:
-- `<stakeholder-last-name>_brief.html` to `/mnt/user-data/outputs/`
-- `<stakeholder-last-name>_brief.pdf` to `/mnt/user-data/outputs/` (use Playwright or similar to render the HTML to PDF at Letter size, portrait, 0.4in margins, with `print_background=True`)
+After populating, render the PDF from the populated HTML at Letter size, portrait, 0.4in margins, with `print_background=True` (use Playwright or similar). Then deliver the one-pager durably, never as a code block in chat, using the best mechanism the current session offers:
 
-Use `present_files` to surface both files. Lead with the PDF.
+- Artifact rendering available (claude.ai web): emit the populated HTML as an HTML artifact so the user sees the live one-pager and can share it, and provide the PDF file alongside.
+- File presentation available (Cowork hosted session): save `<stakeholder-last-name>_brief.html` and `<stakeholder-last-name>_brief.pdf` to `/mnt/user-data/outputs/` and surface both with `present_files`. Lead with the PDF.
+- Local Claude Code: save both files under `~/Documents/` and report the full paths. Lead with the PDF.
+
+The one-pager is the external-facing deliverable. Never leave it inline-only.
 
 The one-pager design is editorial / financial-briefing aesthetic. Do not modify the typography, color palette, or layout. The design is intentional: it works at half-screen size next to a Teams or Zoom window, and prints cleanly to letter if the user wants paper.
 
