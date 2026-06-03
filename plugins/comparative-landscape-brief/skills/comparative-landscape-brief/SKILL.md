@@ -37,7 +37,7 @@ Confirm before researching. Required:
 
 Optional but valuable:
 
-- **Output destination**. Default to `~/Documents/<slug>-brief.md` where slug is derived from the entity set or purpose. Save outside any product or plugin repo unless the user explicitly asks otherwise.
+- **Output destination**. When writing to local disk, default to `~/Documents/<slug>-brief.md` where slug is derived from the entity set or purpose. Save outside any product or plugin repo unless the user explicitly asks otherwise. See Step 7 for surface-aware delivery.
 - **Tone**: investor-grade (default), board-grade, peer/operator, or other.
 - **Known angles** the user wants emphasized or de-emphasized.
 
@@ -176,7 +176,13 @@ Write a single markdown document with this structure:
 *Generated using the Comparative Landscape Brief skill by Blane Warrene · blanewarrene.substack.com*
 ```
 
-Save to the file path from Step 1. Confirm save location to the user. Do not also rehearse the user on what to say; this is a brief for the audience, not a script for the presenter.
+The brief is self-contained and carries its own metadata header (Prepared, Covers, Window). Deliver it durably, never inline-only, using the best mechanism the current session offers:
+
+- Artifact rendering available (claude.ai web): emit the brief as a markdown artifact the user can share or fork.
+- File presentation available (Cowork hosted session): write to `/mnt/user-data/outputs/<slug>-brief.md` and surface it with `present_files`.
+- Local Claude Code: write to the path from Step 1 (default `~/Documents/<slug>-brief.md`).
+
+Confirm the location or surface to the user. Do not also rehearse the user on what to say; this is a brief for the audience, not a script for the presenter.
 
 ---
 

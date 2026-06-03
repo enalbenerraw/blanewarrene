@@ -50,7 +50,7 @@
       "name": "comparative-landscape-brief",
       "source": "./plugins/comparative-landscape-brief",
       "description": "Produce a structured briefing document that compares a set of 3 to 8 organizations, products, or initiatives for a third-party audience (investors, board, exec team, M&A committee, partner steering group). Researches each entity, analyzes the last 90 days of public messaging, runs a third-party verification pass on quantitative claims, and writes a single markdown brief with per-entity sections, cross-cutting observations, and discussion prompts ready for the meeting.",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "category": "research-and-strategy",
       "tags": [
         "comparative-research",
