@@ -23,6 +23,13 @@ Evidence leads. Customer signals and Support / Success data do as much of the wo
 4. Merged roadmap (90 days plus 12-month horizon)
 5. 30/60/90 execution plan with measurable outcomes
 
+## Deliver the artifacts durably
+
+Do not leave these deliverables in chat only. As you finalize each one, save it as its own file in a single run folder. Open `../../references/durable-output.md` and follow it. For this skill:
+
+- Run folder: `<deal-slug>-roadmap`
+- One file per deliverable: `roadmap-map.md`, `conflict-log.md`, `facilitation-guides.md`, `merged-roadmap.md`, `30-60-90-plan.md`
+
 ## Step-by-step flow
 
 ### Step 0: Calibrate scope

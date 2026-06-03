@@ -19,6 +19,13 @@ Make ambiguity expensive on purpose. Clarity is the product. If the user cannot 
 4. Customer commitment inventory (template + starter rows)
 5. Five-question Day 1 readiness check (gating)
 
+## Deliver the artifacts durably
+
+Do not leave these deliverables in chat only. As you finalize each one, save it as its own file in a single run folder. Open `../../references/durable-output.md` and follow it. For this skill:
+
+- Run folder: `<deal-slug>-week-0`
+- One file per deliverable: `integration-lead-charter.md`, `decision-rights.md`, `combined-product-narrative.md`, `customer-commitment-inventory.md`, `day-1-readiness-check.md`
+
 ## Step-by-step flow
 
 ### Step 0: Calibrate scope
