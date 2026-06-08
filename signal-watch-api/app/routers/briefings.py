@@ -9,21 +9,23 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sse_starlette.sse import EventSourceResponse
 
 from app.models.schemas import BriefingRequest, BriefingResponse, BriefingListItem
-from app.models.database import Briefing, get_db
+from app.models.database import Briefing, User, get_db
+from app.dependencies import get_current_user
 from app.services.agent import generate_briefing, generate_briefing_stream
 
 router = APIRouter(prefix="/briefings", tags=["briefings"])
 
-# Placeholder until auth is wired up
-TEMP_USER_ID = "demo-user"
-
 
 @router.post("", response_model=BriefingResponse)
-async def create_briefing(req: BriefingRequest, db: AsyncSession = Depends(get_db)):
+async def create_briefing(
+    req: BriefingRequest,
+    db: AsyncSession = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
     """Create a briefing synchronously — returns the full report when done."""
     briefing = Briefing(
         id=str(uuid.uuid4()),
-        user_id=TEMP_USER_ID,
+        user_id=current_user.id,
         company_name=req.company_name,
         company_url=str(req.company_url),
         time_period=req.time_period,
@@ -51,11 +53,15 @@ async def create_briefing(req: BriefingRequest, db: AsyncSession = Depends(get_d
 
 
 @router.post("/stream")
-async def create_briefing_stream(req: BriefingRequest, db: AsyncSession = Depends(get_db)):
+async def create_briefing_stream(
+    req: BriefingRequest,
+    db: AsyncSession = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
     """Create a briefing with SSE streaming — the iOS app gets live progress updates."""
     briefing = Briefing(
         id=str(uuid.uuid4()),
-        user_id=TEMP_USER_ID,
+        user_id=current_user.id,
         company_name=req.company_name,
         company_url=str(req.company_url),
         time_period=req.time_period,
@@ -89,11 +95,14 @@ async def create_briefing_stream(req: BriefingRequest, db: AsyncSession = Depend
 
 
 @router.get("", response_model=list[BriefingListItem])
-async def list_briefings(db: AsyncSession = Depends(get_db)):
+async def list_briefings(
+    db: AsyncSession = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
     """List all briefings for the current user."""
     result = await db.execute(
         select(Briefing)
-        .where(Briefing.user_id == TEMP_USER_ID)
+        .where(Briefing.user_id == current_user.id)
         .order_by(Briefing.created_at.desc())
     )
     briefings = result.scalars().all()
@@ -109,9 +118,18 @@ async def list_briefings(db: AsyncSession = Depends(get_db)):
 
 
 @router.get("/{briefing_id}", response_model=BriefingResponse)
-async def get_briefing(briefing_id: str, db: AsyncSession = Depends(get_db)):
-    """Retrieve a specific briefing by ID."""
-    result = await db.execute(select(Briefing).where(Briefing.id == briefing_id))
+async def get_briefing(
+    briefing_id: str,
+    db: AsyncSession = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    """Retrieve a specific briefing by ID, scoped to the owning user."""
+    result = await db.execute(
+        select(Briefing).where(
+            Briefing.id == briefing_id,
+            Briefing.user_id == current_user.id,
+        )
+    )
     briefing = result.scalar_one_or_none()
     if not briefing:
         raise HTTPException(status_code=404, detail="Briefing not found")
