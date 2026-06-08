@@ -10,6 +10,20 @@ class Settings(BaseSettings):
     jwt_algorithm: str = "HS256"
     jwt_expiration_minutes: int = 60 * 24 * 7  # 1 week
 
+    # One-time passcode (magic link / email OTP) config
+    otp_length: int = 6
+    otp_expiration_minutes: int = 10
+
+    # Email transport. When smtp_host is unset, OTP codes are written to the
+    # application log instead of sent (dev mode), so the flow is testable
+    # without a provider configured.
+    smtp_host: str | None = None
+    smtp_port: int = 587
+    smtp_username: str | None = None
+    smtp_password: str | None = None
+    smtp_from: str = "Signal Watch <no-reply@signalwatch.app>"
+    smtp_use_tls: bool = True
+
     # Claude model config
     claude_model: str = "claude-sonnet-4-20250514"
     max_search_results: int = 10
