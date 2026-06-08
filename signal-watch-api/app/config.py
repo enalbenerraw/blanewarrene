@@ -25,7 +25,7 @@ class Settings(BaseSettings):
     smtp_use_tls: bool = True
 
     # Claude model config
-    claude_model: str = "claude-sonnet-4-20250514"
+    claude_model: str = "claude-sonnet-4-6"
     max_search_results: int = 10
 
     model_config = {"env_file": ".env"}
