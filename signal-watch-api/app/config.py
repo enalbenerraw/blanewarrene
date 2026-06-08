@@ -10,6 +10,16 @@ class Settings(BaseSettings):
     jwt_algorithm: str = "HS256"
     jwt_expiration_minutes: int = 60 * 24 * 7  # 1 week
 
+    # CORS: comma-separated browser origins permitted to call the API. Native
+    # clients (iOS) are not subject to CORS; this gates web frontends only.
+    # Defaults to local dev origins; set CORS_ALLOW_ORIGINS in production.
+    # Stored as a raw string (no JSON decode); use cors_origins_list to consume.
+    cors_allow_origins: str = "http://localhost:3000,http://localhost:5173"
+
+    @property
+    def cors_origins_list(self) -> list[str]:
+        return [origin.strip() for origin in self.cors_allow_origins.split(",") if origin.strip()]
+
     # One-time passcode (magic link / email OTP) config
     otp_length: int = 6
     otp_expiration_minutes: int = 10
