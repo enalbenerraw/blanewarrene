@@ -243,8 +243,17 @@ def _run_batch(args: argparse.Namespace):
         console.print(f"ZIP: {zip_path}")
 
     if warnings:
+        # Persist the full list beside the ZIP (not inside out_dir, so it is
+        # not swept into the Notion import) and emit the same lines unstyled
+        # and unwrapped for the Notes2NotionUX GUI to parse. Rich wraps and
+        # styles output at 80 cols when stdout is not a TTY, which would split
+        # a long warning across lines and corrupt the GUI's per-line parse.
+        warnings_log = out_dir.parent / f"{out_dir.name}-warnings.log"
+        warnings_log.write_text("\n".join(warnings) + "\n", encoding="utf-8")
+        print(f"Warnings: {len(warnings)}")
+        print(f"Warnings log: {warnings_log}")
         for w in warnings:
-            console.print(f"Warning: {w}", style="yellow")
+            print(f"Warning: {w}")
 
     sys.exit(0)
 
