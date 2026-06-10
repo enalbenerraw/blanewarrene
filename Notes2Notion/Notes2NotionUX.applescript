@@ -99,11 +99,28 @@ on run
 	set attachmentCount to my extractValue(cmdOutput, "Attachments: ")
 	set skippedCount to my extractValue(cmdOutput, "Skipped: ")
 	set zipPath to my extractValue(cmdOutput, "ZIP: ")
+	set warningsLog to my extractValue(cmdOutput, "Warnings log: ")
+	set warningLines to my collectLines(cmdOutput, "Warning: ")
+	set warningCount to count of warningLines
 
 	-- Step 8: Show completion dialog
 	set summaryMsg to "Notes exported: " & notesExported & return & "Attachments: " & attachmentCount
 	if skippedCount is not "" and skippedCount is not "0" then
 		set summaryMsg to summaryMsg & return & "Skipped: " & skippedCount
+	end if
+	if warningCount > 0 then
+		set summaryMsg to summaryMsg & return & return & "⚠️ Attachment warnings (" & warningCount & "):"
+		set shownCount to warningCount
+		if shownCount > 10 then set shownCount to 10
+		repeat with i from 1 to shownCount
+			set summaryMsg to summaryMsg & return & "  • " & (item i of warningLines)
+		end repeat
+		if warningCount > shownCount then
+			set summaryMsg to summaryMsg & return & "  …and " & (warningCount - shownCount) & " more"
+		end if
+		if warningsLog is not "" then
+			set summaryMsg to summaryMsg & return & return & "Full list: " & warningsLog
+		end if
 	end if
 	set summaryMsg to summaryMsg & return & return & "Output: " & exportDir
 	if zipPath is not "" then
@@ -134,3 +151,17 @@ on extractValue(sourceText, prefix)
 	end repeat
 	return ""
 end extractValue
+
+on collectLines(sourceText, prefix)
+	set matches to {}
+	set AppleScript's text item delimiters to return
+	set textLines to text items of sourceText
+	set AppleScript's text item delimiters to ""
+	repeat with aLine in textLines
+		set aLine to aLine as text
+		if aLine starts with prefix then
+			set end of matches to text ((length of prefix) + 1) thru -1 of aLine
+		end if
+	end repeat
+	return matches
+end collectLines
