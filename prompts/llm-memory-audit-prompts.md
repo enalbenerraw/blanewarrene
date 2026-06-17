@@ -106,7 +106,7 @@ personalization.
 
 - Settings → Custom Instructions
 - Settings → Personalization / Memory (the UI is the source of truth)
-- Dreaming V3 inferential entries may appear in the Memory panel under auto-generated labels. Review these with the same scrutiny as items you added yourself.
+- Dreaming V3 writes synthesized entries you never typed. Open the memory summary page (under Settings → Personalization / Memory) to review, edit, or delete them, and treat them with the same scrutiny as entries you added yourself.
 
 ---
 
