@@ -52,10 +52,6 @@ Walk one fact through it. Say a project moves from "drafting" to "in review." I 
 
 Why Notion specifically, rather than a purpose-built AI memory product? Because the requirements are unglamorous and Notion already meets them. It is readable by a human, so I can audit and edit it directly. It is durable, so it outlives any single session. And it is reachable by the connector across every surface, which is the precise workaround for the memory gap I named earlier. The web and mobile surfaces cannot see my local files, but they can see the hub.
 
-> **Sidebar: how it is actually wired**
->
-> Three layers, each with one job. The repo layer is a `CLAUDE.md` file checked into each project, holding that project's conventions, read by Code at session start. The global layer is a single `CLAUDE.md` in my home directory, holding my cross-project working preferences, also read by Code. The hub layer is one Notion page exposed to Chat, Cowork, and the web and mobile apps through the Notion connector. The routing rule is the glue: a fact lands in exactly one layer based on who needs to read it, and the hub is the only layer every surface can reach. No custom memory service, no vector database, no integration code. The work is the routing decision, repeated.
-
 ---
 
 ## Proof: Projects That Span the Ecosystem
@@ -72,31 +68,55 @@ None of these required a custom memory product or a clever integration. Each one
 
 ---
 
+## How It Is Wired
+
+Three layers, each with one job.
+
+The repo layer is a `CLAUDE.md` file checked into each project. It holds that project's conventions and is read by Code when a session starts. The global layer is a single `CLAUDE.md` in my home directory. It holds my cross-project working preferences and is also read by Code. The hub layer is one Notion page, exposed to Chat, Cowork, and the web and mobile apps through the Notion connector.
+
+The routing rule is the glue. A fact lands in exactly one layer based on who needs to read it, and the hub is the only layer every surface can reach. There is no custom memory service, no vector database, no integration code. The work is the routing decision, repeated.
+
+---
+
 ## Steal This
 
-You do not need my projects or my exact tools to run this. You need a spine and three rules.
+You now have the whole argument and the shape of the system: three surfaces, one routing question, a hub that serves as the shared spine. That is enough to start today.
 
-Start with one question, asked of any fact worth keeping: does this die with the project, travel with me as an operator, or need to reach every screen I use? Those three answers are your three homes.
+What I have not handed you yet is my exact wiring. Below this line, for premium subscribers, is the step-by-step build as I actually run it: what goes in the global instructions file and what stays out, how the per-project files and the hub divide the work, the routing rule written so every surface obeys it, the inbound plumbing that keeps the hub current without copying by hand, and the maintenance cadence that keeps a shared spine from quietly going stale.
 
-Then build the minimum, and you can do it inside a week.
+Premium subscribers also get the Product in Acquisitions OS as an installable Claude plugin, not a PDF. It is this same routing discipline applied to one hard problem: keeping an acquired product team and roadmap coherent through the first 90 days.
 
-Day one: create the hub. One page on whatever platform you already trust and can reach from every device, and connect it to the surfaces you actually use. Day two: write your three routing rules down, in plain language, where you will see them. Until they are written they are not rules, they are intentions. Day three through five: stop seeding, start routing. As real facts come up in your normal work, send each one to its home, and notice which ones you reach for from your phone. Those are your truest hub candidates. End of the week: do one cleanup pass. Move anything that landed in the wrong tier, and delete anything that turned out not to matter.
+If you have been meaning to stop fighting your tools, this is the afternoon to do it.
 
-A few things not to do. Do not automate capture before you have decided routing, or you will faithfully archive a mess. Do not put project-bound facts in the hub, or it becomes the junk drawer that nobody maintains. And do not let the hub go stale, because a shared spine that lies is worse than no spine at all.
+<!-- ============ SUBSTACK PAYWALL GOES HERE: everything below is premium ============ -->
+
+---
+
+## How to Wire It Up as We Did
+
+Here is the build, in the order I would do it again. Budget an afternoon. None of it requires writing integration code.
+
+**1. Write the global layer first.** This is the file that travels with you as an operator, not with any project. Mine lives at `~/.claude/CLAUDE.md`, and Code reads it at the start of every session in every project. Put your standing preferences here and nothing project-specific: how much autonomy you want, what "done" means to you, your tone, your commit conventions, how you want errors handled. The test for this layer is one question. If a fact would still be true on a project you have not started yet, it belongs here.
+
+**2. Add the repo layer, one per project.** Each project gets its own `CLAUDE.md` at the repo root, alongside the memory folder Code maintains for it. This layer holds what dies with the work: build conventions, release steps, the architecture and quirks of that one codebase. Code reads it at session start the same way it reads the global file, but it never leaves the repo. The test: if a fact would be noise in any other project, it stays here.
+
+**3. Stand up the hub.** Create one page on a platform you already trust and can reach from every device. I use a single Notion page I call the Context Hub. Keep it human-readable and flat enough to audit at a glance. This is the only layer every surface can see, so it carries the portable facts: durable decisions, current project status, anything you might need to pull up from your phone. Then connect it. The Notion connector exposes that one page to Chat, Cowork, and the web and mobile apps, which is the exact workaround for the memory gap. The web and mobile surfaces cannot see my local files, but they can all see the hub.
+
+**4. Write the routing rule where each surface will read it.** The rule itself is a fact, so route it. I keep it in the global `CLAUDE.md` so Code applies it, and I restate it in plain language at the top of the hub page so the web surfaces apply it too. One sentence does most of the work: code-only facts go to the repo, how-I-work facts go to the global file, anything portable or wanted from the phone goes to the hub. Until the rule is written somewhere each surface reads, it is an intention, not a rule.
+
+**5. Feed the hub, carefully.** The hub is not only something the surfaces read. It is something the rest of your system feeds. I built small bridging tools, mine carry notes from Apple Notes into Notion, so capture does not depend on me copying by hand. One warning, learned the hard way: do not automate capture before the routing is settled, or you will faithfully archive a mess into the one layer every surface trusts.
+
+**6. Maintain it, or it lies.** This is the actual discipline, and it is the part no tutorial covers. When a durable decision or a project status changes, update the hub once, at the moment it changes. Then do one cleanup pass a week: move anything that landed in the wrong layer, delete anything that turned out not to matter. A current spine is worth more than any clever integration. A stale one is worse than nothing, because every surface will confidently tell you something that stopped being true last week.
 
 ---
 
 ## The Advantage Is the Discipline
 
-The connectors are commodity, and they are getting more so by the month. Anyone can wire Notion to an assistant this afternoon. That is not where the advantage lives.
+You can build everything above in an afternoon. That is the point, and it is also the trap. Because the wiring is easy, it is tempting to believe the wiring is the system. It is not. The connectors are commodity and getting more so every month. Anyone can wire a hub to an assistant by tonight.
 
-The advantage is the discipline of routing context to where it belongs, so the right surface knows the right thing at the right moment, and the wrong context stays out of the room. It is a small habit, and it compounds. Over a quarter it is the difference between fighting your tools and running on them.
+The advantage is what you do every day after that. Routing each durable fact to the one place it belongs, so the right surface knows the right thing at the right moment and the wrong context stays out of the room. It is a small habit. It compounds. Over a quarter it is the difference between fighting your tools and running on them.
 
-You do not need a budget or an engineering team to start. You need a spine, three rules, and the willingness to answer one question every time something durable comes up: where does this belong?
-
----
-
-*Want the full Product in Acquisitions OS as an installable Claude plugin? It is this same routing discipline applied to one hard problem: keeping an acquired product team and roadmap coherent through the first 90 days. Premium subscribers get the working plugin, not a PDF. Subscribe to Substack Premium to install it.*
+So the build is not the work. The work is answering one question, honestly, every time something durable comes up: where does this belong?
 
 ---
 
