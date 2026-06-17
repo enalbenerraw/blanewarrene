@@ -8,7 +8,7 @@ Salesforce just paid $3.6B for an AI agent. Writing the check was the easy part.
 
 On June 15, Salesforce signed a definitive agreement to acquire Fin (formerly Intercom) for $3.6B in all-cash, folding the team and its support model into Agentforce. Close is expected by January 2027, Salesforce's fiscal Q4.
 
-The agentic-CRM race is now being won by acquisition, not by shipping another feature. Salesforce did not buy a roadmap item. It bought a proven, domain-tuned model and the team that built it. That resets the build-versus-buy math for every platform competing on AI agents.
+The agentic-CRM race is now being won by acquisition, not by shipping another feature. Fin is the latest in a run of roughly ten AI acquisitions Salesforce has made in the past year, and at $3.6B the largest of them except for its $8B Informatica deal. Salesforce did not buy a roadmap item. It bought a proven, domain-tuned model and the team that built it. That resets the build-versus-buy math for every platform competing on AI agents.
 
 Here is the part that decides whether $3.6B was smart or expensive.
 
