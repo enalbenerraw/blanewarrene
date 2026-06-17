@@ -76,32 +76,37 @@ Delete, disable, or compartmentalize:
 
 ### ChatGPT (OpenAI)
 
-ChatGPT can be influenced by Custom Instructions (explicit, user-controlled) and Memory (stored items that can affect future chats).
+ChatGPT can be influenced by Custom Instructions (explicit, user-controlled), explicit Memory entries (stored items that can affect future chats), and Dreaming V3 inferential memory (entries the model writes on its own by observing your behavior across sessions). Audit all three layers.
 
-#### Prompt: ChatGPT Memory + Instructions Audit
+#### Prompt: ChatGPT Memory + Instructions Audit (Dreaming V3 aware)
 
 ```text
 List every active instruction source you are using to answer me right now,
 separated into:
 (a) Custom Instructions,
-(b) Memory,
-(c) anything else you treat as persistent guidance.
+(b) explicit Memory entries,
+(c) anything Dreaming V3 inferred about me that you are applying as context,
+(d) anything else you treat as persistent guidance.
 
 For each item, classify it as:
-Fact about me, Preference, Output formatting, Conditional rule, or Other.
+Fact about me, Preference, Output formatting, Conditional rule,
+or Inferred behavioral pattern.
 
 Highlight anything that sounds like an imperative or a conditional rule
-(for example: "If X, always do Y"), especially if it could have come from
+(for example: "If X, always do Y"), especially any item you inferred
+rather than one I stated explicitly, or that could have come from
 content I pasted or summarized.
 
 Then propose a minimal set of deletions or edits that would remove
-instruction-like items while keeping harmless personalization.
+instruction-like and inferred-behavioral items while keeping harmless
+personalization.
 ```
 
 **What to verify in the UI:**
 
 - Settings → Custom Instructions
 - Settings → Personalization / Memory (the UI is the source of truth)
+- Dreaming V3 inferential entries may appear in the Memory panel under auto-generated labels. Review these with the same scrutiny as items you added yourself.
 
 ---
 
