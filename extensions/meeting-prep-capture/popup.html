@@ -93,9 +93,15 @@
     </div>
   </div>
 
+  <label for="surface">Paste into</label>
+  <select id="surface">
+    <option value="claude-code">Claude Code (plugin runs here)</option>
+    <option value="cowork">Cowork (plugin runs here)</option>
+    <option value="web">Claude.ai web (lite, no plugin)</option>
+  </select>
+
   <div class="actions">
-    <button id="copyOpen" class="primary">Copy &amp; open Claude</button>
-    <button id="copyOnly" class="secondary">Copy only</button>
+    <button id="copyBtn" class="primary">Copy handoff packet</button>
   </div>
   <div id="status" class="status"></div>
   <div id="pagetype" class="pagetype"></div>

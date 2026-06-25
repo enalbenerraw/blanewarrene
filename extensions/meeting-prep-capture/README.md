@@ -27,7 +27,7 @@ Date: <date>
 <profile text>
 ```
 
-"Copy & open Claude" copies the packet and opens `claude.ai/new` for the paste. "Copy only" is for pasting into a Claude Code terminal session instead.
+Pick where you are pasting with the **Paste into** selector, then click **Copy handoff packet**. The plugin only runs inside Claude Code and Cowork, so those two surfaces just copy the packet; you paste into a session you already have open. Claude.ai web is offered only as an explicit lite option: selecting it copies and opens `claude.ai/new`, but the status line warns that the plugin does not run there, so the prep is the lighter, plain-Claude version. This replaces the earlier default of silently opening `claude.ai/new`, which dropped even paying subscribers onto the one surface where the plugin cannot fire.
 
 ## Load it (unpacked)
 
