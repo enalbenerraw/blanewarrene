@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <style>
+    :root { color-scheme: light; }
+    body {
+      width: 340px;
+      margin: 0;
+      padding: 14px 16px 12px;
+      font: 13px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: #1a1a1a;
+      background: #fff;
+    }
+    h1 {
+      font-size: 14px;
+      margin: 0 0 2px;
+      letter-spacing: -0.01em;
+    }
+    .sub { color: #6b6b6b; font-size: 11px; margin: 0 0 12px; }
+    label { display: block; font-size: 11px; color: #6b6b6b; margin: 9px 0 3px; }
+    input, select {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 6px 8px;
+      font-size: 13px;
+      border: 1px solid #d0d0d0;
+      border-radius: 6px;
+      background: #fff;
+    }
+    .row { display: flex; gap: 8px; }
+    .row > div { flex: 1; }
+    .actions { display: flex; gap: 8px; margin-top: 14px; }
+    button {
+      flex: 1;
+      padding: 8px 10px;
+      font-size: 12px;
+      font-weight: 600;
+      border: 1px solid #c4633f;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button.primary { background: #c4633f; color: #fff; }
+    button.secondary { background: #fff; color: #c4633f; }
+    .status { margin-top: 9px; font-size: 11px; color: #2e7d32; min-height: 14px; }
+    .cta {
+      margin-top: 14px;
+      padding-top: 10px;
+      border-top: 1px solid #ededed;
+      font-size: 11px;
+      color: #6b6b6b;
+    }
+    .cta a { color: #c4633f; text-decoration: none; font-weight: 600; }
+    .cta a:hover { text-decoration: underline; }
+    .pagetype { font-size: 10px; color: #999; margin-top: 6px; }
+  </style>
+</head>
+<body>
+  <h1>Meeting Prep Capture</h1>
+  <p class="sub">Capture this page, hand it to your Claude plugin.</p>
+
+  <label for="name">Stakeholder</label>
+  <input id="name" placeholder="Name">
+
+  <label for="title">Title</label>
+  <input id="title" placeholder="Title / headline">
+
+  <div class="row">
+    <div>
+      <label for="company">Company</label>
+      <input id="company" placeholder="Company">
+    </div>
+    <div>
+      <label for="companyUrl">Company URL</label>
+      <input id="companyUrl" placeholder="https://">
+    </div>
+  </div>
+
+  <div class="row">
+    <div>
+      <label for="meetingType">Meeting type</label>
+      <select id="meetingType">
+        <option value="interview">Interview</option>
+        <option value="advisory">Advisory / consulting</option>
+        <option value="partnership">Partnership / BD</option>
+        <option value="sales discovery">Sales discovery</option>
+        <option value="">Not specified</option>
+      </select>
+    </div>
+    <div>
+      <label for="date">Date</label>
+      <input id="date" placeholder="e.g. Thursday">
+    </div>
+  </div>
+
+  <div class="actions">
+    <button id="copyOpen" class="primary">Copy &amp; open Claude</button>
+    <button id="copyOnly" class="secondary">Copy only</button>
+  </div>
+  <div id="status" class="status"></div>
+  <div id="pagetype" class="pagetype"></div>
+
+  <div class="cta">
+    Need the brief generator? Get the
+    <a href="https://blanewarrene.com/plugins" target="_blank" rel="noopener">Job Interview Meeting Preparation plugin</a>.
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
