@@ -1,6 +1,6 @@
 // Meeting Prep Capture popup logic.
 // Flow: inject a scraper into the active tab, prefill the form, then build a
-// handoff packet and copy it (optionally opening claude.ai for the paste).
+// handoff packet and copy it for the surface the user is pasting into.
 
 // Holds the raw profile text captured from the page, kept out of the form so
 // the user edits identity fields without seeing a wall of scraped text.
@@ -104,16 +104,38 @@ function buildPacket() {
   return lines.join("\n");
 }
 
-async function copyPacket(openClaude) {
+// Where the handoff lands. The plugin only runs inside Claude Code and Cowork,
+// so those just copy: you paste into a session that is already open, no tab to
+// launch. Claude.ai web cannot run the plugin, so it is offered only as an
+// explicitly labeled lite path, never as the silent default it used to be.
+const SURFACES = {
+  "claude-code": {
+    open: null,
+    color: "#2e7d32",
+    status: "Copied. Paste into your Claude Code session, where the plugin runs.",
+  },
+  cowork: {
+    open: null,
+    color: "#2e7d32",
+    status: "Copied. Paste into your Cowork session, where the plugin runs.",
+  },
+  web: {
+    open: "https://claude.ai/new",
+    color: "#b06a00",
+    status:
+      "Copied, opening claude.ai. The plugin does not run here, so this is a lighter prep. Install it in Claude Code or Cowork for the full brief and one-pager.",
+  },
+};
+
+async function copyHandoff() {
   const status = document.getElementById("status");
+  const surface = SURFACES[document.getElementById("surface").value] || SURFACES["claude-code"];
   try {
     await navigator.clipboard.writeText(buildPacket());
-    status.style.color = "#2e7d32";
-    status.textContent = openClaude
-      ? "Copied. Opening Claude, then paste with Cmd+V."
-      : "Copied. Paste into your Claude session.";
-    if (openClaude) {
-      await chrome.tabs.create({ url: "https://claude.ai/new" });
+    status.style.color = surface.color;
+    status.textContent = surface.status;
+    if (surface.open) {
+      await chrome.tabs.create({ url: surface.open });
     }
   } catch (err) {
     status.style.color = "#b00020";
@@ -121,7 +143,6 @@ async function copyPacket(openClaude) {
   }
 }
 
-document.getElementById("copyOpen").addEventListener("click", () => copyPacket(true));
-document.getElementById("copyOnly").addEventListener("click", () => copyPacket(false));
+document.getElementById("copyBtn").addEventListener("click", copyHandoff);
 
 init();
