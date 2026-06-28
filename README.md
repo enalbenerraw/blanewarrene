@@ -4,10 +4,10 @@
 I've enjoyed a technical and business journey in my career. I am now building AI prompt recipes and agents to automate product and product marketing workflows. Also prototyping web and native Mac OS X apps to extend automations to a readiness state for productizing.
 
 ## What I'm Working On
-- 🔨 Current Projects — GTM Intel CLI, Notes2Notion, Strategic GTM Intel prompt, Signal Watch prompt, Morning News Brief prompt, LLM Memory Audit prompt recipes, Teachable Course Builder prompt, and Pre-Call Briefing prompt
+- 🔨 Current Projects — GTM Intel CLI, Notes2Notion, Strategic GTM Intel prompt, Signal Watch prompt, Morning News Brief prompt, LLM Memory Audit prompt recipes, LMS Course Builder prompt, and Pre-Call Briefing prompt
 - 📚 I am shipping agents for automation in Notion
-- 🤝 I am looking to simplify how product managers can build Gemini Gems, and leverage GitHub and AI
-- 🧩 Building and deploying Skills Plugins for Claude
+- 🤝 I am looking to simplify how product managers can build Claude Skills and Gemini Gems, and leverage GitHub and AI
+- 🧩 Building and deploying Plugins for Claude
 
 ## Claude Code Plugins
 
@@ -48,7 +48,7 @@ Plugin privacy policy: [blanewarrene.com/plugins-privacy](https://blanewarrene.c
 - 💼 [LinkedIn](https://www.linkedin.com/in/bwarrene) 
 - 📝 [Substack](https://blanewarrene.substack.com/)
 - 📧 [Email](mailto:blane@blanewarrene.com)
-- 📚 [AI Courses on Teachable](https://modprod.teachable.com/l/dashboard) 
+- 📚 [AI Kits for Business](https://blanewarrene.com/ai-smb-toolkit/)
 
 ---
-*Product & Operations Executive who builds things. Currently exploring MCP automation from commercial model, success, and support data for GTM analysis.*
+*Product & Operations Executive who builds things. Currently wiring the MCP automation from the commercial model, success, and support data for GTM analysis.*
