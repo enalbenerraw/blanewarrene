@@ -37,6 +37,7 @@ Plugin privacy policy: [blanewarrene.com/plugins-privacy](https://blanewarrene.c
 |---------|-------------|-------|
 | [GTM Intel CLI](src/gtm_intel/) | Messaging analysis tool — analyze competitor, partner, and your own messaging | Python, Gemini, Google Sheets |
 | [Strategic GTM Intel](prompts/strategic-gtm-intel-prompt.md) | Competitive wedge analysis against your own GTM | Gemini, Claude Code |
+| [Competitive Brief Generator](prompts/competitive-brief-generator-prompt.md) | Turn a company name and URL into a three-page competitive brief (Landscape, Product Catalog, Battle Card) as styled HTML/PDF | Claude with web search |
 | [Signal Watch](prompts/signal-watch-instructions.md) | Executive briefing on any company's positioning, leadership, and market signals | Any LLM with web search |
 | [Morning News Brief](prompts/morning-news-brief-prompt.md) | Automated daily news brief with content opportunities tied to your themes | Any LLM with web search |
 | [LLM Memory Audit](prompts/llm-memory-audit-prompts.md) | Copy-paste prompt recipes to audit persistent memory and instructions in ChatGPT, Claude, Copilot, and Gemini | Any LLM |
