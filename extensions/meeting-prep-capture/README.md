@@ -29,6 +29,8 @@ Date: <date>
 
 Pick where you are pasting with the **Paste into** selector, then click **Copy handoff packet**. The plugin only runs inside Claude Code and Cowork, so those two surfaces just copy the packet; you paste into a session you already have open. Claude.ai web is offered only as an explicit lite option: selecting it copies and opens `claude.ai/new`, but the status line warns that the plugin does not run there, so the prep is the lighter, plain-Claude version. This replaces the earlier default of silently opening `claude.ai/new`, which dropped even paying subscribers onto the one surface where the plugin cannot fire.
 
+The lite/web packet differs from the Code and Cowork packets in two ways, both to keep the free path genuinely lighter than the paid one: it carries less captured profile text (~1500 characters instead of the full ~6000), and it ends with a one-line footer pointing to `blanewarrene.com/plugins`, so the upsell travels into the chat after the popup has closed. Code and Cowork run the plugin and produce the full brief, so they get the full profile text and no footer.
+
 ## Load it (unpacked)
 
 1. Open `chrome://extensions`.

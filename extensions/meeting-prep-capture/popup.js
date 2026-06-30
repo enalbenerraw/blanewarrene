@@ -76,7 +76,16 @@ async function init() {
   }
 }
 
-function buildPacket() {
+// Lite path (claude.ai web) gets less profile text and an explicit upsell, so
+// the plain-Claude answer stays lighter than the plugin's and the pitch travels
+// into the chat after the popup has closed. Claude Code and Cowork run the
+// plugin, so they get the full text and no footer (it would be misleading input
+// to the very session producing the full brief).
+const LITE_PROFILE_CHARS = 1500;
+const UPSELL_FOOTER =
+  "This is a lite prep. The full brief and printable one-pager come from the Job Interview Meeting Preparation plugin: blanewarrene.com/plugins";
+
+function buildPacket(lite) {
   const name = document.getElementById("name").value.trim();
   const title = document.getElementById("title").value.trim();
   const company = document.getElementById("company").value.trim();
@@ -98,7 +107,12 @@ function buildPacket() {
   if (capturedProfileText) {
     lines.push("");
     lines.push("--- Captured LinkedIn profile (analyze as the stakeholder profile) ---");
-    lines.push(capturedProfileText);
+    lines.push(lite ? capturedProfileText.slice(0, LITE_PROFILE_CHARS) : capturedProfileText);
+  }
+
+  if (lite) {
+    lines.push("");
+    lines.push(UPSELL_FOOTER);
   }
 
   return lines.join("\n");
@@ -121,6 +135,7 @@ const SURFACES = {
   },
   web: {
     open: "https://claude.ai/new",
+    lite: true,
     color: "#b06a00",
     status:
       "Copied, opening claude.ai. The plugin does not run here, so this is a lighter prep. Install it in Claude Code or Cowork for the full brief and one-pager.",
@@ -131,7 +146,7 @@ async function copyHandoff() {
   const status = document.getElementById("status");
   const surface = SURFACES[document.getElementById("surface").value] || SURFACES["claude-code"];
   try {
-    await navigator.clipboard.writeText(buildPacket());
+    await navigator.clipboard.writeText(buildPacket(surface.lite));
     status.style.color = surface.color;
     status.textContent = surface.status;
     if (surface.open) {
