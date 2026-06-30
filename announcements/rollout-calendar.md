@@ -2,10 +2,10 @@
 
 Two-week staggered launch. Week 1 is the public hook and free executive briefing. Week 2 is the premium offer to people who showed up. The long-form 17-page framework is the depth reward linked from inside the briefing, not the magnet itself.
 
-**Week 1 publish date: Tuesday, 2026-06-02.**
-**Week 2 publish date: Tuesday, 2026-06-09.**
+**Week 1 publish date: Tuesday, 2026-07-07.**
+**Week 2 publish date: Tuesday, 2026-07-14.**
 
-## Pre-launch: Monday, 2026-06-01
+## Pre-launch: Monday, 2026-07-06
 
 | When | Asset | Action |
 |------|-------|--------|
@@ -13,38 +13,38 @@ Two-week staggered launch. Week 1 is the public hook and free executive briefing
 | Mon AM | Substack welcome email | Paste copy from `welcome-email.md` into Substack Settings → Email → Welcome email. Test by subscribing with a throwaway address. Verify both PDF links resolve from the email. |
 | Mon AM | Substack premium tier | Confirm the paid subscription is active and the price is set. |
 | Mon AM | Website CTA | Add the hero CTA from `website-cta.md` to blanewarrene.com pointing at the Substack subscribe URL. |
-| Mon PM | Substack post draft | Paste `articles/2026-05-05-the-gap-nobody-owns.md` into Substack. Wire CTAs to actual subscribe button and premium upgrade button. Schedule for 2026-06-02 at 8:00 AM ET. |
+| Mon PM | Substack post draft | Paste `articles/2026-05-05-the-gap-nobody-owns.md` into Substack. Wire CTAs to actual subscribe button and premium upgrade button. Schedule for 2026-07-07 at 8:00 AM ET. |
 
 ## Week 1: Public article + free briefing
 
 | Date / Time | Asset | Action |
 |-------------|-------|--------|
-| Tue 2026-06-02 · 8:00 AM ET | Substack article | "The Gap Nobody Owns" goes live. Email goes out automatically. |
-| Tue 2026-06-02 · 9:00 AM ET | LinkedIn | Post the LinkedIn version from `social-posts.md` (Week 1). |
-| Tue 2026-06-02 · 11:00 AM ET | X | Post the X thread from `social-posts.md` (Week 1). |
-| Tue 2026-06-02 · 1:00 PM ET | Facebook | Post the Facebook version from `social-posts.md` (Week 1). |
-| Wed 2026-06-03 | Substack notes | Drop a Substack Note quoting the sharpest line ("the gap nobody owns" or the standup silence). |
-| Thu 2026-06-04 | LinkedIn comment engagement | Reply to comments on Tuesday's LinkedIn post. Post one comment-thread follow-up if traction warrants. |
-| Fri 2026-06-05 | Reshare check | Look at signups, top engagement, top reply. Reply to anyone who shared a real integration story. |
+| Tue 2026-07-07 · 8:00 AM ET | Substack article | "The Gap Nobody Owns" goes live. Email goes out automatically. |
+| Tue 2026-07-07 · 9:00 AM ET | LinkedIn | Post the LinkedIn version from `social-posts.md` (Week 1). |
+| Tue 2026-07-07 · 11:00 AM ET | X | Post the X thread from `social-posts.md` (Week 1). |
+| Tue 2026-07-07 · 1:00 PM ET | Facebook | Post the Facebook version from `social-posts.md` (Week 1). |
+| Wed 2026-07-08 | Substack notes | Drop a Substack Note quoting the sharpest line ("the gap nobody owns" or the standup silence). |
+| Thu 2026-07-09 | LinkedIn comment engagement | Reply to comments on Tuesday's LinkedIn post. Post one comment-thread follow-up if traction warrants. |
+| Fri 2026-07-10 | Reshare check | Look at signups, top engagement, top reply. Reply to anyone who shared a real integration story. |
 
 ## Week 2: Plugin announcement to premium
 
 | Date / Time | Asset | Action |
 |-------------|-------|--------|
-| Mon 2026-06-08 | Plugin announcement draft | Final read-through of `announcements/v0.2.0-substack.md`. Confirm the public article URL is correct in footnote [2]. Schedule for 2026-06-09 at 8:00 AM ET, **paid-only audience**. |
-| Tue 2026-06-09 · 8:00 AM ET | Substack premium post | "The working version of last week's framework" goes out to premium subscribers only. |
-| Tue 2026-06-09 · 9:00 AM ET | Public teaser post (optional) | Optional: a short Substack note (free + paid) saying "the plugin is live for premium" with a one-line teaser and an upgrade button. Drives last-chance free-to-paid conversion. |
-| Tue 2026-06-09 · 10:00 AM ET | LinkedIn | Post the LinkedIn version from `social-posts.md` (Week 2). |
-| Tue 2026-06-09 · 12:00 PM ET | X | Post the X version from `social-posts.md` (Week 2). |
-| Tue 2026-06-09 · 2:00 PM ET | Facebook | Post the Facebook version from `social-posts.md` (Week 2). |
-| Wed-Fri 2026-06-10 to 2026-06-12 | Field feedback watch | Watch GitHub Issues and email for first plugin reactions. Reply within 24 hours. |
+| Mon 2026-07-13 | Plugin announcement draft | Final read-through of `announcements/v0.2.0-substack.md`. Confirm the public article URL is correct in footnote [2]. Schedule for 2026-07-14 at 8:00 AM ET, **paid-only audience**. |
+| Tue 2026-07-14 · 8:00 AM ET | Substack premium post | "The working version of last week's framework" goes out to premium subscribers only. |
+| Tue 2026-07-14 · 9:00 AM ET | Public teaser post (optional) | Optional: a short Substack note (free + paid) saying "the plugin is live for premium" with a one-line teaser and an upgrade button. Drives last-chance free-to-paid conversion. |
+| Tue 2026-07-14 · 10:00 AM ET | LinkedIn | Post the LinkedIn version from `social-posts.md` (Week 2). |
+| Tue 2026-07-14 · 12:00 PM ET | X | Post the X version from `social-posts.md` (Week 2). |
+| Tue 2026-07-14 · 2:00 PM ET | Facebook | Post the Facebook version from `social-posts.md` (Week 2). |
+| Wed-Fri 2026-07-15 to 2026-07-17 | Field feedback watch | Watch GitHub Issues and email for first plugin reactions. Reply within 24 hours. |
 
 ## Post-launch
 
 | Date | Action |
 |------|--------|
-| Fri 2026-06-12 | Audit signups, free-to-paid conversion rate, briefing downloads, long-form downloads, plugin downloads (GitHub release asset stats). |
-| Week of 2026-06-15 | Decide whether the next post extends the framework series (e.g., a deep-dive on one lever) or pivots to a different topic. Target Tuesday 2026-06-23 for next major post if continuing. |
+| Fri 2026-07-17 | Audit signups, free-to-paid conversion rate, briefing downloads, long-form downloads, plugin downloads (GitHub release asset stats). |
+| Week of 2026-07-20 | Decide whether the next post extends the framework series (e.g., a deep-dive on one lever) or pivots to a different topic. Target Tuesday 2026-07-28 for next major post if continuing. |
 | Ongoing | Field feedback feeds the next plugin release (`pia-v0.2.1` or `pia-v0.3.0`). Cut the new tag when you have enough signal. The release workflow bundles the briefing, framework PDF, and plugin automatically. |
 
 ## Links to wire (collect once, paste everywhere)
@@ -61,7 +61,7 @@ Two-week staggered launch. Week 1 is the public hook and free executive briefing
 ## Risks to watch
 
 - **Marketing URLs are pinned to `pia-v0.2.0`.** This repo hosts multiple plugins, so `/releases/latest/` resolves to whichever plugin released most recently, not necessarily PIA. The fix is tag-specific URLs (`/releases/download/pia-v0.2.0/...`). When the next PIA release ships (`pia-v0.2.1`, etc.), bump the tag in every URL in this folder before the next post goes out. The release workflow bundles the briefing, the framework PDF, and the plugin on every `pia-v*` tag, so the assets always exist; only the tag in the URL needs updating.
-- **Release assets auto-bundle on `pia-v0.2.0`.** The release workflow attached the executive briefing, the long-form framework PDF, and the plugin automatically (verified on the live release), so no manual upload step is needed. Still confirm each download URL in the Links section resolves before Mon 2026-06-01.
+- **Release assets auto-bundle on `pia-v0.2.0`.** The release workflow attached the executive briefing, the long-form framework PDF, and the plugin automatically (verified on the live release), so no manual upload step is needed. Still confirm each download URL in the Links section resolves before Mon 2026-07-06.
 - **Substack welcome email lag.** Welcome emails sometimes take 5-10 minutes. If subscribers are unhappy, mention "check spam, give it a few minutes" in the article CTA.
 - **Premium leaks.** The plugin URL is public on GitHub. Some readers will figure out they can grab it without paying. Accept this. The premium tier sells the support, the templates roadmap, and the relationship, not the bytes.
 - **Briefing-vs-long-form confusion.** Some subscribers will expect the long-form by default and feel shortchanged by a deck. The welcome email and the briefing itself both link to the long-form, so the depth signal is preserved if anyone goes looking. Watch reply volume in Week 1 for confusion signals; if it surfaces, add a one-line clarification to the welcome email.
