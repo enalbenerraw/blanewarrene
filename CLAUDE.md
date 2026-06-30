@@ -64,13 +64,16 @@ Each skill produces 4 to 6 named deliverables. Do not invent new deliverables; t
 
 Each plugin versions and ships independently using a plugin-specific tag prefix. The repo uses semver in each plugin's `plugin.json`.
 
-| Plugin | Tag pattern | Workflow |
+| Artifact | Tag pattern | Workflow |
 |---|---|---|
 | `product-in-acquisitions-os` | `pia-v<version>` | `.github/workflows/release-pia.yml` |
 | `job-interview-meeting-preparation` | `interview-v<version>` | `.github/workflows/release-interview.yml` |
 | `comparative-landscape-brief` | `clb-v<version>` | `.github/workflows/release-clb.yml` |
+| `meeting-prep-capture` (Chrome extension) | `meeting-prep-v<version>` | `.github/workflows/release-meeting-prep.yml` |
 
-The release workflows trigger on the short prefix tags above (`pia-v*`, `interview-v*`, `clb-v*`). That short prefix is the convention; the tag you push must use it or no workflow fires.
+The release workflows trigger on the short prefix tags above (`pia-v*`, `interview-v*`, `clb-v*`, `meeting-prep-v*`). That short prefix is the convention; the tag you push must use it or no workflow fires.
+
+The `meeting-prep-capture` extension is not a marketplace plugin. Its workflow validates the manifest (must be Manifest V3), enforces that the tag matches `manifest.json` `version`, then zips the loadable extension (manifest at the zip root, docs excluded) and attaches it to a GitHub release for upload to the Chrome Web Store. There is no `marketplace.json` entry to sync for it.
 
 Note that `claude plugin tag` emits a different tag name, `<plugin-name>--v<version>` (e.g. `product-in-acquisitions-os--v0.3.0`), which does NOT match the workflow triggers. Do not push its tag to release. Use it only as a pre-flight validator, because it checks that the plugin's `plugin.json` and the marketplace entry in `.claude-plugin/marketplace.json` agree on version. This prevents the "phantom release" bug where a tag ships v0.2.0 but the marketplace resolver still installs v0.1.0:
 
