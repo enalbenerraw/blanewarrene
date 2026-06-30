@@ -1,0 +1,103 @@
+name: Release Meeting Prep Capture extension
+
+on:
+  push:
+    tags:
+      - 'meeting-prep-v*'
+
+permissions:
+  contents: write
+
+jobs:
+  package-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Validate manifest
+        run: |
+          MANIFEST="extensions/meeting-prep-capture/manifest.json"
+          if [ ! -f "$MANIFEST" ]; then
+            echo "ERROR: manifest.json not found at $MANIFEST"
+            exit 1
+          fi
+          python3 -m json.tool "$MANIFEST" > /dev/null
+          echo "manifest.json is valid JSON"
+          MV=$(python3 -c "import json; print(json.load(open('$MANIFEST'))['manifest_version'])")
+          if [ "$MV" != "3" ]; then
+            echo "ERROR: manifest_version is $MV, expected 3 (Chrome Web Store requires MV3)"
+            exit 1
+          fi
+          echo "manifest_version is 3"
+
+      - name: Extract and check version
+        id: version
+        run: |
+          MANIFEST="extensions/meeting-prep-capture/manifest.json"
+          VERSION=$(python3 -c "import json; print(json.load(open('$MANIFEST'))['version'])")
+          TAG_VERSION="${GITHUB_REF_NAME#meeting-prep-v}"
+          echo "manifest_version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "tag_version=$TAG_VERSION" >> "$GITHUB_OUTPUT"
+          echo "Manifest version: $VERSION"
+          echo "Tag version: $TAG_VERSION"
+          if [ "$VERSION" != "$TAG_VERSION" ]; then
+            echo "ERROR: tag ($TAG_VERSION) does not match manifest version ($VERSION)"
+            echo "A Chrome Web Store package version is the manifest version; keep them in sync."
+            exit 1
+          fi
+
+      - name: Check for em dashes (style rule)
+        run: |
+          if grep -r "—" extensions/meeting-prep-capture/ > /dev/null 2>&1; then
+            echo "ERROR: found em dashes in extension content (style rule violation)"
+            grep -rn "—" extensions/meeting-prep-capture/ | head -10
+            exit 1
+          fi
+          echo "PASS: no em dashes found"
+
+      - name: Package extension
+        run: |
+          cd extensions/meeting-prep-capture
+          # Ship only the loadable extension: manifest.json at the zip root plus
+          # its assets. Exclude docs (README, BACKLOG) and OS cruft. Future
+          # icon files are picked up automatically.
+          zip -r "/tmp/meeting-prep-capture.zip" . -x "*.md" "*.DS_Store"
+          unzip -l "/tmp/meeting-prep-capture.zip"
+
+      - name: Also create versioned filename
+        run: |
+          cp "/tmp/meeting-prep-capture.zip" "/tmp/meeting-prep-capture-v${{ steps.version.outputs.tag_version }}.zip"
+          ls -la /tmp/*.zip
+
+      - name: Create GitHub release
+        uses: softprops/action-gh-release@v3
+        with:
+          name: "Meeting Prep Capture ${{ github.ref_name }}"
+          body: |
+            **Meeting Prep Capture** ${{ github.ref_name }}
+
+            Chrome (Manifest V3) extension that captures a LinkedIn profile or company page and hands it to the Job Interview Meeting Preparation Claude plugin as a ready-to-paste prep packet.
+
+            ## Chrome Web Store upload
+
+            Download `meeting-prep-capture.zip` below and upload it in the Chrome Web Store Developer Dashboard (Items, then Upload new package). The zip has `manifest.json` at its root, as the store expects.
+
+            ## Load unpacked (for testing)
+
+            1. Open `chrome://extensions`
+            2. Turn on Developer mode
+            3. Load unpacked, then select the unzipped folder
+
+            ## What's in this release
+
+            See `extensions/meeting-prep-capture/README.md` for capture behavior and known limits.
+
+            Built by Blane Warrene · blanewarrene.substack.com
+          files: |
+            /tmp/meeting-prep-capture.zip
+            /tmp/meeting-prep-capture-v${{ steps.version.outputs.tag_version }}.zip
+          draft: false
+          prerelease: false
