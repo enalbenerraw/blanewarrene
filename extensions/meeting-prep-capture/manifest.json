@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Meeting Prep Capture",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Capture a LinkedIn profile or company page and hand it to your Claude meeting-prep plugin.",
   "permissions": ["activeTab", "scripting"],
   "action": {
