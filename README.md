@@ -44,12 +44,12 @@ Plugin privacy policy: [blanewarrene.com/plugins-privacy](https://blanewarrene.c
 | [Teachable Course Builder](prompts/teachable-course-builder-prompt.md) | Generate an end-to-end, Teachable-ready free course on expert prompting for non-technical learners | Claude |
 | [Pre-Call Briefing](pre-call-briefing/) | Executive-grade pre-call briefing on any target company for sales, BD, partnerships, and GTM teams | Claude with web search |
 | [Notes2Notion](Notes2Notion/) | Export Apple Notes to Notion-importable Markdown — CLI and native macOS GUI app | Python, AppleScript |
+| [AI SMB Toolkit](prompts/ai-smb-toolkit/) | Four Word documents that turn AI curiosity into a working plan — tech stack inventory, HR AI survey, prompt cookbook, and course builder | Word, prompt frameworks |
 
 ## Connect
 - 💼 [LinkedIn](https://www.linkedin.com/in/bwarrene) 
 - 📝 [Substack](https://blanewarrene.substack.com/)
 - 📧 [Email](mailto:blane@blanewarrene.com)
-
 
 ---
 *Product & Operations Executive who builds things. Currently wiring the MCP automation from the commercial model, success, and support data for GTM analysis.*
