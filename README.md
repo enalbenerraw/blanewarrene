@@ -49,7 +49,7 @@ Plugin privacy policy: [blanewarrene.com/plugins-privacy](https://blanewarrene.c
 - 💼 [LinkedIn](https://www.linkedin.com/in/bwarrene) 
 - 📝 [Substack](https://blanewarrene.substack.com/)
 - 📧 [Email](mailto:blane@blanewarrene.com)
-- 📚 [AI Kits for Business](https://blanewarrene.com/ai-smb-toolkit/)
+
 
 ---
 *Product & Operations Executive who builds things. Currently wiring the MCP automation from the commercial model, success, and support data for GTM analysis.*
