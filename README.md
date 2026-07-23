@@ -1,13 +1,13 @@
-# Hello, I'm Blane Warrene 
+# Hello, I'm Blane Warrene
 
 ## What I Build
-I've enjoyed a technical and business journey in my career. I am now building AI prompt recipes and agents to automate product and product marketing workflows. Also prototyping web and native Mac OS X apps to extend automations to a readiness state for productizing.
+AI-forward product and operations systems: prompt recipes, Claude Code plugins, and small tools that automate product and product marketing workflows. Most of it starts as a workflow I run by hand, then gets packaged so someone else can run it too.
 
 ## What I'm Working On
-- 🔨 Current Projects — GTM Intel CLI, Notes2Notion, Strategic GTM Intel prompt, Signal Watch prompt, Morning News Brief prompt, LLM Memory Audit prompt recipes, LMS Course Builder prompt, and Pre-Call Briefing prompt
-- 📚 I am shipping agents for automation in Notion
-- 🤝 I am looking to simplify how product managers can build Claude Skills and Gemini Gems, and leverage GitHub and AI
-- 🧩 Building and deploying Plugins for Claude
+- 🧩 Three Claude Code plugins shipping from one marketplace, versioned and released independently
+- 🔌 A Chrome extension that captures meeting context and hands it off to the interview-prep plugin
+- 📚 Prompt recipes for GTM intelligence, competitive briefs, and executive briefings
+- 🤝 Simplifying how product managers build Claude Skills and Gemini Gems, and leverage GitHub and AI
 
 ## Claude Code Plugins
 
@@ -31,25 +31,43 @@ Or add the marketplace and pick which to install:
 
 Plugin privacy policy: [blanewarrene.com/plugins-privacy](https://blanewarrene.com/plugins-privacy/).
 
+## Chrome Extension
+
+| Extension | What It Does |
+|-----------|-------------|
+| [Meeting Prep Capture](extensions/meeting-prep-capture/) | Grabs a LinkedIn profile or company page, packages it into the input shape the Job Interview Meeting Preparation plugin expects, and copies a ready-to-paste handoff packet. Does no AI of its own. Manifest V3. |
+
 ## Featured Projects
 
 | Project | What It Does | Stack |
 |---------|-------------|-------|
-| [GTM Intel CLI](src/gtm_intel/) | Messaging analysis tool — analyze competitor, partner, and your own messaging | Python, Gemini, Google Sheets |
+| [GTM Intel CLI](src/gtm_intel/) | Messaging analysis tool: analyze competitor, partner, and your own messaging | Python, Gemini, Google Sheets |
 | [Strategic GTM Intel](prompts/strategic-gtm-intel-prompt.md) | Competitive wedge analysis against your own GTM | Gemini, Claude Code |
 | [Competitive Brief Generator](prompts/competitive-brief-generator-prompt.md) | Turn a company name and URL into a three-page competitive brief (Landscape, Product Catalog, Battle Card) as styled HTML/PDF | Claude with web search |
 | [Signal Watch](prompts/signal-watch-instructions.md) | Executive briefing on any company's positioning, leadership, and market signals | Any LLM with web search |
 | [Morning News Brief](prompts/morning-news-brief-prompt.md) | Automated daily news brief with content opportunities tied to your themes | Any LLM with web search |
 | [LLM Memory Audit](prompts/llm-memory-audit-prompts.md) | Copy-paste prompt recipes to audit persistent memory and instructions in ChatGPT, Claude, Copilot, and Gemini | Any LLM |
-| [Teachable Course Builder](prompts/teachable-course-builder-prompt.md) | Generate an end-to-end, Teachable-ready free course on expert prompting for non-technical learners | Claude |
+| [Teachable Course Builder](prompts/teachable-course-builder-prompt.md) | Generate an end-to-end, Teachable-ready free course on expert prompting for non-technical learners. [Copilot](prompts/teachable-course-builder-copilot.md) and [Gemini](prompts/teachable-course-builder-gemini.md) variants included | Claude, Copilot, Gemini |
+| [Built Courses](prompts/) | Two finished course outlines produced by the builder: [Inbox Mastery](prompts/course-inbox-mastery.md) (Claude in Gmail and Outlook) and [The AI Interview](prompts/course-the-ai-interview.md) | Claude |
 | [Pre-Call Briefing](pre-call-briefing/) | Executive-grade pre-call briefing on any target company for sales, BD, partnerships, and GTM teams | Claude with web search |
-| [Notes2Notion](Notes2Notion/) | Export Apple Notes to Notion-importable Markdown — CLI and native macOS GUI app | Python, AppleScript |
-| [AI SMB Toolkit](prompts/ai-smb-toolkit/) | Four Word documents that turn AI curiosity into a working plan — tech stack inventory, HR AI survey, prompt cookbook, and course builder | Word, prompt frameworks |
+| [Notes2Notion](Notes2Notion/) | Export Apple Notes to Notion-importable Markdown: CLI and native macOS GUI app | Python, AppleScript |
+| [AI SMB Toolkit](prompts/ai-smb-toolkit/) | Four Word documents that turn AI curiosity into a working plan: tech stack inventory, HR AI survey, prompt cookbook, and course builder | Word, prompt frameworks |
+
+## Elsewhere
+
+Shipped surfaces that live outside this repo.
+
+| Site | What It Is |
+|------|-----------|
+| [blanewarrene.com](https://blanewarrene.com) | Writing and the canonical home for everything here. Custom WordPress block theme, built for Core Web Vitals. |
+| [blanewarrene.com/portfolio](https://blanewarrene.com/portfolio/) | Three-pillar showcase of the AI product work |
+| [zone8a.com](https://zone8a.com) | Year-round USDA Zone 8a gardening guide. Astro static site on Cloudflare. [Source](https://github.com/enalbenerraw/zone-8a-garden) |
+| [thedigitalwell.com](https://thedigitalwell.com) | Healthy-cooking articles and research, plus a voice-driven nutrition tracker |
 
 ## Connect
-- 💼 [LinkedIn](https://www.linkedin.com/in/bwarrene) 
+- 💼 [LinkedIn](https://www.linkedin.com/in/bwarrene)
 - 📝 [Substack](https://blanewarrene.substack.com/)
 - 📧 [Email](mailto:blane@blanewarrene.com)
 
 ---
-*Product & Operations Executive who builds things. Currently wiring the MCP automation from the commercial model, success, and support data for GTM analysis.*
+*AI-forward product and operations executive who builds the operating systems that let B2B SaaS scale. Proven through seven acquisitions and two decades in wealthtech and compliance technology. Raleigh-Durham, NC.*
