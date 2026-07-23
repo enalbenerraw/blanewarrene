@@ -159,4 +159,4 @@ The `product-in-acquisitions-os` plugin is the reference layout. Mirror its shap
 
 ## Contact
 
-Blane Warrene · enerrawenalb@gmail.com
+Blane Warrene · blane@blanewarrene.com
