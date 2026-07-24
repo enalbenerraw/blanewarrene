@@ -16,7 +16,7 @@ when_to_use: >
   meeting the CFO of [company] tomorrow", "help me get ready for a partnership
   call", or simply uploading a LinkedIn PDF alongside a company name should
   fire it.
-allowed-tools: WebSearch WebFetch Read Write Bash Artifact
+allowed-tools: WebSearch WebFetch Read Write Bash Artifact Agent
 ---
 
 # Meeting Prep Skill
@@ -48,7 +48,7 @@ Optional but valuable:
 - **Secondary company**: a company that needs to be in the conversation (e.g., the user's employer if it differs from the stakeholder's; a target company being discussed; a partner or competitor that frames the meeting). Get a name and URL if provided.
 - **Meeting objective**: what the user wants out of the meeting. For interviews, this is usually "get an offer" or "advance to next round." For other types, it's more variable and worth asking.
 
-If a LinkedIn PDF is not provided, perform web research on the stakeholder using name + title + company + email domain. Note explicitly in the brief if information is thin.
+If a LinkedIn PDF is not provided, capture name, title, company, and email domain here; the stakeholder web research itself happens in Step 3. Note explicitly in the brief if information is thin.
 
 If the user provides only a vague company reference ("the bank I'm interviewing with"), ask for the name and URL. Do not guess.
 
@@ -58,41 +58,31 @@ If the user provides only a vague company reference ("the bank I'm interviewing 
 
 Tell the user what you'll do before doing it. Something like:
 
-> "I'll research [Company] (recent financials, M&A, strategic posture, leadership commentary), pull the peer and industry context, [research Secondary Company if applicable,] analyze [Stakeholder] from the LinkedIn profile [or web sources], and then build the conversation architecture and one-pager. I'll cite sources and flag where the public record is thin."
+> "I'll research [Company] (recent financials, M&A, strategic posture, leadership commentary) [and Secondary Company if applicable] in parallel with analyzing [Stakeholder] [from the LinkedIn profile or web sources], then build the conversation architecture and one-pager. I'll cite sources and flag where the public record is thin."
 
-This sets expectations because the research will take multiple web searches.
-
----
-
-## Step 3: Research the Primary Company
-
-Use this session's web search and page-fetch tools (`WebSearch`/`WebFetch` in Claude Code). Prioritize primary sources: investor relations pages, SEC filings (10-K, 10-Q, 8-K, DEF 14A), official press releases, the company's own blog, recent earnings calls. Use secondary sources (trade press, analyst commentary) for context and color.
-
-Cover at minimum:
-
-- **Recent financial trajectory** (last 4-8 quarters if public; growth signals if private). Revenue, profitability, cash flow direction, leverage.
-- **Recent M&A and strategic moves** (acquisitions, divestitures, carve-outs, leadership changes, restructurings) in the last 24 months.
-- **Stated strategic priorities** from the most recent earnings release, annual report, or public commentary.
-- **Industry and peer context**: who they compete with, where the market is going, what's stressing or accelerating their model.
-- **Risk factors** that a sophisticated stakeholder would be tracking (regulation, competition, talent, capital structure).
-
-Aim for 5-12 searches. Cite sources using the citation format throughout the brief. Never reproduce more than 15 words from a single source. Default to paraphrasing.
+This sets expectations because the research will take multiple web searches, running concurrently rather than one after another.
 
 ---
 
-## Step 4: Research the Secondary Company (if provided)
+## Step 3: Dispatch Research
 
-If a secondary company is in the conversation, run an abbreviated version of Step 3 focused on:
+Research happens off the main conversation so raw search results don't bloat this context, and so the primary company, secondary company (if any), and stakeholder (if no LinkedIn PDF) research runs in parallel instead of sequentially.
 
-- The relationship or potential relationship between the primary and secondary company (customer, competitor, partner, target, peer)
-- Recent strategic moves at the secondary company that would be relevant to the meeting
-- Why this secondary company matters to the stakeholder
+Use the `Agent` tool to spawn:
 
-Keep this section tight. Two to three paragraphs of synthesis is usually enough.
+- A `job-interview-meeting-preparation:company-researcher` subagent for the primary company, depth: full. Always.
+- A second `job-interview-meeting-preparation:company-researcher` subagent for the secondary company, depth: abbreviated, and tell it the primary company's name for relationship framing. Only if a secondary company was captured in Step 1.
+- A `job-interview-meeting-preparation:stakeholder-researcher` subagent. Only if no LinkedIn PDF was provided in Step 1.
+
+Issue every spawn before waiting on any of them so they run concurrently. Each subagent starts with no knowledge of this conversation, so its task prompt must spell out the company name and URL, or the stakeholder's name, title, company, and email domain, not reference Step 1.
+
+If a LinkedIn PDF was provided, do not spawn a stakeholder-researcher subagent. Reading and interpreting the PDF is fast and stays inline in Step 4.
+
+Wait for every spawned subagent to return before moving to Step 4.
 
 ---
 
-## Step 5: Analyze the Stakeholder
+## Step 4: Analyze the Stakeholder
 
 This is the most important section. The goal is to understand how the stakeholder thinks, not just what their resume says.
 
@@ -107,30 +97,30 @@ Read the entire profile. Extract:
 - **Honors and recognitions**: signal what they're proud of and what reputation they've built
 - **Industry and functional patterns**: have they always been in one industry, or are they a generalist? Are they a finance person, an operator, a commercial leader, a technical leader?
 
-### From web search (LinkedIn PDF not available)
+### From the stakeholder-researcher dossier (LinkedIn PDF not available)
 
-Search for: name + company, name + previous-likely-company, name + title, news mentions, conference talks, podcast appearances, board memberships, published articles. Build the picture from the public record.
+Use the career history and public commentary returned in Step 3. If the dossier's Disambiguation notes flag a name-collision risk or uncertainty about which person the findings describe, resolve it with the user before continuing rather than guessing.
 
 ### Synthesize "Tells"
 
-After you have the raw material, write three to five "tells" that shape how this person will hear what the user says. These are interpretive, not descriptive. Examples of strong tells:
+After you have the raw material (from the PDF or the dossier) and the company research returned in Step 3, write three to five "tells" that shape how this person will hear what the user says. These are interpretive, not descriptive. Examples of strong tells:
 
 - "Insurance brokerage native; she will hear RIA M&A through a P&C broker M&A lens"
 - "She's a finance-trained operator who became a CEO; she will demand IRR/NPV framing"
 - "He's been at the company 18 years and just took the wealth seat; he is the institutional answer, not a fresh face"
 - "She moved from BigCo enterprise to a high-growth startup three years ago; she has gone through the cultural translation and will be skeptical of consultants who haven't"
 
-Tells are the move that elevates a profile from "what they did" to "how they think."
+Tells are the move that elevates a profile from "what they did" to "how they think." This is synthesis, not research, it draws on the company dossier from Step 3 as much as the stakeholder material, and stays here in the main conversation rather than in either subagent.
 
 ### Identify "What They Walked Into"
 
-For any stakeholder in a relatively new role (under 18 months), describe the strategic moment they inherited. What's the problem they need to solve? What did their predecessor do or fail to do? What does success look like in their first 24 months?
+For any stakeholder in a relatively new role (under 18 months), describe the strategic moment they inherited, cross-referencing the primary company dossier from Step 3. What's the problem they need to solve? What did their predecessor do or fail to do? What does success look like in their first 24 months?
 
 This framing is especially powerful in advisory and consulting contexts because it tells the user where the stakeholder will be most receptive to outside help.
 
 ---
 
-## Step 6: Build the Conversation Architecture
+## Step 5: Build the Conversation Architecture
 
 Four components, calibrated to meeting type.
 
@@ -151,7 +141,7 @@ Strategic questions or observations that go a level deeper than the hooks. These
 
 ### C. Avoid / Use Cheat Sheet
 
-A compact list of words, framings, and angles to **avoid** (because they'll land wrong with this specific stakeholder) and ones to **use** (because they're in the stakeholder's working vocabulary). This is informed by the tells from Step 5.
+A compact list of words, framings, and angles to **avoid** (because they'll land wrong with this specific stakeholder) and ones to **use** (because they're in the stakeholder's working vocabulary). This is informed by the tells from Step 4.
 
 ### D. Closing Questions (3)
 
@@ -166,7 +156,7 @@ Three questions the user can ask near the end of the meeting that demonstrate ex
 
 ---
 
-## Step 7: Deliver Outputs
+## Step 6: Deliver Outputs
 
 Produce **both** of the following unless the user explicitly asks to skip one. Default behavior is both.
 
@@ -175,11 +165,11 @@ Produce **both** of the following unless the user explicitly asks to skip one. D
 Write the full brief inline in the conversation, structured as:
 
 1. Snapshot (3-4 sentence executive summary of the stakeholder and the strategic moment)
-2. Career arc and tells (Step 5 output)
+2. Career arc and tells (Step 4 output)
 3. What they walked into (if applicable)
-4. Company and industry context (Step 3 output, condensed to what's relevant for the meeting)
+4. Company and industry context (the primary company dossier from Step 3, condensed to what's relevant for the meeting)
 5. Secondary company context (if applicable)
-6. Conversation architecture: opening hooks, probing angles, avoid/use, closing questions (Step 6 output)
+6. Conversation architecture: opening hooks, probing angles, avoid/use, closing questions (Step 5 output)
 7. A short closing paragraph naming the one or two highest-leverage moves the user can make in the meeting
 
 Use prose, not bullet-heavy lists, except for the conversation architecture which benefits from numbered structure.
@@ -218,9 +208,9 @@ The one-pager design is editorial / financial-briefing aesthetic. Do not modify 
 
 **The stakeholder is a private-company executive with thin public footprint.** Lean harder on the company research and the stakeholder's career arc as inferred from LinkedIn. Be transparent in the brief about what you couldn't find.
 
-**The company is private with limited financial disclosure.** Use industry context, peer benchmarks, customer signals, recent funding announcements, and leadership commentary to triangulate.
+**The company is private with limited financial disclosure.** The company-researcher subagent already triangulates from industry context, peer benchmarks, customer signals, funding announcements, and leadership commentary; be transparent in the brief about what remains thin.
 
-**The stakeholder shares a common name with someone more famous.** Disambiguate using the email domain, the company, and the LinkedIn URL fragment. If still ambiguous, ask the user.
+**The stakeholder shares a common name with someone more famous.** On the LinkedIn PDF path, disambiguate using the email domain, the company, and the LinkedIn URL fragment. On the no-PDF path, check the stakeholder-researcher dossier's Disambiguation notes first. If still ambiguous either way, ask the user.
 
 **The user uploads a LinkedIn PDF for a completely different person than the meeting.** Surface this gently and confirm before proceeding.
 
