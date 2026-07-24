@@ -1,6 +1,7 @@
 ---
 name: positioning-stability
-description: Build the post-acquisition positioning, sales enablement, and customer outreach kit. Trigger when the user says "build a positioning statement after acquisition", "we have two sales reps telling different stories", "create a sales FAQ for the merged company", "draft a competitive response after acquisition", "set up an advisory council after the deal", "outreach plan for top accounts after close", or any post-close GTM coherence question. Produces the positioning statement, sales FAQ, talk track, competitive response scripts, top-20 outreach plan, and advisory council charter.
+description: Build the post-acquisition positioning, sales enablement, and customer outreach kit. Produces the positioning statement, sales FAQ, talk track, competitive response scripts, top-20 outreach plan, and advisory council charter.
+when_to_use: Trigger when the user says "build a positioning statement after acquisition", "we have two sales reps telling different stories", "create a sales FAQ for the merged company", "draft a competitive response after acquisition", "set up an advisory council after the deal", "outreach plan for top accounts after close", or any post-close GTM coherence question.
 allowed-tools: Read Write AskUserQuestion
 ---
 
