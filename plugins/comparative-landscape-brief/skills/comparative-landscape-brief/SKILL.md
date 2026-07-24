@@ -15,6 +15,7 @@ description: >
   verification pass on quantitative claims, synthesizes cross-cutting patterns,
   and writes a single markdown brief saved to disk. The user is the presenter,
   not the audience. Stop at producing the document; do not rehearse the user.
+allowed-tools: WebSearch WebFetch Read Write Artifact
 ---
 
 # Comparative Landscape Brief

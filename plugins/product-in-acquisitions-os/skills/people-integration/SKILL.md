@@ -1,6 +1,7 @@
 ---
 name: people-integration
 description: Design the first 90 days for acquired product talent so they stay, contribute, and feel ownership. Trigger when the user says "we're losing acquired PMs", "design retention for acquired product team", "our acquired Head of Product is disengaging", "build a 30/60/90 ownership plan for acquired leaders", "set up decision map sessions", "build a mentor pairing matrix", or any post-close acquired-team belonging or retention question. Produces decision map session template, mentor pairing matrix, 30/60/90 ownership plan, retention risk review (purpose and influence), and 1:1 coaching question library.
+allowed-tools: Read Write AskUserQuestion
 ---
 
 # People Integration

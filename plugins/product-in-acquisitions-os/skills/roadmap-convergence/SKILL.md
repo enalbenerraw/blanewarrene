@@ -1,6 +1,7 @@
 ---
 name: roadmap-convergence
 description: Facilitate the post-acquisition roadmap convergence process across Weeks 1 to 8. Trigger when the user says "merge our roadmaps", "we have two product visions and need to converge them", "facilitate a roadmap conflict diagnosis", "build a 30/60/90 plan after acquisition", "run a roadmap readout session", or any post-close roadmap merge or conflict question. Produces the conflict log, three-session facilitation guides, merged 90-day plus 12-month roadmap, and the 30/60/90 execution plan.
+allowed-tools: Read Write AskUserQuestion
 ---
 
 # Roadmap Convergence

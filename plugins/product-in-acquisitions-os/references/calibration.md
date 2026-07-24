@@ -4,11 +4,13 @@ Run this once at the start of any skill in this plugin. It takes 60 seconds and 
 
 ## Three questions to ask
 
-Ask in order. One short answer each. Do not advance until all three are answered (or explicitly skipped with rationale).
+These are closed-set choices. Ask all three in a single `AskUserQuestion` call rather than freeform chat questions:
 
-1. **Stage band.** Sub-$100M ARR well-funded early stage, or $100M to $500M ARR mature growth stage?
-2. **Acquisition shape.** Tuck-in (small team or tech absorbed into the acquirer), platform play (acquired company becomes the platform the acquirer builds on), or peer merger (two roughly equal products coming together)?
-3. **Integration maturity.** Is this the acquiring team's first product integration, or have they run three or more before?
+1. **Stage band.** Options: "Sub-$100M ARR (early stage)" (well-funded early stage acquirer) / "$100M-$500M ARR (growth stage)" (mature growth stage acquirer).
+2. **Acquisition shape.** Options: "Tuck-in" (small team or tech absorbed into the acquirer) / "Platform play" (acquired company becomes the platform the acquirer builds on) / "Peer merger" (two roughly equal products coming together).
+3. **Integration maturity.** Options: "First integration" (this is the acquiring team's first product integration) / "Experienced (3+)" (the team has run three or more before).
+
+Each question is single-select. The tool's built-in "Other" option covers a user who wants to skip a question with rationale (e.g. "skip, deal shape still TBD") instead of picking one of the listed options.
 
 Capture the answers in a short calibration block. Reference it throughout the skill.
 

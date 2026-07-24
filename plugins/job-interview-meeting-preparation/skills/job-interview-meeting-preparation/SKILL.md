@@ -14,6 +14,7 @@ description: >
   architecture (opening hooks, probing angles, avoid/use cheat sheet, closing
   questions), and produces two deliverables by default: a detailed in-chat brief
   and a one-pager rendered as both HTML and PDF for use during the meeting.
+allowed-tools: WebSearch WebFetch Read Write Bash Artifact
 ---
 
 # Meeting Prep Skill
