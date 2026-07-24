@@ -1,6 +1,7 @@
 ---
 name: week-0-readiness
 description: Run a product leader through pre-close (Week 0) integration readiness for an acquisition. Trigger when the user says "I was just named the product integration lead", "we're closing an acquisition soon", "help me prep for Day 1", "run me through Week 0", "draft decision rights for the integration", "build the combined product narrative", or any pre-close M&A product readiness request. Produces the integration lead charter, decision rights one-pager, combined product narrative draft, customer commitment inventory, and the five-question Day 1 readiness check.
+allowed-tools: Read Write AskUserQuestion
 ---
 
 # Week 0 Readiness
