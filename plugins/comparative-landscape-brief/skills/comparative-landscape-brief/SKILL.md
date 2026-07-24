@@ -1,20 +1,22 @@
 ---
 name: comparative-landscape-brief
 description: >
-  Produce a structured comparative briefing document for a third-party audience.
+  Produce a structured comparative briefing document for a third-party audience,
+  across a named set of 3 to 8 entities for a named audience (investors, board,
+  exec team, M&A committee, partners, advisory council, customer advisory
+  board). The skill captures inputs, researches each entity, analyzes the last
+  90 days of public messaging, runs a third-party verification pass on
+  quantitative claims, synthesizes cross-cutting patterns, and writes a single
+  markdown brief saved to disk. The user is the presenter, not the audience.
+  Stop at producing the document; do not rehearse the user.
+when_to_use: >
   Trigger this skill whenever the user asks for a comparison, landscape brief,
   competitive analysis, market scan, or "executive summary of these
-  [companies/products/initiatives]" across a named set of 3 to 8 entities for a
-  named audience (investors, board, exec team, M&A committee, partners,
-  advisory council, customer advisory board). Phrases like "brief investors on
-  X, Y, Z", "compare these vendors for the board", "build me a landscape on
-  these competitors", "I have a partner steering group on Thursday, compare
-  these four", or "executive summary of the BOS category for our M&A
-  committee" should fire it. The skill captures inputs, researches each entity,
-  analyzes the last 90 days of public messaging, runs a third-party
-  verification pass on quantitative claims, synthesizes cross-cutting patterns,
-  and writes a single markdown brief saved to disk. The user is the presenter,
-  not the audience. Stop at producing the document; do not rehearse the user.
+  [companies/products/initiatives]" across 3 to 8 named entities. Phrases like
+  "brief investors on X, Y, Z", "compare these vendors for the board", "build
+  me a landscape on these competitors", "I have a partner steering group on
+  Thursday, compare these four", or "executive summary of the BOS category for
+  our M&A committee" should fire it.
 allowed-tools: WebSearch WebFetch Read Write Artifact
 ---
 

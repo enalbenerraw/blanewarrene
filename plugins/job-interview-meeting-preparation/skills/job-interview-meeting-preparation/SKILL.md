@@ -3,17 +3,19 @@ name: job-interview-meeting-preparation
 description: >
   Prepare a user for a high-stakes professional meeting (interview, advisory or
   consulting meeting, partnership or BD meeting, or sales discovery call) with a
-  specific stakeholder at a specific company. Trigger this skill whenever the user
-  mentions an upcoming meeting and provides a company name, even without saying
-  "skill" or "brief". Phrases like "I have an interview at Acme Thursday", "prep
-  me for a meeting with [name]", "I'm meeting the CFO of [company] tomorrow",
-  "help me get ready for a partnership call", or simply uploading a LinkedIn PDF
-  alongside a company name should fire it. The skill handles input capture, web
+  specific stakeholder at a specific company. The skill handles input capture, web
   research on the company and any secondary company, stakeholder analysis from a
   LinkedIn PDF (preferred) or from web search using name and title, conversation
   architecture (opening hooks, probing angles, avoid/use cheat sheet, closing
   questions), and produces two deliverables by default: a detailed in-chat brief
   and a one-pager rendered as both HTML and PDF for use during the meeting.
+when_to_use: >
+  Trigger this skill whenever the user mentions an upcoming meeting and provides
+  a company name, even without saying "skill" or "brief". Phrases like "I have
+  an interview at Acme Thursday", "prep me for a meeting with [name]", "I'm
+  meeting the CFO of [company] tomorrow", "help me get ready for a partnership
+  call", or simply uploading a LinkedIn PDF alongside a company name should
+  fire it.
 allowed-tools: WebSearch WebFetch Read Write Bash Artifact
 ---
 
@@ -64,7 +66,7 @@ This sets expectations because the research will take multiple web searches.
 
 ## Step 3: Research the Primary Company
 
-Use `web_search` and `web_fetch`. Prioritize primary sources: investor relations pages, SEC filings (10-K, 10-Q, 8-K, DEF 14A), official press releases, the company's own blog, recent earnings calls. Use secondary sources (trade press, analyst commentary) for context and color.
+Use this session's web search and page-fetch tools (`WebSearch`/`WebFetch` in Claude Code). Prioritize primary sources: investor relations pages, SEC filings (10-K, 10-Q, 8-K, DEF 14A), official press releases, the company's own blog, recent earnings calls. Use secondary sources (trade press, analyst commentary) for context and color.
 
 Cover at minimum:
 
