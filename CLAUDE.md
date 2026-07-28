@@ -129,7 +129,7 @@ done
 
 The `product-in-acquisitions-os` plugin is the reference layout. Mirror its shape rather than improvising.
 
-1. **Scaffold** under `plugins/<new-plugin>/` with `.claude-plugin/plugin.json`, a `README.md`, and one or more `skills/<skill-name>/SKILL.md` files. Put templates Claude reads at runtime under `skills/<skill-name>/references/`.
+1. **Scaffold** under `plugins/<new-plugin>/` with `.claude-plugin/plugin.json`, a `README.md`, a `CHANGELOG.md` seeded with a `[0.1.0]` section, and one or more `skills/<skill-name>/SKILL.md` files. Put templates Claude reads at runtime under `skills/<skill-name>/references/`.
 2. **Apply author conventions** (see top of this file): no em dashes, CxO tone, attribution footer on produced deliverables, imperative voice in SKILL.md bodies.
 3. **Register in the marketplace** by adding an entry to `.claude-plugin/marketplace.json`.
 4. **Add a release workflow** at `.github/workflows/release-<short-name>.yml`, triggered on `<short-name>-v*`. Copy `release-pia.yml` or `release-interview.yml` as a template and update the plugin path, prefix-strip pattern (`${GITHUB_REF_NAME#<short-name>-v}`), artifact names, and release body.
@@ -140,9 +140,10 @@ The `product-in-acquisitions-os` plugin is the reference layout. Mirror its shap
 
 1. Make changes on a branch or directly on `main` (the repo is solo-maintained).
 2. Bump the `version` field in **both** the plugin's `plugin.json` and the matching entry in `.claude-plugin/marketplace.json`. Both must agree, or the marketplace resolver will keep serving the old version.
-3. Run the pre-flight checks above.
-4. Commit with a descriptive message in the existing style (`Add X`, `Update Y`, `Fix Z`).
-5. Push to `main`. Validate the manifests agree with `claude plugin tag --dry-run plugins/<plugin-name>` from the repo root (the right place to catch version skew), then create and push the short-prefix tag (`<short-name>-v<version>`) the release workflow triggers on. Do not push the `<plugin-name>--v<version>` tag the command would create; it does not match any workflow trigger.
+3. Add a matching section to the plugin's `CHANGELOG.md` in the same commit as the version bump. Every plugin has one, following Keep a Changelog 1.1.0 and semver. Use `## [<version>] - <YYYY-MM-DD>` with `### Added`, `### Changed`, `### Fixed`, or `### Removed` subsections. If a change ships without a version bump, put it under `## [Unreleased]` so the next release can promote it.
+4. Run the pre-flight checks above.
+5. Commit with a descriptive message in the existing style (`Add X`, `Update Y`, `Fix Z`).
+6. Push to `main`. Validate the manifests agree with `claude plugin tag --dry-run plugins/<plugin-name>` from the repo root (the right place to catch version skew), then create and push the short-prefix tag (`<short-name>-v<version>`) the release workflow triggers on. Do not push the `<plugin-name>--v<version>` tag the command would create; it does not match any workflow trigger.
 
 ## What NOT to do
 
