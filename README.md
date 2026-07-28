@@ -39,19 +39,19 @@ Plugin privacy policy: [blanewarrene.com/plugins-privacy](https://blanewarrene.c
 
 ## Featured Projects
 
-| Project | What It Does | Stack |
-|---------|-------------|-------|
-| [GTM Intel CLI](src/gtm_intel/) | Messaging analysis tool: analyze competitor, partner, and your own messaging | Python, Gemini, Google Sheets |
-| [Strategic GTM Intel](prompts/strategic-gtm-intel-prompt.md) | Competitive wedge analysis against your own GTM | Gemini, Claude Code |
-| [Competitive Brief Generator](prompts/competitive-brief-generator-prompt.md) | Turn a company name and URL into a three-page competitive brief (Landscape, Product Catalog, Battle Card) as styled HTML/PDF | Claude with web search |
-| [Signal Watch](prompts/signal-watch-instructions.md) | Executive briefing on any company's positioning, leadership, and market signals | Any LLM with web search |
-| [Morning News Brief](prompts/morning-news-brief-prompt.md) | Automated daily news brief with content opportunities tied to your themes | Any LLM with web search |
-| [LLM Memory Audit](prompts/llm-memory-audit-prompts.md) | Copy-paste prompt recipes to audit persistent memory and instructions in ChatGPT, Claude, Copilot, and Gemini | Any LLM |
-| [Teachable Course Builder](prompts/teachable-course-builder-prompt.md) | Generate an end-to-end, Teachable-ready free course on expert prompting for non-technical learners. [Copilot](prompts/teachable-course-builder-copilot.md) and [Gemini](prompts/teachable-course-builder-gemini.md) variants included | Claude, Copilot, Gemini |
-| [Built Courses](prompts/) | Two finished course outlines produced by the builder: [Inbox Mastery](prompts/course-inbox-mastery.md) (Claude in Gmail and Outlook) and [The AI Interview](prompts/course-the-ai-interview.md) | Claude |
-| [Pre-Call Briefing](pre-call-briefing/) | Executive-grade pre-call briefing on any target company for sales, BD, partnerships, and GTM teams | Claude with web search |
-| [Notes2Notion](Notes2Notion/) | Export Apple Notes to Notion-importable Markdown: CLI and native macOS GUI app | Python, AppleScript |
-| [AI SMB Toolkit](prompts/ai-smb-toolkit/) | Four Word documents that turn AI curiosity into a working plan: tech stack inventory, HR AI survey, prompt cookbook, and course builder | Word, prompt frameworks |
+| Project | What It Does | Stack | Updated |
+|---------|-------------|-------|---------|
+| [GTM Intel CLI](src/gtm_intel/) | Messaging analysis tool: analyze competitor, partner, and your own messaging | Python, Gemini, Google Sheets | 2026-03-26 |
+| [Strategic GTM Intel](prompts/strategic-gtm-intel-prompt.md) | Competitive wedge analysis against your own GTM | Gemini, Claude Code | 2026-03-26 |
+| [Competitive Brief Generator](prompts/competitive-brief-generator-prompt.md) | Turn a company name and URL into a three-page competitive brief (Landscape, Product Catalog, Battle Card) as styled HTML/PDF | Claude with web search | 2026-06-28 |
+| [Signal Watch](prompts/signal-watch-instructions.md) | Executive briefing on any company's positioning, leadership, and market signals | Any LLM with web search | 2026-04-02 |
+| [Morning News Brief](prompts/morning-news-brief-prompt.md) | Automated daily news brief with content opportunities tied to your themes | Any LLM with web search | 2026-03-26 |
+| [LLM Memory Audit](prompts/llm-memory-audit-prompts.md) | Copy-paste prompt recipes to audit persistent memory and instructions in ChatGPT, Claude, Copilot, and Gemini | Any LLM | 2026-06-17 |
+| [Teachable Course Builder](prompts/teachable-course-builder-prompt.md) | Generate an end-to-end, Teachable-ready free course on expert prompting for non-technical learners. [Copilot](prompts/teachable-course-builder-copilot.md) and [Gemini](prompts/teachable-course-builder-gemini.md) variants included | Claude, Copilot, Gemini | 2026-07-23 |
+| [Built Courses](prompts/) | Two finished course outlines produced by the builder: [Inbox Mastery](prompts/course-inbox-mastery.md) (Claude in Gmail and Outlook) and [The AI Interview](prompts/course-the-ai-interview.md) | Claude | 2026-04-22 |
+| [Pre-Call Briefing](pre-call-briefing/) | Executive-grade pre-call briefing on any target company for sales, BD, partnerships, and GTM teams | Claude with web search | 2026-04-14 |
+| [Notes2Notion](Notes2Notion/) | Export Apple Notes to Notion-importable Markdown: CLI and native macOS GUI app | Python, AppleScript | 2026-06-10 |
+| [AI SMB Toolkit](prompts/ai-smb-toolkit/) | Four Word documents that turn AI curiosity into a working plan: tech stack inventory, HR AI survey, prompt cookbook, and course builder | Word, prompt frameworks | 2026-07-09 |
 
 ## Elsewhere
 
