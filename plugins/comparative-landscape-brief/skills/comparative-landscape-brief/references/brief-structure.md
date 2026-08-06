@@ -16,7 +16,7 @@ Use this as the canonical output template. Do not regenerate; reference and cust
 
 Each entity has three blocks:
 
-1. **90-day messaging themes** (what they are saying in public right now)
+1. **[time window] messaging themes** (what they are saying in public right now, over the window the brief was scoped to)
 2. **Inferred strategic priorities** (what those themes signal about where capital and attention are going)
 3. **Tailwind to leverage** (a market force they are positioned to ride if they execute)
 
@@ -29,7 +29,7 @@ The closing section pulls cross-cutting patterns useful for portfolio-level disc
 ### Data caveat (only include if verification failed)
 [One short paragraph. Specify whether the entity is bootstrapped or has no public financial trail, whether quantitative claims have drifted across interview cycles, and whether the awards or recognitions cited are credible third-party programs or pay-to-play vanity press. Tell the presenter how to handle the numbers if asked.]
 
-### 90-day messaging themes
+### [time window] messaging themes
 - [Bullet 1]
 - [Bullet 2]
 - [Bullet 3]
