@@ -9,7 +9,7 @@ The user is the presenter, not the audience. The brief is for someone else to re
 A single markdown document with:
 
 - A header (prepared date, audience, entity set, time window)
-- Per-entity sections covering 90-day messaging themes, inferred strategic priorities, and a leverageable tailwind
+- Per-entity sections covering messaging themes over your chosen time window (90 days by default), inferred strategic priorities, and a leverageable tailwind
 - Data caveats wherever third-party verification failed
 - Cross-cutting observations useful at portfolio level
 - Discussion prompts ready for the meeting

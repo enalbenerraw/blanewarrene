@@ -5,6 +5,33 @@ All notable changes to this skill are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.4.0] - 2026-08-06
+
+### Changed
+
+- `entity-researcher` is no longer hardwired to comparative work. It takes a
+  research posture, either `one of a parallel set` or `standalone`, which
+  decides one thing: whether comparison is the subagent's job. This skill
+  always sends `one of a parallel set`, matching its previous behavior, since
+  sibling instances cannot see each other's findings and the comparing
+  happens in Step 4. The prior text asserted the parallel-set situation as a
+  fact rather than a parameter, so the subagent could not be reused by any
+  skill that researches one entity at a time.
+- The messaging-themes heading now carries the time window it was given.
+  Previously the output template hardcoded `### 90-day messaging themes`
+  while Step 2 already accepted the window as a parameter, so any window
+  other than 90 days produced findings filed under a heading that
+  contradicted them. `brief-structure.md` and the Step 5 per-entity template
+  were carrying the same hardcoded heading and now defer to what the dossier
+  returns.
+- The subagent description and output-format preamble describe the work
+  rather than naming this one calling skill.
+
+### Notes
+
+- No behavior change for this skill's own users. Default window is still
+  90 days and the parallel-set posture is what it always did implicitly.
+
 ## [0.3.0] - 2026-07-24
 
 ### Added
