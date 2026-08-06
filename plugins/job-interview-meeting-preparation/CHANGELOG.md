@@ -5,6 +5,35 @@ All notable changes to this skill are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.4.0] - 2026-08-06
+
+### Security
+
+- Both research subagents now refuse instructions embedded in fetched pages.
+  `company-researcher` and `stakeholder-researcher` hold `WebSearch` and
+  `WebFetch` but carried no prompt-injection defense, while the sibling
+  `entity-researcher` in `comparative-landscape-brief` already had one.
+  A `Flagged content` section reports any attempt.
+
+### Added
+
+- Verification pass on `company-researcher`. Quantitative self-claims
+  (revenue, growth, customer count, headcount, funding, valuation) must be
+  corroborated by a filed or audited source, or by a credible third party,
+  before they are stated as fact. Everything else is labeled
+  company-reported.
+- Verification pass on `stakeholder-researcher`. Titles, tenure, team size,
+  and credited outcomes usually originate with the person, so claims found
+  only in self-authored material are labeled self-reported.
+- `Data caveat` section on both subagents' output, naming which figures are
+  unverified.
+- Step 3 of the skill now has explicit handling for `Data caveat` and
+  `Flagged content`, so neither can be silently dropped by the orchestrating
+  conversation. Caveats must survive into the one-pager, which is the
+  artifact read under pressure.
+- Two edge cases covering flagged content and unverifiable stakeholder
+  claims.
+
 ## [0.3.0] - 2026-07-24
 
 ### Added
