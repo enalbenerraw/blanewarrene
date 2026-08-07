@@ -11,10 +11,13 @@ when_to_use: >
   Trigger for a briefing on a SINGLE named company. Phrases like "run a signal
   watch on Acme", "what is Acme saying publicly", "brief me on Acme's
   positioning and leadership", "who runs Acme and what are they signaling", or
-  "executive briefing on Acme". The discriminator is entity count: this skill
-  covers one company in depth. For a side-by-side across 3 to 8 entities, use
-  comparative-landscape-brief instead. For preparing a specific meeting with a
-  specific person, use job-interview-meeting-preparation.
+  "executive briefing on Acme". The discriminator is one company with no call
+  attached and no second side: understanding, not preparing. For 3 to 8
+  entities side by side, use comparative-landscape-brief. For a specific
+  commercial call on the calendar, use pre-call-briefing. For your company
+  against a named rival, use strategic-gtm-intel. For a battle card as styled
+  HTML, use competitive-brief-generator. For a meeting with a named individual,
+  use job-interview-meeting-preparation.
 allowed-tools: WebSearch WebFetch Read Write Agent
 ---
 
@@ -117,5 +120,8 @@ Write to the destination from Step 1 and tell the user the path. Deliver it dura
 ## When NOT to fire this skill
 
 - Three or more entities side by side. Use `comparative-landscape-brief`.
-- Preparing for a meeting with a named person. Use `job-interview-meeting-preparation`, which builds conversation architecture rather than a briefing.
+- A commercial call already on the calendar. Use `pre-call-briefing`, which runs a clarifying interview and closes with a call playbook.
+- Your own company as the second side. Use `strategic-gtm-intel`.
+- A battle card or landscape map as a styled visual deliverable. Use `competitive-brief-generator`.
+- A meeting with a named person. Use `job-interview-meeting-preparation`, which builds conversation architecture rather than a briefing.
 - A recurring digest on topics rather than a company. This produces one document about one company on demand.

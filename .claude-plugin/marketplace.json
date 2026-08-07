@@ -50,9 +50,9 @@
     },
     {
       "name": "comparative-landscape-brief",
-      "displayName": "Comparative Landscape Brief",
+      "displayName": "Market Intelligence",
       "source": "./plugins/comparative-landscape-brief",
-      "description": "Produce a structured briefing document that compares a set of 3 to 8 organizations, products, or initiatives for a third-party audience (investors, board, exec team, M&A committee, partner steering group). Researches each entity, analyzes the last 90 days of public messaging, runs a third-party verification pass on quantitative claims, and writes a single markdown brief with per-entity sections, cross-cutting observations, and discussion prompts ready for the meeting.",
+      "description": "Market intelligence for product and GTM leaders. Five skills sharing one hardened research subagent that verifies quantitative claims against third-party sources and refuses instructions embedded in fetched pages. Compare 3 to 8 entities side by side, brief one company in depth, build a competitive landscape and battle card as styled HTML, run a competitive wedge analysis against a named rival, or prepare for a specific commercial call.",
       "version": "0.4.3",
       "category": "research-and-strategy",
       "tags": [
