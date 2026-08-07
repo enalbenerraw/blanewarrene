@@ -5,6 +5,23 @@ All notable changes to this plugin are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.5.0] - 2026-08-07
+
+### Changed
+
+- **Relicensed from `LicenseRef-Proprietary` to MIT.** Every plugin in this
+  marketplace is now MIT, which removes the inconsistency where two were
+  permissive and one was not. This grant is irrevocable for this version and
+  any later one carrying it: MIT permits redistribution, modification, and
+  commercial resale.
+- `homepage` now points to blanewarrene.com, the canonical owner of this
+  content, rather than to the Substack that distributes it.
+
+### Added
+
+- `LICENSE`. The manifest previously declared a license with no license text
+  present, so the terms were asserted and never stated.
+
 ## [0.4.0] - 2026-07-28
 
 ### Added
