@@ -49,4 +49,4 @@ The conversation is more important than the score. The score creates the obligat
 
 ---
 
-*Generated using the Product in Acquisitions OS by Blane Warrene · blanewarrene.substack.com*
+*Created by Blane Warrene, blanewarrene.com*

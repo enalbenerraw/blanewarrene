@@ -53,4 +53,4 @@ Build these into 1:1 meetings and leadership stand-ups from Day 1. The questions
 
 ---
 
-*Generated using the Product in Acquisitions OS by Blane Warrene · blanewarrene.substack.com*
+*Created by Blane Warrene, blanewarrene.com*

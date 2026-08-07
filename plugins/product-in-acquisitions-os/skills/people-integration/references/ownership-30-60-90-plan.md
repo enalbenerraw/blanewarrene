@@ -44,4 +44,4 @@ If the answer is not clearly yes, the plan has not worked yet, and the next 30 d
 
 ---
 
-*Generated using the Product in Acquisitions OS by Blane Warrene · blanewarrene.substack.com*
+*Created by Blane Warrene, blanewarrene.com*

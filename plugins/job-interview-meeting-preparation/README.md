@@ -157,8 +157,8 @@ MIT. See [`LICENSE`](LICENSE).
 
 ## Author
 
-[Blane Warrene](https://blanewarrene.substack.com). Writing on
+[Blane Warrene](https://blanewarrene.com). Writing on
 product positioning and AI at
-[blanewarrene.substack.com](https://blanewarrene.substack.com/).
+[blanewarrene.com](https://blanewarrene.com).
 
 Contributions, issues, and forks welcome.

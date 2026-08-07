@@ -48,4 +48,4 @@ Track every change. Every revision is a signal of misalignment somewhere upstrea
 
 ---
 
-*Generated using the Product in Acquisitions OS by Blane Warrene · blanewarrene.substack.com*
+*Created by Blane Warrene, blanewarrene.com*

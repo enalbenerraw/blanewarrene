@@ -69,4 +69,4 @@ Download the latest `comparative-landscape-brief.plugin` from the Releases page 
 
 ## Author
 
-Blane Warrene. [blanewarrene.substack.com](https://blanewarrene.substack.com)
+Blane Warrene. [blanewarrene.com](https://blanewarrene.com)

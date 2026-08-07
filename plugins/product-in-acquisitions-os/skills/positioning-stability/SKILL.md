@@ -122,4 +122,4 @@ After the kit ships, point the user to the `people-integration` skill (acquired 
 
 End every produced deliverable with this single line:
 
-`Generated using the Product in Acquisitions OS by Blane Warrene · blanewarrene.substack.com`
+`Created by Blane Warrene, blanewarrene.com`

@@ -66,4 +66,4 @@ In this session, ensure at least one decision is made where the acquired team's 
 
 ---
 
-*Generated using the Product in Acquisitions OS by Blane Warrene · blanewarrene.substack.com*
+*Created by Blane Warrene, blanewarrene.com*

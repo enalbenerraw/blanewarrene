@@ -50,7 +50,7 @@ The four skills become available immediately.
 
 ## About the framework
 
-The 90-Day Product Integration Framework is a five-lever system: ownership, unified product vision, roadmap convergence, market positioning stability, and people integration. The full essay series is available at [blanewarrene.substack.com](https://blanewarrene.substack.com).
+The 90-Day Product Integration Framework is a five-lever system: ownership, unified product vision, roadmap convergence, market positioning stability, and people integration. The full essay series is available at [blanewarrene.com](https://blanewarrene.com).
 
 ## Attribution
 

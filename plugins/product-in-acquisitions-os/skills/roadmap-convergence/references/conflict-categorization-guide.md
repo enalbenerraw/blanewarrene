@@ -38,4 +38,4 @@ If you cannot decide whether something is Vision or Sequencing, treat it as Visi
 
 ---
 
-*Generated using the Product in Acquisitions OS by Blane Warrene · blanewarrene.substack.com*
+*Created by Blane Warrene, blanewarrene.com*

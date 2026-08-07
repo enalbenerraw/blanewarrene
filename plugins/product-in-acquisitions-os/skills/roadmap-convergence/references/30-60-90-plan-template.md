@@ -37,4 +37,4 @@ The Integration Owner reviews progress against this plan every Friday. Slipped i
 
 ---
 
-*Generated using the Product in Acquisitions OS by Blane Warrene · blanewarrene.substack.com*
+*Created by Blane Warrene, blanewarrene.com*

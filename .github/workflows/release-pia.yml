@@ -151,7 +151,7 @@ jobs:
 
             ---
 
-            *Built by Blane Warrene · blanewarrene.substack.com*
+            *Created by Blane Warrene, blanewarrene.com*
           files: |
             /tmp/product-in-acquisitions-os.plugin
             /tmp/product-in-acquisitions-os-v${{ steps.version.outputs.tag_version }}.plugin

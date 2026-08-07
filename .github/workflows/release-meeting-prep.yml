@@ -95,7 +95,7 @@ jobs:
 
             See `extensions/meeting-prep-capture/README.md` for capture behavior and known limits.
 
-            Built by Blane Warrene · blanewarrene.substack.com
+            Created by Blane Warrene, blanewarrene.com
           files: |
             /tmp/meeting-prep-capture.zip
             /tmp/meeting-prep-capture-v${{ steps.version.outputs.tag_version }}.zip

@@ -28,4 +28,4 @@ Every place the two roadmaps disagree. Categorize before resolving.
 
 ---
 
-*Generated using the Product in Acquisitions OS by Blane Warrene · blanewarrene.substack.com*
+*Created by Blane Warrene, blanewarrene.com*

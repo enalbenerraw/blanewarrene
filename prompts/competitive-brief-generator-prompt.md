@@ -4,7 +4,7 @@ A reusable prompt that turns a company name and URL into a three-page competitiv
 
 You give it two inputs. It researches the company and its rivals, fact-checks the load-bearing numbers, and produces a single visual deliverable in a consistent house style.
 
-Built by Blane Warrene. blanewarrene.substack.com
+Created by Blane Warrene, blanewarrene.com
 
 ## What you get
 
