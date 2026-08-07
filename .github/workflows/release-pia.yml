@@ -142,7 +142,8 @@ jobs:
             ## Marketplace install
 
             ```bash
-            claude plugin install enalbenerraw/blanewarrene
+            claude plugin marketplace add enalbenerraw/blanewarrene
+            claude plugin install product-in-acquisitions-os@blanewarrene-marketplace
             ```
 
             ## What's in this release

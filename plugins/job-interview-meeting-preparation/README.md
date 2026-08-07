@@ -33,12 +33,15 @@ from a senior advisor rather than a generic prep document.
 
 ## Install
 
-This plugin ships in the `enalbenerraw/blanewarrene` marketplace.
-From any Claude Code or Cowork session:
+This plugin ships in the `enalbenerraw/blanewarrene` marketplace. Add the
+marketplace once, then install the plugin:
 
+```bash
+claude plugin marketplace add enalbenerraw/blanewarrene
+claude plugin install job-interview-meeting-preparation@blanewarrene-marketplace
 ```
-claude plugin install enalbenerraw/blanewarrene
-```
+
+Run `/reload-plugins` afterward to apply it to a running session.
 
 Then trigger the skill in conversation:
 
