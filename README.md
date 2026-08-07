@@ -11,17 +11,22 @@ AI-forward product and operations systems: prompt recipes, Claude Code plugins, 
 
 ## Claude Code Plugins
 
-Three plugins ship from one marketplace. Install all three with a single command:
+Three plugins ship from one marketplace. Add the marketplace once, then install whichever you want:
 
 ```bash
-claude plugin install enalbenerraw/blanewarrene
+claude plugin marketplace add enalbenerraw/blanewarrene
+claude plugin install product-in-acquisitions-os@blanewarrene-marketplace
+claude plugin install job-interview-meeting-preparation@blanewarrene-marketplace
+claude plugin install comparative-landscape-brief@blanewarrene-marketplace
 ```
 
-Or add the marketplace and pick which to install:
+Or from inside a Claude Code session, add the marketplace and browse:
 
-```bash
+```
 /plugin marketplace add enalbenerraw/blanewarrene
 ```
+
+Run `/reload-plugins` after installing or updating. Plugin changes do not take effect in a session that is already running.
 
 | Plugin | What It Does |
 |--------|-------------|

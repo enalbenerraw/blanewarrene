@@ -126,7 +126,8 @@ Write a single markdown document with this structure:
 This prompt is also available as a packaged plugin with the same workflow plus automatic file save:
 
 ```bash
-claude plugin install enalbenerraw/blanewarrene
+claude plugin marketplace add enalbenerraw/blanewarrene
+claude plugin install comparative-landscape-brief@blanewarrene-marketplace
 ```
 
 That installs three plugins from the same marketplace. Pick `comparative-landscape-brief` when prompted.

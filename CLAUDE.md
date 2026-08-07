@@ -95,11 +95,16 @@ When adding another plugin in the future, follow the same pattern: pick a short 
 
 ## Marketplace install
 
-The repo root contains `.claude-plugin/marketplace.json` which lists this plugin. Users install with:
+The repo root contains `.claude-plugin/marketplace.json` which lists the plugins. Users add the marketplace once, then install per plugin:
 
 ```bash
-claude plugin install enalbenerraw/blanewarrene
+claude plugin marketplace add enalbenerraw/blanewarrene
+claude plugin install <plugin-name>@blanewarrene-marketplace
 ```
+
+`claude plugin install` takes a **plugin name**, not a repo. Passing the repo (`claude plugin install enalbenerraw/blanewarrene`) fails with "not found in any configured marketplace". That wrong form was published in the README and here until 2026-08-07; verify any install instruction by running it before publishing it.
+
+Installing or updating does not affect a running session. Run `/reload-plugins` to apply, which is lighter than the session restart the CLI help suggests.
 
 If you add more plugins to the repo over time, add them as additional entries in `marketplace.json`.
 

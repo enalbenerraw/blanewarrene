@@ -60,8 +60,11 @@ Optional:
 ### Marketplace
 
 ```bash
-claude plugin install enalbenerraw/blanewarrene
+claude plugin marketplace add enalbenerraw/blanewarrene
+claude plugin install comparative-landscape-brief@blanewarrene-marketplace
 ```
+
+Run `/reload-plugins` afterward to apply it to a running session.
 
 ### Direct
 
