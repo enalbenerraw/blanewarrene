@@ -51,6 +51,40 @@ Do not pipe the runner through `tee`. The pipeline returns `tee`'s exit status, 
 ./evals/run.sh > run.log 2>&1; echo "exit=$?"
 ```
 
+## What this harness cannot test
+
+**Artifact emission.** The runner executes through `claude -p`, and headless CLI
+sessions have no artifact tool. Confirmed on 2026-08-07 by direct probe and by a
+skill run that searched for it and found nothing. Cowork exposes
+`mcp__cowork__create_artifact`; claude.ai and interactive Claude Code expose
+`Artifact`. None of them are reachable from here.
+
+That matters because artifact emission is where a real bug shipped: on
+2026-08-07 `tech-stack-inventory` wrote correct markdown in Cowork and produced
+no artifact, because delivery was worded as an optional menu item and named a
+tool that does not exist in Cowork. **Verifying that fix requires a manual run in
+Cowork.** There is no automated substitute.
+
+An attempt to guard the fallback branch instead (the skill must announce a
+missing artifact tool rather than skip silently) was written and dropped. The
+skill behaves correctly, but the only observable evidence is free-form prose,
+and three regex assertions against it failed for three different reasons while
+the product was fine. Prose matching is not a reliable instrument, which is the
+same lesson `must_flag` taught. Tool-call assertions are reliable; text
+assertions against chat commentary are not.
+
+## Case modes
+
+| `mode` | What it runs | What it asserts on |
+|--------|--------------|--------------------|
+| `subagent` (default) | Spawns one subagent via the Task tool | The returned dossier text |
+| `skill` | Invokes a named skill via the Skill tool | Response text, plus `required_tools` against the tool calls actually made |
+
+`required_tools` is the reliable half. It reads the `tool_use` names out of the
+`stream-json` output, so it catches "the skill never called the tool at all",
+which no text assertion can see. Prefer it over text matching wherever the
+behavior under test is a call rather than a phrase.
+
 ## Cost
 
 Every case spawns a real subagent that makes real web searches. Budget roughly 3 to 5 minutes and about 20 searches per case. This is not a test suite to run on every commit. Run it when a researcher agent or its calling skill changes.

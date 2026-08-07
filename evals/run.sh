@@ -69,36 +69,86 @@ SUMMARY=""
 
 for f in "${FILES[@]}"; do
   ID=$(jq -r .id "$f")
-  AGENT=$(jq -r .agent "$f")
+  MODE=$(jq -r '.mode // "subagent"' "$f")
   PROMPT=$(jq -r .prompt "$f")
   RAW="$OUT_DIR/$ID.md"
+  TOOLS_FILE="$OUT_DIR/$ID.tools"
 
   echo "── $ID"
-  echo "   agent: $AGENT"
 
-  # Ask the headless session to spawn exactly this subagent and return its
-  # dossier verbatim. The subagent's own tools come from its frontmatter.
-  DRIVER="Use the Task tool to spawn exactly one subagent of type '$AGENT'. Pass it this task prompt verbatim, changing nothing:
+  if [ "$MODE" = "skill" ]; then
+    # Skill mode. Invoke the skill directly and record which tools it called.
+    # Text assertions run against the final response; required_tools runs
+    # against the tool_use names pulled out of the stream. This is the only
+    # way to catch "the skill never called the tool at all", which no text
+    # assertion can see.
+    SKILL=$(jq -r .skill "$f")
+    GRANT=$(jq -r '.allowed_tools // "WebSearch,WebFetch,Read,Write,Artifact,AskUserQuestion,Task"' "$f")
+    echo "   skill: $SKILL"
+    DRIVER="Use the Skill tool to invoke '$SKILL' with these arguments verbatim:
+
+---
+$PROMPT
+---"
+  else
+    AGENT=$(jq -r .agent "$f")
+    echo "   agent: $AGENT"
+    GRANT="Task,WebSearch,WebFetch"
+    DRIVER="Use the Task tool to spawn exactly one subagent of type '$AGENT'. Pass it this task prompt verbatim, changing nothing:
 
 ---
 $PROMPT
 ---
 
 When it returns, output its response verbatim and nothing else. Do not summarize, reformat, add a preamble, or comment on it."
+  fi
 
   # bash 3.2 (macOS default) treats "${arr[@]}" on an empty array as unbound
   # under `set -u`, so branch instead of expanding a possibly-empty array.
   START=$(date +%s)
+  STREAM="$OUT_DIR/$ID.stream.jsonl"
   if [ -n "${EVAL_MODEL:-}" ]; then
-    timeout "$TIMEOUT" claude -p "$DRIVER" \
-      --allowedTools "Task,WebSearch,WebFetch" \
-      --model "$EVAL_MODEL" > "$RAW" 2>"$OUT_DIR/$ID.stderr"
+    timeout "$TIMEOUT" claude -p "$DRIVER" --allowedTools "$GRANT" \
+      --output-format stream-json --verbose \
+      --model "$EVAL_MODEL" > "$STREAM" 2>"$OUT_DIR/$ID.stderr"
   else
-    timeout "$TIMEOUT" claude -p "$DRIVER" \
-      --allowedTools "Task,WebSearch,WebFetch" > "$RAW" 2>"$OUT_DIR/$ID.stderr"
+    timeout "$TIMEOUT" claude -p "$DRIVER" --allowedTools "$GRANT" \
+      --output-format stream-json --verbose > "$STREAM" 2>"$OUT_DIR/$ID.stderr"
   fi
   RC=$?
   ELAPSED=$(( $(date +%s) - START ))
+
+  # Split the stream into the final text (for text assertions) and the list of
+  # tool names called (for required_tools).
+  python3 - "$STREAM" "$RAW" "$TOOLS_FILE" <<'PYEOF'
+import json, sys
+stream, raw, tools_out = sys.argv[1], sys.argv[2], sys.argv[3]
+text, tools = [], []
+try:
+    for line in open(stream, encoding="utf-8", errors="replace"):
+        line = line.strip()
+        if not line.startswith("{"):
+            continue
+        try:
+            d = json.loads(line)
+        except Exception:
+            continue
+        if d.get("type") == "result" and isinstance(d.get("result"), str):
+            text.append(d["result"])
+        msg = d.get("message")
+        content = msg.get("content") if isinstance(msg, dict) else None
+        if isinstance(content, list):
+            for blk in content:
+                if isinstance(blk, dict):
+                    if blk.get("type") == "tool_use":
+                        tools.append(str(blk.get("name")))
+                    elif blk.get("type") == "text" and d.get("type") == "assistant":
+                        text.append(blk.get("text") or "")
+except FileNotFoundError:
+    pass
+open(raw, "w", encoding="utf-8").write("\n".join(text))
+open(tools_out, "w", encoding="utf-8").write("\n".join(tools) + ("\n" if tools else ""))
+PYEOF
 
   if [ $RC -ne 0 ]; then
     echo "   RESULT: ERROR (exit $RC after ${ELAPSED}s) — see $ID.stderr"
@@ -136,9 +186,31 @@ When it returns, output its response verbatim and nothing else. Do not summarize
     done
   }
 
+  # required_tools asserts against the tool names actually called, not the text.
+  # A skill that produces a perfect document while silently never calling the
+  # tool it was told to call passes every text assertion and fails here.
+  assert_tools() {
+    local n
+    n=$(jq -r '.assert.required_tools // [] | length' "$f")
+    [ "$n" = "0" ] && return 0
+    for i in $(seq 0 $((n - 1))); do
+      local name pat
+      name=$(jq -r ".assert.required_tools[$i].name" "$f")
+      pat=$(jq -r ".assert.required_tools[$i].pattern" "$f")
+      if grep -qE "$pat" "$TOOLS_FILE"; then
+        printf "   PASS  tool call: %s\n" "$name"
+      else
+        printf "   FAIL  tool call: %s  (/%s/ not in: %s)\n" "$name" "$pat" \
+          "$(tr '\n' ' ' < "$TOOLS_FILE" | sed 's/ $//')"
+        CASE_FAIL=$((CASE_FAIL + 1))
+      fi
+    done
+  }
+
   assert_group required_patterns  yes "required "
   assert_group forbidden_patterns no  "forbidden"
   assert_group must_flag          yes "flagged  "
+  assert_tools
 
   if [ $CASE_FAIL -eq 0 ]; then
     echo "   RESULT: PASS (${ELAPSED}s, $(wc -l < "$RAW" | tr -d ' ') lines)"
