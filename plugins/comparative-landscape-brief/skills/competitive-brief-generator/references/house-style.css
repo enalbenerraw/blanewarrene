@@ -1,0 +1,82 @@
+:root {
+  --ink: #14110F;
+  --ink-soft: #4A4540;
+  --ink-mute: #7A736C;
+  --paper: #FAF7F2;
+  --line: #D8D2C8;
+  --accent: #7B2D26;
+  --accent-soft: #F2E6E2;
+  --highlight: #E8DDC9;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  background: #ECE7DD;
+  font-family: 'Inter Tight', sans-serif;
+  color: var(--ink);
+  font-size: 12px;
+  line-height: 1.35;
+  -webkit-font-smoothing: antialiased;
+}
+.page {
+  max-width: 760px; margin: 20px auto; background: var(--paper);
+  padding: 22px 28px 18px 28px; box-shadow: 0 2px 24px rgba(20,17,15,0.08);
+}
+.meta {
+  display: flex; justify-content: space-between; align-items: baseline;
+  font-size: 9px; text-transform: uppercase; letter-spacing: 0.14em;
+  color: var(--ink-mute); border-bottom: 1px solid var(--line);
+  padding-bottom: 6px; margin-bottom: 10px;
+}
+.meta strong { color: var(--accent); font-weight: 600; }
+h1 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 24px; line-height: 1.05; letter-spacing: -0.01em; }
+.bluf { background: #14110F; color: var(--paper); padding: 9px 13px; margin-top: 9px; font-size: 11px; line-height: 1.45; }
+.bluf strong { color: var(--highlight); }
+h2 {
+  font-family: 'Fraunces', serif; font-size: 10px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.18em; color: var(--accent);
+  border-bottom: 1px solid var(--accent); padding-bottom: 2px; margin: 12px 0 6px 0;
+}
+table { width: 100%; border-collapse: collapse; font-size: 10.5px; }
+th {
+  text-align: left; font-size: 8.5px; text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--ink-mute); font-weight: 600; padding: 3px 6px 3px 0; border-bottom: 1px solid var(--line);
+}
+td { padding: 4px 6px 4px 0; border-bottom: 1px dotted var(--line); vertical-align: top; line-height: 1.35; }
+td.name { font-weight: 600; white-space: nowrap; color: var(--ink); }
+td.tier { font-family: 'Fraunces', serif; font-style: italic; font-size: 9.5px; color: var(--accent); white-space: nowrap; }
+.twocol { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.item { display: grid; grid-template-columns: 18px 1fr; gap: 6px; margin-bottom: 6px; font-size: 10.5px; line-height: 1.4; }
+.item .num {
+  font-family: 'Fraunces', serif; font-weight: 700; color: var(--paper); background: var(--accent);
+  width: 16px; height: 16px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 9.5px;
+}
+.item .body span { color: var(--ink-soft); }
+.talk { background: var(--highlight); border-left: 3px solid var(--accent); padding: 8px 11px; margin-bottom: 5px; font-size: 10.5px; line-height: 1.4; }
+.qs .q { display: grid; grid-template-columns: 14px 1fr; gap: 5px; padding: 5px 0; border-top: 1px solid var(--line); font-size: 10.5px; line-height: 1.4; }
+.qs .q:first-child { border-top: none; }
+.qs .qmark { font-family: 'Fraunces', serif; font-style: italic; font-weight: 600; color: var(--accent); font-size: 13px; line-height: 1; }
+footer {
+  margin-top: 12px; padding-top: 6px; border-top: 1px solid var(--line);
+  display: flex; justify-content: space-between; font-size: 9px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink-mute);
+}
+footer .pull { font-family: 'Fraunces', serif; font-style: italic; text-transform: none; letter-spacing: 0; color: var(--accent); font-size: 10.5px; }
+.pagebreak { margin-top: 24px; }
+.bc-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 12px; }
+.bc-head { font-family: 'Fraunces', serif; font-size: 9.5px; font-weight: 700; letter-spacing: 0.14em; padding: 5px 8px; margin-bottom: 6px; color: var(--paper); text-align: center; }
+.bc-green { background: #2D5A2D; }
+.bc-gray { background: #7A736C; }
+.bc-red { background: #7B2D26; }
+.bc-item { padding: 5px 2px; border-bottom: 1px dotted var(--line); font-size: 10px; line-height: 1.35; }
+.bc-item:last-child { border-bottom: none; }
+.bc-item strong { display: block; font-weight: 600; color: var(--ink); }
+.bc-item span { color: var(--ink-soft); font-size: 9.5px; }
+@media print {
+  html, body { background: white; font-size: 10px; }
+  .page { box-shadow: none; margin: 0; max-width: 100%; padding: 0; }
+  h1 { font-size: 19px; }
+  .bluf { font-size: 9.5px; padding: 7px 11px; margin-top: 7px; }
+  table { font-size: 9px; }
+  .item, .talk, .qs .q { font-size: 9px; }
+  .pagebreak { page-break-before: always; }
+  @page { size: letter portrait; margin: 0.3in; }
+}
