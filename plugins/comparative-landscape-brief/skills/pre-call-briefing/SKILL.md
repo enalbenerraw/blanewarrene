@@ -17,7 +17,7 @@ when_to_use: >
   company with no call attached, use signal-watch. For a meeting with a named
   individual where the person matters more than the company, use
   job-interview-meeting-preparation.
-allowed-tools: WebSearch WebFetch Read Write AskUserQuestion Agent
+allowed-tools: WebSearch WebFetch Read Write AskUserQuestion Artifact Agent
 ---
 
 # Pre-Call Briefing
@@ -81,7 +81,10 @@ Required sections, in order:
 5. **Call playbook.** Themes to lead with, sharp questions to ask, risks to pressure-test live.
 6. **Appendix: source notes.** Every URL consulted with a one-line description.
 
-Write to the format chosen in Step 2. Default `~/Documents/<company-slug>-pre-call-briefing.md`. Tell the user the path.
+Write to the format chosen in Step 2. Default `~/Documents/<company-slug>-pre-call-briefing.md`. Tell the user the path. Deliver it durably, never inline only:
+
+- Artifact rendering available (claude.ai web, Cowork): emit as a markdown artifact. **Always pass a title.** Cowork rejects the call without one. Use `Pre-Call Briefing: [Company Name]`.
+- Local Claude Code: write to the path above.
 
 ---
 

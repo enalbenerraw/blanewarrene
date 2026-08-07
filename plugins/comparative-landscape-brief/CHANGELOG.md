@@ -5,6 +5,34 @@ All notable changes to this skill are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.5.1] - 2026-08-07
+
+Found by running the plugin in Cowork, which is the first time these skills
+executed outside Claude Code.
+
+### Fixed
+
+- **`signal-watch` referenced the Artifact tool without granting it.** Its body
+  said "emit as a markdown artifact" while `allowed-tools` omitted `Artifact`.
+- **No skill documented that the artifact call requires a title.** Cowork
+  rejects the call without one, which surfaced as a non-blocking widget error
+  on the first real Cowork run. All five skills now state the requirement and
+  give the title to use.
+- **`strategic-gtm-intel` and `pre-call-briefing` had no artifact path at all.**
+  Both produce markdown documents, so in Cowork they wrote to disk and rendered
+  nothing. Both now grant `Artifact` and carry the same delivery block as their
+  siblings.
+
+### Notes
+
+- Confirmed by that run: plugins install in Cowork through Customize, and
+  `when_to_use` survives the plugin path. The six-field Agent Skills frontmatter
+  limit applies to claude.ai skill uploads, not to plugin skills, so these
+  skills work in Cowork unchanged.
+- `claude plugin validate --strict` passed on every version that shipped these
+  defects. Manifest validation does not check whether a skill body references a
+  tool the frontmatter withholds.
+
 ## [0.5.0] - 2026-08-07
 
 The plugin becomes a market-intelligence suite. Four new skills join the

@@ -18,7 +18,7 @@ when_to_use: >
   against a named rival, use strategic-gtm-intel. For a battle card as styled
   HTML, use competitive-brief-generator. For a meeting with a named individual,
   use job-interview-meeting-preparation.
-allowed-tools: WebSearch WebFetch Read Write Agent
+allowed-tools: WebSearch WebFetch Read Write Artifact Agent
 ---
 
 # Signal Watch
@@ -102,7 +102,7 @@ Read `references/brief-structure.md` for the output template and follow it exact
 
 Write to the destination from Step 1 and tell the user the path. Deliver it durably, never inline only:
 
-- Artifact rendering available: emit as a markdown artifact.
+- Artifact rendering available (claude.ai web, Cowork): emit as a markdown artifact. **Always pass a title.** Cowork rejects the call without one. Use `Signal Watch: [Company Name]`.
 - Cowork hosted session: write to `/mnt/user-data/outputs/` and surface with `present_files`.
 - Local Claude Code: write to the path from Step 1.
 

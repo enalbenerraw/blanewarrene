@@ -17,7 +17,7 @@ when_to_use: >
   one-sided briefing on a company, use signal-watch. For one company against
   its whole competitive set as a visual deliverable, use
   competitive-brief-generator.
-allowed-tools: WebSearch WebFetch Read Write Agent
+allowed-tools: WebSearch WebFetch Read Write Artifact Agent
 ---
 
 # Strategic GTM Intel
@@ -78,7 +78,10 @@ Four bullets. No more. This is what the leadership team reads.
 
 ## Step 5: Produce the analysis
 
-Write to the destination from Step 1 and tell the user the path.
+Write to the destination from Step 1 and tell the user the path. Deliver it durably, never inline only:
+
+- Artifact rendering available (claude.ai web, Cowork): emit as a markdown artifact. **Always pass a title.** Cowork rejects the call without one. Use `Wedge Analysis: [Competitor] vs [Your Company]`.
+- Local Claude Code: write to the path from Step 1.
 
 Structure: the four-bullet summary first, then the audit and wedge sections as supporting evidence, then sources. The summary is the deliverable; everything else is why it is true.
 

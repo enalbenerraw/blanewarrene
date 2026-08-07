@@ -93,6 +93,8 @@ If a code execution environment is available, also render to PDF at Letter size,
 
 If no code environment is available, deliver the HTML and tell the user they can print to PDF themselves. Do not silently skip the PDF and leave them wondering.
 
+Where artifact rendering is available (claude.ai web, Cowork), emit the HTML as an artifact as well. **Always pass a title.** Cowork rejects the call without one. Use `[Company] Competitive Brief`.
+
 Tell the user where the files landed.
 
 ---
