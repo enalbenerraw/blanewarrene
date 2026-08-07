@@ -69,9 +69,10 @@ Each plugin versions and ships independently using a plugin-specific tag prefix.
 | `product-in-acquisitions-os` | `pia-v<version>` | `.github/workflows/release-pia.yml` |
 | `job-interview-meeting-preparation` | `interview-v<version>` | `.github/workflows/release-interview.yml` |
 | `comparative-landscape-brief` | `clb-v<version>` | `.github/workflows/release-clb.yml` |
+| `ai-adoption-os` | `adopt-v<version>` | `.github/workflows/release-adopt.yml` |
 | `meeting-prep-capture` (Chrome extension) | `meeting-prep-v<version>` | `.github/workflows/release-meeting-prep.yml` |
 
-The release workflows trigger on the short prefix tags above (`pia-v*`, `interview-v*`, `clb-v*`, `meeting-prep-v*`). That short prefix is the convention; the tag you push must use it or no workflow fires.
+The release workflows trigger on the short prefix tags above (`pia-v*`, `interview-v*`, `clb-v*`, `adopt-v*`, `meeting-prep-v*`). That short prefix is the convention; the tag you push must use it or no workflow fires.
 
 The `meeting-prep-capture` extension is not a marketplace plugin. Its workflow validates the manifest (must be Manifest V3), enforces that the tag matches `manifest.json` `version`, then zips the loadable extension (manifest at the zip root, docs excluded) and attaches it to a GitHub release for upload to the Chrome Web Store. There is no `marketplace.json` entry to sync for it.
 
@@ -87,7 +88,7 @@ git tag -a pia-v<version> -m "product-in-acquisitions-os <version>"
 git push origin pia-v<version>
 ```
 
-All three release workflows also auto-sync `marketplace.json` on `main` after the tag fires, so a slip is recoverable, but it is much cleaner to catch a version mismatch with the dry run before pushing the tag.
+All four plugin release workflows also auto-sync `marketplace.json` on `main` after the tag fires, so a slip is recoverable, but it is much cleaner to catch a version mismatch with the dry run before pushing the tag.
 
 Each workflow triggers only on its prefix, packages just its own plugin into a `.plugin` file (which is a zip with a custom extension), and attaches it to a plugin-specific GitHub release. Subscribers download the latest from the stable Releases URL.
 

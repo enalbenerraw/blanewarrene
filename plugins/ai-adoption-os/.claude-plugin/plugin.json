@@ -1,0 +1,21 @@
+{
+  "name": "ai-adoption-os",
+  "displayName": "AI Adoption OS",
+  "version": "0.1.0",
+  "description": "Turn AI curiosity into a working plan at a 25 to 150 person company. Four skills an operator runs in sequence or standalone: inventory the tool stack and find where AI fits, survey employees to surface the AI use already happening, build a prompt cookbook for your actual vertical, and assemble an internal enablement course from the results. Each interviews you first and produces a completed document, not a blank template.",
+  "author": {
+    "name": "Blane Warrene"
+  },
+  "homepage": "https://blanewarrene.com",
+  "repository": "https://github.com/enalbenerraw/blanewarrene",
+  "license": "MIT",
+  "keywords": [
+    "ai-adoption",
+    "smb",
+    "operations",
+    "tech-stack",
+    "enablement",
+    "prompt-library",
+    "change-management"
+  ]
+}
