@@ -17,7 +17,7 @@ when_to_use: >
   side-by-side across 3 to 8 peers as markdown, use
   comparative-landscape-brief. For one company's positioning, leadership, and
   messaging signals without the battle card, use signal-watch.
-allowed-tools: WebSearch WebFetch Read Write Bash Artifact Agent
+allowed-tools: WebSearch WebFetch Read Write Bash Artifact mcp__cowork__create_artifact Agent
 ---
 
 # Competitive Brief Generator
@@ -93,7 +93,7 @@ If a code execution environment is available, also render to PDF at Letter size,
 
 If no code environment is available, deliver the HTML and tell the user they can print to PDF themselves. Do not silently skip the PDF and leave them wondering.
 
-Where artifact rendering is available (claude.ai web, Cowork), emit the HTML as an artifact as well. **Always pass a title.** Cowork rejects the call without one. Use `[Company] Competitive Brief`.
+**Emit a durable artifact as well. Required, not an alternative to writing the files.** You already produced a self-contained HTML page, so no wrapping is needed. In **Cowork**, call `mcp__cowork__create_artifact` with that HTML. In **Claude Code or claude.ai**, call `Artifact`. Title it `[Company] Competitive Brief` either way; the title is not optional. If neither tool exists here, say so in one line rather than skipping silently.
 
 Tell the user where the files landed.
 

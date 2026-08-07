@@ -16,7 +16,7 @@ when_to_use: >
   meeting the CFO of [company] tomorrow", "help me get ready for a partnership
   call", or simply uploading a LinkedIn PDF alongside a company name should
   fire it.
-allowed-tools: WebSearch WebFetch Read Write Bash Artifact Agent
+allowed-tools: WebSearch WebFetch Read Write Bash Artifact mcp__cowork__create_artifact Agent
 ---
 
 # Meeting Prep Skill
@@ -188,7 +188,7 @@ Read the template at `references/one-pager-template.html` and populate it with c
 
 After populating, render the PDF from the populated HTML at Letter size, portrait, 0.4in margins, with `print_background=True` (use Playwright or similar). Then deliver the one-pager durably, never as a code block in chat, using the best mechanism the current session offers:
 
-- Artifact rendering available (claude.ai web): emit the populated HTML as an HTML artifact so the user sees the live one-pager and can share it, and provide the PDF file alongside.
+- **Emit a durable artifact. Required, not an alternative to the files.** You already produced a populated self-contained HTML one-pager, so no wrapping is needed. In **Cowork**, call `mcp__cowork__create_artifact` with that HTML. In **Claude Code or claude.ai**, call `Artifact`. Title it `Meeting One-Pager: [Stakeholder Name], [Company]` either way; the title is not optional. Provide the PDF alongside. If neither tool exists here, say so in one line rather than skipping silently.
 - File presentation available (Cowork hosted session): save `<stakeholder-last-name>_brief.html` and `<stakeholder-last-name>_brief.pdf` to `/mnt/user-data/outputs/` and surface both with `present_files`. Lead with the PDF.
 - Local Claude Code: save both files under `~/Documents/` and report the full paths. Lead with the PDF.
 

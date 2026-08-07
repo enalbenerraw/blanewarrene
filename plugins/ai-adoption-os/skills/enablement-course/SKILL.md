@@ -15,7 +15,7 @@ when_to_use: >
   is INTERNAL training for employees. For a public, sellable course for
   customers, use the Teachable Course Builder prompt instead. To build the
   prompts the course teaches, use prompt-cookbook first.
-allowed-tools: WebSearch WebFetch Read Write AskUserQuestion Artifact
+allowed-tools: WebSearch WebFetch Read Write AskUserQuestion Artifact mcp__cowork__create_artifact
 ---
 
 # Enablement Course
@@ -67,7 +67,7 @@ Include the honest version of the alternative: if nothing changes eight weeks ou
 
 Write to `~/Documents/<company-slug>-ai-enablement-course.md` and tell them the path.
 
-- Artifact rendering available (claude.ai web, Cowork): emit as a markdown artifact. **Always pass a title.** Cowork rejects the call without one. Use `AI Enablement Course: [Company Name]`.
+- **Emit a durable artifact. Required, not an alternative to writing the file.** The tool differs by surface, so use whichever exists here. In **Cowork**, call `mcp__cowork__create_artifact`; it takes a self-contained HTML page, so wrap the document in minimal HTML first: one inline `<style>` block, no external requests, no CDN or font links. In **Claude Code or claude.ai**, call `Artifact`, which takes the markdown directly. Title it `AI Enablement Course: [Company Name]` either way; the title is not optional. Writing the file does not satisfy this, because a file on disk and a rendered artifact are different deliverables on different surfaces. If neither tool exists here, say so in one line rather than skipping silently.
 - Local Claude Code: write to the path above.
 
 This is the last skill in the sequence. Close by naming what to revisit rather than what to run next: the inventory goes stale in a quarter, and the survey is worth repeating once the course has run.
