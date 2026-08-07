@@ -1,6 +1,18 @@
 # Comparative Landscape Brief
 
-A Claude plugin that produces a structured comparative briefing document for a third-party audience. Researches a set of 3 to 8 organizations, products, or initiatives; analyzes the last 90 days of public messaging; verifies quantitative claims against third-party sources; and writes a single markdown brief ready for an investor call, board meeting, partner steering group, or M&A committee review.
+A Claude plugin for market intelligence. Three skills share one hardened research subagent that verifies quantitative claims against third-party sources and refuses instructions embedded in fetched pages.
+
+| Skill | Shape | Output |
+|-------|-------|--------|
+| `comparative-landscape-brief` | 3 to 8 entities, side by side | Markdown brief |
+| `signal-watch` | One company, in depth | Markdown brief |
+| `competitive-brief-generator` | One company against its rivals | Styled HTML, plus PDF where available |
+
+The discriminator between them is entity count and output shape, stated in each skill's `when_to_use` so routing is deterministic rather than a coin flip.
+
+## Comparative Landscape Brief
+
+Researches a set of 3 to 8 organizations, products, or initiatives; analyzes the last 90 days of public messaging; verifies quantitative claims against third-party sources; and writes a single markdown brief ready for an investor call, board meeting, partner steering group, or M&A committee review.
 
 The user is the presenter, not the audience. The brief is for someone else to read or to hear discussed.
 

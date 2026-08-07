@@ -16,7 +16,10 @@ when_to_use: >
   "brief investors on X, Y, Z", "compare these vendors for the board", "build
   me a landscape on these competitors", "I have a partner steering group on
   Thursday, compare these four", or "executive summary of the BOS category for
-  our M&A committee" should fire it.
+  our M&A committee" should fire it. The discriminator is entity count: this
+  skill needs 3 or more named entities compared side by side. For a briefing on
+  ONE company, use signal-watch. For a competitive brief centered on one company
+  against its rivals, use competitive-brief-generator.
 allowed-tools: WebSearch WebFetch Read Write Artifact Agent
 ---
 
