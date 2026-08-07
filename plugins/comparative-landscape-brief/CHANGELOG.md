@@ -5,6 +5,60 @@ All notable changes to this skill are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.5.0] - 2026-08-07
+
+The plugin becomes a market-intelligence suite. Four new skills join the
+original, all sharing the hardened `entity-researcher` subagent.
+
+### Added
+
+- **`signal-watch`**. Executive briefing on one company: fundamentals, an
+  executive leadership map, public messaging analysis over a chosen window,
+  and a selling-versus-signaling synthesis. Unconfirmed leadership roles are
+  written as unconfirmed rather than guessed, because an executive who
+  name-drops a CRO who left eight months ago pays for that in the room.
+- **`competitive-brief-generator`**. One focal company against six to eight
+  researched rivals, rendered as a three-page styled HTML brief plus PDF where
+  a code environment is available: competitive landscape, product catalog by
+  buyer center, and a win/qualify/route-around battle card. The house-style
+  stylesheet ships in `references/` and is used verbatim so every brief looks
+  like it came from the same shop.
+- **`strategic-gtm-intel`**. Two-sided competitive wedge analysis: your company
+  against one named competitor. Audits paid and organic messaging, identifies
+  messaging drift and persona pivots, drafts trap-setting questions for sales,
+  and closes with a four-bullet board summary naming the aggressor claim, the
+  alignment opportunity, the pipeline segment at risk, and one GTM adjustment
+  for next week.
+- **`pre-call-briefing`**. Executive-grade briefing for a commercial call
+  already on the calendar. Runs a clarifying interview first, then a
+  seven-source research protocol, and closes with a call playbook and a single
+  provocation rather than a summary.
+
+### Changed
+
+- **displayName is now "Market Intelligence".** The plugin `name`, the
+  `source` path, the `clb-v*` tag prefix, `release-clb.yml`, and the stable
+  Releases URL are all unchanged, so existing installs, tags, and download
+  links keep working. Only the human-readable name moved.
+- **Every skill's `when_to_use` now names its routing discriminator and points
+  at the others.** Five skills that all research a company is a real routing
+  risk, so the discriminators are explicit: entity count, whether your own
+  company is one of the two sides, whether a call is on the calendar, and
+  output shape. The original skill was edited too, since a discriminator
+  stated on one side only does not disambiguate.
+- All four new skills reuse `entity-researcher` rather than duplicating
+  research logic, which keeps the third-party verification pass and the
+  prompt-injection defense in exactly one place. `strategic-gtm-intel` is the
+  clearest case: it is two-sided, so it sends posture `standalone` with the
+  peer named. Before 0.4.1 parameterized that subagent, it forbade comparison
+  outright and this skill could not have been built on it.
+
+### Notes
+
+- The source prompts remain in the repo and are marked portable. They run in
+  any capable AI tool; the skills add a verified research subagent and file
+  output. Both are maintained.
+
 ## [0.4.3] - 2026-08-07
 
 ### Fixed
