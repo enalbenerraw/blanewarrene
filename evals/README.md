@@ -24,7 +24,13 @@ Rather than wait, this harness covers the same ground in a degraded form. It is 
 | `forbidden_patterns` | Must all be absent. Regressions with a known signature, such as the hardcoded `### 90-day messaging themes` heading fixed in `clb-v0.4.0`. |
 | `must_flag` | A documented fabrication that must appear somewhere in the dossier, meaning the agent surfaced and labeled it rather than silently carrying it as fact. |
 
-`must_flag` is the interesting one and the reason this harness is worth running. Its patterns are deliberately loose. It cannot distinguish "correctly flagged as fabricated" from "repeated as fact," so it proves the agent *engaged with* the claim, not that it reached the right conclusion. Read the dossier in `results/` when a `must_flag` case passes. That is a real limitation, not a rough edge to paper over.
+`must_flag` is the interesting one and the reason this harness is worth running. It is also the one that needed a design correction after the first real run.
+
+**Supply the unreliable claim in the prompt. Do not hope the agent finds it.** The first version of `entity-researcher-phantom-round` asserted that a fabricated funding round would appear in the dossier, on the theory that the agent would encounter the aggregator page during research. It did, twice. Then a third run never hit the page, produced a perfectly good 41-line dossier in 127s against a 195-line one earlier, and failed the assertion. Nothing had regressed. The test was measuring search coverage, which varies run to run, rather than verification behavior, which is the capability under test.
+
+The fix is to hand the claim to the agent as unverified background and assert on what it does with it. That is deterministic and tests the right thing.
+
+Even so, the patterns stay loose. The `phantom round rejected` assertion requires a rejection word in the same sentence as the claim, which is stronger than mere co-occurrence but still not proof the agent reasoned correctly. Read the dossier in `results/` when a `must_flag` case passes. This is the specific weakness a judge model fixes, and the main reason migrating to `claude plugin eval` is still worth doing.
 
 ## Ground truth
 
@@ -35,7 +41,15 @@ The fabrications the cases hunt for are real and were caught during verification
 
 Both would have entered a brief as fact under the pre-`0.4.0` agents, which contained zero verification instructions.
 
-These fixtures decay. If an aggregator corrects a page or drops it, the corresponding `must_flag` will start failing for a reason that has nothing to do with the agent. When that happens, replace the fixture rather than deleting the assertion, and update `ground_truth` in the case file.
+These fixtures decay. If an aggregator corrects a page or drops it, the corresponding `must_flag` will start failing for a reason that has nothing to do with the agent. When that happens, replace the fixture rather than deleting the assertion, and update `ground_truth` in the case file. Supplying the claim in the prompt makes the case robust to the page disappearing, since the agent is asked to evaluate the claim rather than to find it, but a corrected underlying fact would still invalidate the assertion.
+
+## Running it
+
+Do not pipe the runner through `tee`. The pipeline returns `tee`'s exit status, so a failing run reports success. Redirect instead:
+
+```bash
+./evals/run.sh > run.log 2>&1; echo "exit=$?"
+```
 
 ## Cost
 
