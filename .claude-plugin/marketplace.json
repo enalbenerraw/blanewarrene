@@ -32,7 +32,7 @@
       "displayName": "Job Interview and Meeting Preparation",
       "source": "./plugins/job-interview-meeting-preparation",
       "description": "Prepare a candidate, advisor, or operator for a high-stakes professional meeting. Researches the company and stakeholder, synthesizes the strategic picture, and produces two deliverables: a detailed in-conversation brief and a printable one-pager rendered to HTML and PDF. Covers four meeting types: interview (default), advisory or consulting, partnership or BD, and sales discovery.",
-      "version": "0.4.3",
+      "version": "0.4.4",
       "category": "career-and-business-development",
       "tags": [
         "interview",
@@ -53,7 +53,7 @@
       "displayName": "Market Intelligence",
       "source": "./plugins/comparative-landscape-brief",
       "description": "Market intelligence for product and GTM leaders. Five skills sharing one hardened research subagent that verifies quantitative claims against third-party sources and refuses instructions embedded in fetched pages. Compare 3 to 8 entities side by side, brief one company in depth, build a competitive landscape and battle card as styled HTML, run a competitive wedge analysis against a named rival, or prepare for a specific commercial call.",
-      "version": "0.5.1",
+      "version": "0.5.2",
       "category": "research-and-strategy",
       "tags": [
         "comparative-research",
@@ -74,7 +74,7 @@
       "displayName": "AI Adoption OS",
       "source": "./plugins/ai-adoption-os",
       "description": "Turn AI curiosity into a working plan at a 25 to 150 person company. Four skills an operator runs in sequence or standalone: inventory the tool stack and find where AI fits, survey employees to surface the AI use already happening, build a prompt cookbook for your actual vertical, and assemble an internal enablement course from the results. Each interviews you first and produces a completed document, not a blank template.",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "category": "operations-and-enablement",
       "tags": [
         "ai-adoption",

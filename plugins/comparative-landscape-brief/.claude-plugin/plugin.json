@@ -1,7 +1,7 @@
 {
   "name": "comparative-landscape-brief",
   "displayName": "Market Intelligence",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "Market intelligence for product and GTM leaders. Five skills sharing one hardened research subagent that verifies quantitative claims against third-party sources and refuses instructions embedded in fetched pages. Compare 3 to 8 entities side by side, brief one company in depth, build a competitive landscape and battle card as styled HTML, run a competitive wedge analysis against a named rival, or prepare for a specific commercial call.",
   "author": {
     "name": "Blane Warrene"

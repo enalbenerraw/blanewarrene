@@ -5,6 +5,25 @@ All notable changes to this skill are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.4.4] - 2026-08-07
+
+### Fixed
+
+- **Artifact emission named a tool that does not exist in Cowork.** The skills
+  instructed a call to `Artifact`. Cowork exposes `mcp__cowork__create_artifact`,
+  which takes a self-contained HTML page, plus `mcp__visualize__show_widget` for
+  inline rendering. Nothing named `Artifact` is there, so the instruction was
+  unactionable and the artifact was silently skipped.
+- Delivery now names the tool per surface: `mcp__cowork__create_artifact` in
+  Cowork, `Artifact` in Claude Code and claude.ai, with the title required
+  either way. Markdown-producing skills wrap their document in minimal
+  self-contained HTML for Cowork; skills that already emit HTML pass it through.
+- **The artifact was also worded as an option rather than a requirement.**
+  Delivery led with a satisfiable imperative and then listed surfaces as
+  bullets, so once the file was written the artifact read as one choice among
+  several. One skill attempted the call, another skipped it, on near-identical
+  wording.
+
 ## [0.4.3] - 2026-08-07
 
 ### Fixed
