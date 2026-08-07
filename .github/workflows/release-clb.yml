@@ -1,4 +1,4 @@
-name: Release Comparative Landscape Brief plugin
+name: Release Market Intelligence plugin
 
 on:
   push:
@@ -103,9 +103,9 @@ jobs:
       - name: Create GitHub release
         uses: softprops/action-gh-release@v3
         with:
-          name: "Comparative Landscape Brief ${{ github.ref_name }}"
+          name: "Market Intelligence ${{ github.ref_name }}"
           body: |
-            **Comparative Landscape Brief** ${{ github.ref_name }}
+            **Market Intelligence** ${{ github.ref_name }}
 
             Claude plugin that produces a structured briefing document comparing a set of 3 to 8 organizations, products, or initiatives for a third-party audience (investors, board, exec team, M&A committee, partner steering group). Researches each entity, analyzes the last 90 days of public messaging, runs a third-party verification pass on quantitative claims, and writes a single markdown brief with per-entity sections, cross-cutting observations, and discussion prompts ready for the meeting.
 
