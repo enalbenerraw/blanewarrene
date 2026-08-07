@@ -48,7 +48,6 @@ Rows marked **portable** are standalone prompts that run in any capable AI tool:
 
 | Project | What It Does | Stack | Updated |
 |---------|-------------|-------|---------|
-| [GTM Intel CLI](src/gtm_intel/) | Messaging analysis tool: analyze competitor, partner, and your own messaging | Python, Gemini, Google Sheets | 2026-03-26 |
 | [Strategic GTM Intel](prompts/strategic-gtm-intel-prompt.md) **(portable)** | Competitive wedge analysis against your own GTM. Also a skill: `strategic-gtm-intel` | Any LLM with web search | 2026-08-07 |
 | [Competitive Brief Generator](prompts/competitive-brief-generator-prompt.md) **(portable)** | Turn a company name and URL into a three-page competitive brief (Landscape, Product Catalog, Battle Card) as styled HTML/PDF. Also a skill: `competitive-brief-generator` | Any LLM with web search | 2026-08-07 |
 | [Signal Watch](prompts/signal-watch-instructions.md) **(portable)** | Executive briefing on any company's positioning, leadership, and market signals. Also a skill: `signal-watch` | Any LLM with web search | 2026-08-07 |
