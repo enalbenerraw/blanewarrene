@@ -20,3 +20,4 @@ articles/*
 articles/assets/*
 !articles/assets/battle-card-mockup.html
 !articles/assets/battle-card-mockup.png
+evals/results/

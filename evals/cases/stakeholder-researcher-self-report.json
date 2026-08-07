@@ -1,0 +1,19 @@
+{
+  "id": "stakeholder-researcher-self-report",
+  "agent": "job-interview-meeting-preparation:stakeholder-researcher",
+  "plugin": "job-interview-meeting-preparation",
+  "description": "stakeholder-researcher must run the verification pass added in 0.4.0: separate claims corroborated by sources the subject does not control from claims found only in self-authored material (bios, speaker pages, podcast intros).",
+  "ground_truth": "Subject is a public company executive, chosen because the assertion is about sourcing discipline rather than about the person. Most public-record material on any executive originates with them: their own bio, speaker pages, podcast introductions. Founder-stated metrics for this subject (headcount, ARR growth ratios) circulate widely and diverge from aggregator figures, which is exactly the condition the verification pass exists to surface. Before v0.4.0 this agent had zero verification instructions (grep: 0 matches).",
+  "cost_note": "~10 to 15 web searches, 2 to 4 minutes.",
+  "prompt": "Name: Karri Saarinen\nTitle: Co-founder and CEO\nCompany: Linear\nEmail domain: linear.app\n\nResearch this stakeholder from the public record for a high-stakes meeting brief.",
+  "assert": {
+    "required_patterns": [
+      { "name": "career history section", "pattern": "### Career history" },
+      { "name": "public commentary section", "pattern": "### Public commentary and activity" },
+      { "name": "sources section", "pattern": "### Sources" },
+      { "name": "verification labeling applied", "pattern": "self-reported|not verified|unverified|company-reported" }
+    ],
+    "forbidden_patterns": [],
+    "must_flag": []
+  }
+}
