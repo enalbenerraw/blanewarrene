@@ -15,7 +15,7 @@ when_to_use: >
   set of roles. To catalogue tools, use tech-stack-inventory. To survey people,
   use ai-readiness-survey. To build training around the prompts, use
   enablement-course.
-allowed-tools: WebSearch WebFetch Read Write AskUserQuestion Artifact
+allowed-tools: WebSearch WebFetch Read Write AskUserQuestion Artifact mcp__cowork__create_artifact
 ---
 
 # Prompt Cookbook
@@ -60,7 +60,7 @@ Rules that decide whether this gets used or filed:
 
 Write to `~/Documents/<company-slug>-prompt-cookbook.md` and tell them the path.
 
-- Artifact rendering available (claude.ai web, Cowork): emit as a markdown artifact. **Always pass a title.** Cowork rejects the call without one. Use `Prompt Cookbook: [Company Name]`.
+- **Emit a durable artifact. Required, not an alternative to writing the file.** The tool differs by surface, so use whichever exists here. In **Cowork**, call `mcp__cowork__create_artifact`; it takes a self-contained HTML page, so wrap the document in minimal HTML first: one inline `<style>` block, no external requests, no CDN or font links. In **Claude Code or claude.ai**, call `Artifact`, which takes the markdown directly. Title it `Prompt Cookbook: [Company Name]` either way; the title is not optional. Writing the file does not satisfy this, because a file on disk and a rendered artifact are different deliverables on different surfaces. If neither tool exists here, say so in one line rather than skipping silently.
 - Local Claude Code: write to the path above.
 
 Include a short "how to use this" opener aimed at someone who has never written a prompt: copy the recipe, replace the bracketed parts, paste it, and check the output against the example. Three sentences, not a tutorial.

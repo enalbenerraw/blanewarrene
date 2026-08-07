@@ -18,7 +18,7 @@ when_to_use: >
   against a named rival, use strategic-gtm-intel. For a battle card as styled
   HTML, use competitive-brief-generator. For a meeting with a named individual,
   use job-interview-meeting-preparation.
-allowed-tools: WebSearch WebFetch Read Write Artifact Agent
+allowed-tools: WebSearch WebFetch Read Write Artifact mcp__cowork__create_artifact Agent
 ---
 
 # Signal Watch
@@ -102,7 +102,7 @@ Read `references/brief-structure.md` for the output template and follow it exact
 
 Write to the destination from Step 1 and tell the user the path. Deliver it durably, never inline only:
 
-- Artifact rendering available (claude.ai web, Cowork): emit as a markdown artifact. **Always pass a title.** Cowork rejects the call without one. Use `Signal Watch: [Company Name]`.
+- **Emit a durable artifact. Required, not an alternative to writing the file.** The tool differs by surface, so use whichever exists here. In **Cowork**, call `mcp__cowork__create_artifact`; it takes a self-contained HTML page, so wrap the document in minimal HTML first: one inline `<style>` block, no external requests, no CDN or font links. In **Claude Code or claude.ai**, call `Artifact`, which takes the markdown directly. Title it `Signal Watch: [Company Name]` either way; the title is not optional. Writing the file does not satisfy this, because a file on disk and a rendered artifact are different deliverables on different surfaces. If neither tool exists here, say so in one line rather than skipping silently.
 - Cowork hosted session: write to `/mnt/user-data/outputs/` and surface with `present_files`.
 - Local Claude Code: write to the path from Step 1.
 

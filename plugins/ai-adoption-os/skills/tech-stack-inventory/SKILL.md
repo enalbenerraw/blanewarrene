@@ -14,7 +14,7 @@ when_to_use: >
   else". The discriminator is the artifact: a tool inventory. To survey people
   rather than tools, use ai-readiness-survey. To build prompt workflows, use
   prompt-cookbook.
-allowed-tools: WebSearch WebFetch Read Write AskUserQuestion Artifact
+allowed-tools: WebSearch WebFetch Read Write AskUserQuestion Artifact mcp__cowork__create_artifact
 ---
 
 # Tech Stack Inventory
@@ -74,7 +74,7 @@ The analysis that makes this worth reading, in this order:
 
 Write to `~/Documents/<company-slug>-tech-stack-inventory.md` and tell them the path. Deliver durably, never inline only:
 
-- Artifact rendering available (claude.ai web, Cowork): emit as a markdown artifact. **Always pass a title.** Cowork rejects the call without one. Use `Tech Stack Inventory: [Company Name]`.
+- **Emit a durable artifact. Required, not an alternative to writing the file.** The tool differs by surface, so use whichever exists here. In **Cowork**, call `mcp__cowork__create_artifact`; it takes a self-contained HTML page, so wrap the document in minimal HTML first: one inline `<style>` block, no external requests, no CDN or font links. In **Claude Code or claude.ai**, call `Artifact`, which takes the markdown directly. Title it `Tech Stack Inventory: [Company Name]` either way; the title is not optional. Writing the file does not satisfy this, because a file on disk and a rendered artifact are different deliverables on different surfaces. If neither tool exists here, say so in one line rather than skipping silently.
 - Local Claude Code: write to the path above.
 
 Close by naming the natural next step, once, without pressure: `ai-readiness-survey` finds the AI use already happening among their people, which is the other half of the baseline. Do not run it automatically.

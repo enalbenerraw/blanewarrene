@@ -20,7 +20,7 @@ when_to_use: >
   skill needs 3 or more named entities compared side by side. For a briefing on
   ONE company, use signal-watch. For a competitive brief centered on one company
   against its rivals, use competitive-brief-generator.
-allowed-tools: WebSearch WebFetch Read Write Artifact Agent
+allowed-tools: WebSearch WebFetch Read Write Artifact mcp__cowork__create_artifact Agent
 ---
 
 # Comparative Landscape Brief
@@ -144,7 +144,7 @@ Build the Source set by merging the Sources lists from every dossier, deduplicat
 
 The brief is self-contained and carries its own metadata header (Prepared, Covers, Window). Deliver it durably, never inline-only, using the best mechanism the current session offers:
 
-- Artifact rendering available (claude.ai web, Cowork): emit the brief as a markdown artifact the user can share or fork. **Always pass a title.** Cowork rejects the call without one. Use `[Category or Set] Landscape: [Audience] Brief`.
+- **Emit a durable artifact. Required, not an alternative to writing the file.** The tool differs by surface, so use whichever exists here. In **Cowork**, call `mcp__cowork__create_artifact`; it takes a self-contained HTML page, so wrap the document in minimal HTML first: one inline `<style>` block, no external requests, no CDN or font links. In **Claude Code or claude.ai**, call `Artifact`, which takes the markdown directly. Title it `[Category or Set] Landscape: [Audience] Brief` either way; the title is not optional. Writing the file does not satisfy this, because a file on disk and a rendered artifact are different deliverables on different surfaces. If neither tool exists here, say so in one line rather than skipping silently.
 - File presentation available (Cowork hosted session): write to `/mnt/user-data/outputs/<slug>-brief.md` and surface it with `present_files`.
 - Local Claude Code: write to the path from Step 1 (default `~/Documents/<slug>-brief.md`).
 

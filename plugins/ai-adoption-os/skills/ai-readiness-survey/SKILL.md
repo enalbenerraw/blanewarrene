@@ -13,7 +13,7 @@ when_to_use: >
   used before we set a policy", or "shadow AI audit". The discriminator is the
   artifact: a survey aimed at people. To catalogue tools instead, use
   tech-stack-inventory. To build workflows for a team, use prompt-cookbook.
-allowed-tools: WebSearch WebFetch Read Write AskUserQuestion Artifact
+allowed-tools: WebSearch WebFetch Read Write AskUserQuestion Artifact mcp__cowork__create_artifact
 ---
 
 # AI Readiness Survey
@@ -64,7 +64,7 @@ Name at least one result pattern that should lead to **doing nothing**. An opera
 
 Write to `~/Documents/<company-slug>-ai-readiness-survey.md` and tell them the path.
 
-- Artifact rendering available (claude.ai web, Cowork): emit as a markdown artifact. **Always pass a title.** Cowork rejects the call without one. Use `AI Readiness Survey: [Company Name]`.
+- **Emit a durable artifact. Required, not an alternative to writing the file.** The tool differs by surface, so use whichever exists here. In **Cowork**, call `mcp__cowork__create_artifact`; it takes a self-contained HTML page, so wrap the document in minimal HTML first: one inline `<style>` block, no external requests, no CDN or font links. In **Claude Code or claude.ai**, call `Artifact`, which takes the markdown directly. Title it `AI Readiness Survey: [Company Name]` either way; the title is not optional. Writing the file does not satisfy this, because a file on disk and a rendered artifact are different deliverables on different surfaces. If neither tool exists here, say so in one line rather than skipping silently.
 - Local Claude Code: write to the path above.
 
 Include the distribution plan: which tool to send it in, what the intro message says, how long to leave it open, and what to tell people about what happens next.

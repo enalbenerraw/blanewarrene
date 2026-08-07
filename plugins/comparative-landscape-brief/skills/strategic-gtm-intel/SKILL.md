@@ -17,7 +17,7 @@ when_to_use: >
   one-sided briefing on a company, use signal-watch. For one company against
   its whole competitive set as a visual deliverable, use
   competitive-brief-generator.
-allowed-tools: WebSearch WebFetch Read Write Artifact Agent
+allowed-tools: WebSearch WebFetch Read Write Artifact mcp__cowork__create_artifact Agent
 ---
 
 # Strategic GTM Intel
@@ -80,7 +80,7 @@ Four bullets. No more. This is what the leadership team reads.
 
 Write to the destination from Step 1 and tell the user the path. Deliver it durably, never inline only:
 
-- Artifact rendering available (claude.ai web, Cowork): emit as a markdown artifact. **Always pass a title.** Cowork rejects the call without one. Use `Wedge Analysis: [Competitor] vs [Your Company]`.
+- **Emit a durable artifact. Required, not an alternative to writing the file.** The tool differs by surface, so use whichever exists here. In **Cowork**, call `mcp__cowork__create_artifact`; it takes a self-contained HTML page, so wrap the document in minimal HTML first: one inline `<style>` block, no external requests, no CDN or font links. In **Claude Code or claude.ai**, call `Artifact`, which takes the markdown directly. Title it `Wedge Analysis: [Competitor] vs [Your Company]` either way; the title is not optional. Writing the file does not satisfy this, because a file on disk and a rendered artifact are different deliverables on different surfaces. If neither tool exists here, say so in one line rather than skipping silently.
 - Local Claude Code: write to the path from Step 1.
 
 Structure: the four-bullet summary first, then the audit and wedge sections as supporting evidence, then sources. The summary is the deliverable; everything else is why it is true.
