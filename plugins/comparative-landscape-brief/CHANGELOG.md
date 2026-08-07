@@ -5,6 +5,19 @@ All notable changes to this skill are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.4.1] - 2026-08-07
+
+### Added
+
+- `LICENSE`. The manifest has declared MIT since this plugin shipped, but no
+  license text was present, so the grant was asserted and never made. The
+  `clb-v0.4.0` release does not contain it; this one does.
+
+### Changed
+
+- `homepage` now points to blanewarrene.com, the canonical owner of this
+  content, rather than to the Substack that distributes it.
+
 ## [0.4.0] - 2026-08-06
 
 ### Changed

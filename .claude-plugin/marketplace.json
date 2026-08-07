@@ -11,7 +11,7 @@
       "displayName": "Product in Acquisitions OS",
       "source": "./plugins/product-in-acquisitions-os",
       "description": "An operating system for product leaders accountable for post-acquisition integration outcomes. Walks acquiring-company product leaders through the 90-day framework: Week 0 readiness, roadmap convergence, market positioning stability, and people integration.",
-      "version": "0.4.0",
+      "version": "0.5.0",
       "category": "product-leadership",
       "tags": [
         "product",
@@ -21,8 +21,8 @@
         "saas",
         "post-merger"
       ],
-      "homepage": "https://blanewarrene.substack.com",
-      "license": "LicenseRef-Proprietary",
+      "homepage": "https://blanewarrene.com",
+      "license": "MIT",
       "author": {
         "name": "Blane Warrene"
       }
@@ -32,7 +32,7 @@
       "displayName": "Job Interview and Meeting Preparation",
       "source": "./plugins/job-interview-meeting-preparation",
       "description": "Prepare a candidate, advisor, or operator for a high-stakes professional meeting. Researches the company and stakeholder, synthesizes the strategic picture, and produces two deliverables: a detailed in-conversation brief and a printable one-pager rendered to HTML and PDF. Covers four meeting types: interview (default), advisory or consulting, partnership or BD, and sales discovery.",
-      "version": "0.4.0",
+      "version": "0.4.1",
       "category": "career-and-business-development",
       "tags": [
         "interview",
@@ -42,7 +42,7 @@
         "sales-discovery",
         "advisory"
       ],
-      "homepage": "https://blanewarrene.substack.com",
+      "homepage": "https://blanewarrene.com",
       "license": "MIT",
       "author": {
         "name": "Blane Warrene"
@@ -53,7 +53,7 @@
       "displayName": "Comparative Landscape Brief",
       "source": "./plugins/comparative-landscape-brief",
       "description": "Produce a structured briefing document that compares a set of 3 to 8 organizations, products, or initiatives for a third-party audience (investors, board, exec team, M&A committee, partner steering group). Researches each entity, analyzes the last 90 days of public messaging, runs a third-party verification pass on quantitative claims, and writes a single markdown brief with per-entity sections, cross-cutting observations, and discussion prompts ready for the meeting.",
-      "version": "0.4.0",
+      "version": "0.4.1",
       "category": "research-and-strategy",
       "tags": [
         "comparative-research",
@@ -63,7 +63,7 @@
         "executive-briefing",
         "market-research"
       ],
-      "homepage": "https://blanewarrene.substack.com",
+      "homepage": "https://blanewarrene.com",
       "license": "MIT",
       "author": {
         "name": "Blane Warrene"
