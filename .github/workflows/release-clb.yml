@@ -107,7 +107,7 @@ jobs:
           body: |
             **Market Intelligence** ${{ github.ref_name }}
 
-            Claude plugin that produces a structured briefing document comparing a set of 3 to 8 organizations, products, or initiatives for a third-party audience (investors, board, exec team, M&A committee, partner steering group). Researches each entity, analyzes the last 90 days of public messaging, runs a third-party verification pass on quantitative claims, and writes a single markdown brief with per-entity sections, cross-cutting observations, and discussion prompts ready for the meeting.
+            Market intelligence for product and GTM leaders. Five skills share one hardened research subagent that verifies quantitative claims against third-party sources and refuses instructions embedded in fetched pages.
 
             ## Install
 
@@ -117,7 +117,17 @@ jobs:
             2. Drop in the `.plugin` file
             3. Confirm install
 
-            The skill triggers automatically when you ask for a comparison, landscape brief, competitive analysis, or executive summary across a named set of entities for a named audience.
+            | Skill | Ask it when |
+            |-------|-------------|
+            | `comparative-landscape-brief` | 3 to 8 entities side by side for a third-party audience |
+            | `signal-watch` | One company, understanding rather than preparing |
+            | `competitive-brief-generator` | One company against its rivals, as styled HTML and PDF |
+            | `strategic-gtm-intel` | Your company against one named competitor |
+            | `pre-call-briefing` | A commercial call already on the calendar |
+
+            Each skill triggers automatically. Every `when_to_use` names its discriminator so routing between them is deterministic.
+
+            Installs as `comparative-landscape-brief`. Only the display name changed in 0.5.0, so existing installs and the `clb-v*` tags keep working.
 
             ## Marketplace install
 
