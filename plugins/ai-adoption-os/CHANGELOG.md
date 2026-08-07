@@ -5,6 +5,24 @@ All notable changes to this plugin are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.1] - 2026-08-07
+
+Found by running `tech-stack-inventory` against a 62-person third-party
+logistics company on the first real pass.
+
+### Fixed
+
+- **The `Cost basis` enum was too narrow.** It allowed published list, reported
+  by you, or estimated. At 25 to 150 people the tools that matter most are
+  usually the ones with no public pricing at all: the TMS, the ERP, the payroll
+  system. A homegrown internal tool has no cost basis either. Added
+  `quote-based` and `none`, with guidance that quote-based is a real answer
+  rather than a gap to fill in later.
+- Added explicit guidance to prefer `unknown` over a guess in the AI column.
+  Which AI tier a plan includes varies by contract, and asserting the wrong one
+  in a document someone reads to a board is worse than admitting it was not
+  checked.
+
 ## [0.1.0] - 2026-08-07
 
 Initial release. Converts the AI SMB Toolkit from four blank Word templates
