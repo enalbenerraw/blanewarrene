@@ -1,14 +1,18 @@
-# Comparative Landscape Brief
+# Market Intelligence
 
-A Claude plugin for market intelligence. Three skills share one hardened research subagent that verifies quantitative claims against third-party sources and refuses instructions embedded in fetched pages.
+A Claude plugin for product and GTM leaders. Five skills share one hardened research subagent that verifies quantitative claims against third-party sources and refuses instructions embedded in fetched pages.
 
-| Skill | Shape | Output |
-|-------|-------|--------|
-| `comparative-landscape-brief` | 3 to 8 entities, side by side | Markdown brief |
-| `signal-watch` | One company, in depth | Markdown brief |
-| `competitive-brief-generator` | One company against its rivals | Styled HTML, plus PDF where available |
+| Skill | Ask it when | Output |
+|-------|-------------|--------|
+| `comparative-landscape-brief` | 3 to 8 entities, side by side, for a third-party audience | Markdown brief |
+| `signal-watch` | One company, understanding rather than preparing | Markdown brief |
+| `competitive-brief-generator` | One company against its rivals, as a visual deliverable | Styled HTML, plus PDF |
+| `strategic-gtm-intel` | Your company against one named competitor | Markdown, four-bullet board summary |
+| `pre-call-briefing` | A commercial call already on the calendar | Markdown or memo, with a call playbook |
 
-The discriminator between them is entity count and output shape, stated in each skill's `when_to_use` so routing is deterministic rather than a coin flip.
+All five research companies, so routing matters. Each `when_to_use` names its discriminator and points at the others: entity count, whether your own company is one of the sides, whether a call is on the calendar, and output shape.
+
+> The plugin directory and install name remain `comparative-landscape-brief`. Only the display name changed, so existing installs, the `clb-v*` release tags, and the stable Releases URL keep working.
 
 ## Comparative Landscape Brief
 
