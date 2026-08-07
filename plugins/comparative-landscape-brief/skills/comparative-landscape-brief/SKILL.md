@@ -144,7 +144,7 @@ Build the Source set by merging the Sources lists from every dossier, deduplicat
 
 The brief is self-contained and carries its own metadata header (Prepared, Covers, Window). Deliver it durably, never inline-only, using the best mechanism the current session offers:
 
-- Artifact rendering available (claude.ai web): emit the brief as a markdown artifact the user can share or fork.
+- Artifact rendering available (claude.ai web, Cowork): emit the brief as a markdown artifact the user can share or fork. **Always pass a title.** Cowork rejects the call without one. Use `[Category or Set] Landscape: [Audience] Brief`.
 - File presentation available (Cowork hosted session): write to `/mnt/user-data/outputs/<slug>-brief.md` and surface it with `present_files`.
 - Local Claude Code: write to the path from Step 1 (default `~/Documents/<slug>-brief.md`).
 
