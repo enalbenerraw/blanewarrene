@@ -4,20 +4,21 @@
 AI-forward product and operations systems: prompt recipes, Claude Code plugins, and small tools that automate product and product marketing workflows. Most of it starts as a workflow I run by hand, then gets packaged so someone else can run it too.
 
 ## What I'm Working On
-- 🧩 Three Claude Code plugins shipping from one marketplace, versioned and released independently
+- 🧩 Four Claude Code plugins shipping from one marketplace, versioned and released independently
 - 🔌 A Chrome extension that captures meeting context and hands it off to the interview-prep plugin
 - 📚 Prompt recipes for GTM intelligence, competitive briefs, and executive briefings
 - 🤝 Simplifying how product managers build Claude Skills and Gemini Gems, and leverage GitHub and AI
 
 ## Claude Code Plugins
 
-Three plugins ship from one marketplace. Add the marketplace once, then install whichever you want:
+Four plugins ship from one marketplace. Add the marketplace once, then install whichever you want:
 
 ```bash
 claude plugin marketplace add enalbenerraw/blanewarrene
 claude plugin install product-in-acquisitions-os@blanewarrene-marketplace
 claude plugin install job-interview-meeting-preparation@blanewarrene-marketplace
 claude plugin install comparative-landscape-brief@blanewarrene-marketplace
+claude plugin install ai-adoption-os@blanewarrene-marketplace
 ```
 
 Or from inside a Claude Code session, add the marketplace and browse:
@@ -33,6 +34,7 @@ Run `/reload-plugins` after installing or updating. Plugin changes do not take e
 | [Product in Acquisitions OS](plugins/product-in-acquisitions-os/) | 90-Day Product Integration Framework as a working operating system for product leaders running post-acquisition integrations. Covers Week 0 readiness, roadmap convergence, positioning stability, and people integration. |
 | [Job Interview Meeting Preparation](plugins/job-interview-meeting-preparation/) | Prep a candidate, advisor, or operator for a high-stakes meeting (interview, advisory, partnership, or sales discovery). Produces an in-chat brief and a printable HTML/PDF one-pager. |
 | [Market Intelligence](plugins/comparative-landscape-brief/) | Five skills sharing one verified research subagent: compare 3 to 8 entities side by side, brief one company in depth, build a landscape and battle card as styled HTML, run a competitive wedge analysis against a named rival, or prepare for a specific commercial call. Every quantitative claim gets a third-party verification pass. Installs as `comparative-landscape-brief`. |
+| [AI Adoption OS](plugins/ai-adoption-os/) | Turn AI curiosity into a working plan at a 25 to 150 person company. Four skills an operator runs standalone or in sequence: inventory the tool stack and find where AI fits, survey employees to surface the AI use already happening, build a prompt cookbook for your vertical, and assemble an internal enablement course. Each interviews you first and produces a completed document, not a blank template. |
 
 Plugin privacy policy: [blanewarrene.com/plugins-privacy](https://blanewarrene.com/plugins-privacy/).
 
@@ -57,7 +59,7 @@ Rows marked **portable** are standalone prompts that run in any capable AI tool:
 | [Built Courses](examples/) | Two finished course outlines produced by the builder: [Inbox Mastery](examples/course-inbox-mastery.md) (Claude in Gmail and Outlook) and [The AI Interview](examples/course-the-ai-interview.md) | Claude | 2026-04-22 |
 | [Pre-Call Briefing](pre-call-briefing/) **(portable)** | Executive-grade pre-call briefing on any target company for sales, BD, partnerships, and GTM teams. Also a skill: `pre-call-briefing` | Any LLM with web search | 2026-08-07 |
 | [Notes2Notion](Notes2Notion/) | Export Apple Notes to Notion-importable Markdown: CLI and native macOS GUI app | Python, AppleScript | 2026-06-10 |
-| [AI SMB Toolkit](prompts/ai-smb-toolkit/) | Four Word documents that turn AI curiosity into a working plan: tech stack inventory, HR AI survey, prompt cookbook, and course builder | Word, prompt frameworks | 2026-07-09 |
+| [AI SMB Toolkit](prompts/ai-smb-toolkit/) **(portable)** | Four Word documents that turn AI curiosity into a working plan: tech stack inventory, HR AI survey, prompt cookbook, and course builder. Blank templates you fill in, no AI tool required. Also a plugin: [AI Adoption OS](plugins/ai-adoption-os/), which interviews you and fills them in | Word, prompt frameworks | 2026-08-07 |
 
 ## Elsewhere
 

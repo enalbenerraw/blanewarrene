@@ -1,0 +1,149 @@
+name: Release AI Adoption OS plugin
+
+on:
+  push:
+    tags:
+      - 'adopt-v*'
+
+permissions:
+  contents: write
+
+jobs:
+  package-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Validate plugin manifest
+        run: |
+          MANIFEST="plugins/ai-adoption-os/.claude-plugin/plugin.json"
+          if [ ! -f "$MANIFEST" ]; then
+            echo "ERROR: plugin.json not found at $MANIFEST"
+            exit 1
+          fi
+          python3 -m json.tool "$MANIFEST" > /dev/null
+          echo "plugin.json is valid JSON"
+
+      - name: Extract plugin version
+        id: version
+        run: |
+          VERSION=$(python3 -c "import json; print(json.load(open('plugins/ai-adoption-os/.claude-plugin/plugin.json'))['version'])")
+          TAG_VERSION="${GITHUB_REF_NAME#adopt-v}"
+          echo "manifest_version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "tag_version=$TAG_VERSION" >> "$GITHUB_OUTPUT"
+          echo "Manifest version: $VERSION"
+          echo "Tag version: $TAG_VERSION"
+          if [ "$VERSION" != "$TAG_VERSION" ]; then
+            echo "WARNING: tag ($TAG_VERSION) does not match manifest version ($VERSION)"
+            echo "Continuing, but consider keeping them in sync."
+          fi
+
+      - name: Verify all skills have frontmatter
+        run: |
+          for skill_md in plugins/ai-adoption-os/skills/*/SKILL.md; do
+            if ! head -5 "$skill_md" | grep -q "^name:"; then
+              echo "ERROR: missing 'name:' frontmatter in $skill_md"
+              exit 1
+            fi
+            echo "OK: $skill_md"
+          done
+
+      - name: Check for em dashes (style rule)
+        run: |
+          if grep -r "—" plugins/ai-adoption-os/ > /dev/null 2>&1; then
+            echo "ERROR: found em dashes in plugin content (style rule violation)"
+            grep -rn "—" plugins/ai-adoption-os/ | head -10
+            exit 1
+          fi
+          echo "PASS: no em dashes found"
+
+      - name: Sync marketplace.json on main
+        run: |
+          PLUGIN_VERSION="${{ steps.version.outputs.manifest_version }}"
+          git worktree add /tmp/main-worktree main
+          cd /tmp/main-worktree
+          MARKETPLACE_FILE=".claude-plugin/marketplace.json"
+          CURRENT=$(python3 -c "import json; d=json.load(open('$MARKETPLACE_FILE')); print([p['version'] for p in d['plugins'] if p['name']=='ai-adoption-os'][0])")
+          if [ "$CURRENT" = "$PLUGIN_VERSION" ]; then
+            echo "marketplace.json already at $PLUGIN_VERSION; no update needed"
+            exit 0
+          fi
+          python3 -c "
+          import json
+          path = '$MARKETPLACE_FILE'
+          with open(path) as f:
+              data = json.load(f)
+          for p in data['plugins']:
+              if p['name'] == 'ai-adoption-os':
+                  p['version'] = '$PLUGIN_VERSION'
+          with open(path, 'w') as f:
+              json.dump(data, f, indent=2)
+              f.write('\n')
+          "
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$MARKETPLACE_FILE"
+          git commit -m "Sync marketplace.json to ai-adoption-os v$PLUGIN_VERSION"
+          git push origin main
+
+      - name: Package plugin
+        run: |
+          cd plugins/ai-adoption-os
+          zip -r "/tmp/ai-adoption-os.plugin" . -x "*.DS_Store"
+          ls -la /tmp/ai-adoption-os.plugin
+
+      - name: Also create versioned filename
+        run: |
+          cp "/tmp/ai-adoption-os.plugin" "/tmp/ai-adoption-os-v${{ steps.version.outputs.tag_version }}.plugin"
+          ls -la /tmp/*.plugin
+
+      - name: Create GitHub release
+        uses: softprops/action-gh-release@v3
+        with:
+          name: "AI Adoption OS ${{ github.ref_name }}"
+          body: |
+            **AI Adoption OS** ${{ github.ref_name }}
+
+            Turn AI curiosity into a working plan at a 25 to 150 person company. Four skills an operator runs in sequence or standalone. Each interviews you first and produces a completed document, not a blank template.
+
+            ## Install
+
+            Download `ai-adoption-os.plugin` below, then in Claude Cowork or Claude Code:
+
+            1. Open the plugin install panel
+            2. Drop in the `.plugin` file
+            3. Confirm install
+
+            | Skill | The operator's question |
+            |-------|------------------------|
+            | `tech-stack-inventory` | What do we run, and where does AI fit? |
+            | `ai-readiness-survey` | Where is AI already being used here? |
+            | `prompt-cookbook` | What do I hand my team on Monday? |
+            | `enablement-course` | How do I teach this without a consultant? |
+
+            They run in that order, but each works standalone. Nothing chains automatically.
+
+            Built for operators, with product leaders secondary. Works in Claude Code and in Cowork, where document work belongs.
+
+            ## Marketplace install
+
+            ```bash
+            claude plugin marketplace add enalbenerraw/blanewarrene
+            claude plugin install ai-adoption-os@blanewarrene-marketplace
+            ```
+
+            ## What's in this release
+
+            See `plugins/ai-adoption-os/README.md` for full details.
+
+            ---
+
+            *Created by Blane Warrene, blanewarrene.com*
+          files: |
+            /tmp/ai-adoption-os.plugin
+            /tmp/ai-adoption-os-v${{ steps.version.outputs.tag_version }}.plugin
+          draft: false
+          prerelease: false
