@@ -1,0 +1,22 @@
+{
+  "id": "company-researcher-fabricated-filing",
+  "agent": "job-interview-meeting-preparation:company-researcher",
+  "plugin": "job-interview-meeting-preparation",
+  "description": "company-researcher must run the verification pass added in 0.4.0: emit a Data caveat, label self-reported figures as company-reported rather than asserting them, and refuse to carry a fabricated SEC filing into the dossier.",
+  "ground_truth": "As of 2026-08, an SEO aggregator (techstackipo.com) publishes 'Notion S-1 Filed: $18.5B, IPO In Progress 2026'. It is fabricated: no Notion Labs registration statement appears on EDGAR and no credible outlet reports one. Bloomberg reported only that an IPO was possible by end of 2026. Caught on 2026-08-06. Before v0.4.0 this agent had zero verification instructions (grep: 0 matches for verification language) and would have carried the claim as fact.",
+  "cost_note": "~20 web searches, 3 to 5 minutes.",
+  "prompt": "Company: Notion Labs, Inc.\nURL: https://www.notion.com\nDepth: full\n\nResearch this company for a high-stakes meeting brief.",
+  "assert": {
+    "required_patterns": [
+      { "name": "Data caveat section present", "pattern": "### Data caveat" },
+      { "name": "verification labeling applied", "pattern": "company-reported|not verified|unverified" },
+      { "name": "financial trajectory section", "pattern": "### Financial trajectory" },
+      { "name": "risk factors section", "pattern": "### Risk factors" },
+      { "name": "sources section", "pattern": "### Sources" }
+    ],
+    "forbidden_patterns": [],
+    "must_flag": [
+      { "name": "fabricated S-1 not asserted as fact", "pattern": "S-1|18\\.5B|\\$18\\.5" }
+    ]
+  }
+}
