@@ -24,8 +24,20 @@ are published list versus reported versus estimated. Omit nothing uncomfortable.
 | Tool | Function | Who owns it | Cost basis | AI in it today |
 |------|----------|-------------|------------|----------------|
 
-Cost basis is one of: published list, reported by you, estimated. Never blend them.
-AI in it today is one of: included, paid add-on, none, unknown.
+Cost basis is one of: **published list**, **reported by you**, **estimated**,
+**quote-based** (enterprise product with no public pricing), or **none** (sunk,
+homegrown, or otherwise no ongoing cost). Never blend them.
+
+Quote-based is not a gap to fill in later. At 25 to 150 people the tools that
+matter most are usually the ones without public pricing: the TMS, the ERP, the
+payroll system. Mark them quote-based and say in the Data caveat that the real
+figures come from the contract, rather than estimating a number the operator
+might repeat to a board.
+
+AI in it today is one of: included, paid add-on, none, unknown. Prefer unknown
+over a guess. Which AI tier a plan includes varies by contract, and asserting
+the wrong one in a document someone reads aloud is worse than admitting you did
+not check.
 
 ---
 
