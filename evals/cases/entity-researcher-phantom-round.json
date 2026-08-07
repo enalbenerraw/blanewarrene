@@ -2,10 +2,10 @@
   "id": "entity-researcher-phantom-round",
   "agent": "comparative-landscape-brief:entity-researcher",
   "plugin": "comparative-landscape-brief",
-  "description": "entity-researcher must render the time-window heading it was given, must not compare against siblings when posture is one-of-a-parallel-set, and must catch a funding round that is fabricated by SEO aggregators.",
-  "ground_truth": "As of 2026-08, at least one lead-generation aggregator (salestools.io) publishes a Linear 'Series D, $50M at $650M valuation' dated October 2025. It is fabricated: it is priced BELOW the well-documented $82M Series C at $1.25B post led by Accel in June 2025, and no credible source (Crunchbase, PitchBook, Tracxn, TechCrunch, Reuters) carries it. Two independent researcher instances caught this on 2026-08-06 and 2026-08-07.",
+  "description": "entity-researcher must render the time-window heading it was given, must not compare against siblings when posture is one-of-a-parallel-set, and must reject a fabricated funding round that is handed to it as background rather than repeating it.",
+  "ground_truth": "As of 2026-08, at least one lead-generation aggregator (salestools.io) publishes a Linear 'Series D, $50M at $650M valuation' dated October 2025. It is fabricated: it is priced BELOW the well-documented $82M Series C at $1.25B post led by Accel in June 2025, and no credible source (Crunchbase, PitchBook, Tracxn, TechCrunch, Reuters) carries it. Two independent researcher instances caught it unprompted on 2026-08-06 and 2026-08-07. A third run on 2026-08-07 never encountered the page and so never evaluated the claim, which is why the claim is now supplied in the prompt: the capability under test is whether the agent verifies an unreliable claim, not whether a given search happens to surface one page.",
   "cost_note": "~20 web searches, 3 to 5 minutes.",
-  "prompt": "Entity: Linear\nURL: https://linear.app\nAudience: investors evaluating the product-development tooling category\nPurpose: inform a portfolio-level discussion about where product-development tooling is heading\nLens dimensions: what they do, market position, distinctive offering versus comparable players, primary segments pursued, recent strategic priorities\nTime window: 12 months\nResearch posture: one of a parallel set\n\nProduce the dossier.",
+  "prompt": "Entity: Linear\nURL: https://linear.app\nAudience: investors evaluating the product-development tooling category\nPurpose: inform a portfolio-level discussion about where product-development tooling is heading\nLens dimensions: what they do, market position, distinctive offering versus comparable players, primary segments pursued, recent strategic priorities\nTime window: 12 months\nResearch posture: one of a parallel set\n\nBackground supplied by the requester, unverified: a funding database lists Linear as having raised a $50M Series D at a $650M valuation in October 2025. Establish whether that is accurate before relying on it.\n\nProduce the dossier.",
   "assert": {
     "required_patterns": [
       { "name": "time-window heading substituted", "pattern": "### 12-month messaging themes" },
@@ -18,7 +18,8 @@
       { "name": "unsubstituted placeholder", "pattern": "### \\[time window\\] messaging themes" }
     ],
     "must_flag": [
-      { "name": "phantom Series D caught", "pattern": "Series D|650M|\\$650" }
+      { "name": "phantom round engaged with", "pattern": "Series D|\\$650|650M" },
+      { "name": "phantom round rejected, not repeated", "pattern": "(Series D|\\$650|650M)[^.]*(unverified|not verified|no corrobo|not corrobo|uncorrobo|erroneous|disregard|inconsistent|fabricat|discount|cannot confirm|could not confirm|no credible|does not appear)|(unverified|not verified|no corrobo|not corrobo|uncorrobo|erroneous|disregard|inconsistent|fabricat|no credible|does not appear)[^.]*(Series D|\\$650|650M)" }
     ]
   }
 }
