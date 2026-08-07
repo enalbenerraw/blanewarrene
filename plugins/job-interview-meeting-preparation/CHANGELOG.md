@@ -5,6 +5,16 @@ All notable changes to this skill are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.4.3] - 2026-08-07
+
+### Fixed
+
+- Install instructions. `claude plugin install` takes a plugin name, not a
+  repo, so the published command failed with "not found in any configured
+  marketplace". Corrected to `claude plugin marketplace add` followed by
+  `claude plugin install <name>@blanewarrene-marketplace`, and notes that
+  `/reload-plugins` applies the change to a running session.
+
 ## [0.4.2] - 2026-08-07
 
 ### Changed
