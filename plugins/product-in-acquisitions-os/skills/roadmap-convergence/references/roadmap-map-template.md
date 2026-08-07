@@ -34,4 +34,4 @@ Use whatever themes the two teams already use, but ensure these are represented:
 
 ---
 
-*Generated using the Product in Acquisitions OS by Blane Warrene · blanewarrene.substack.com*
+*Created by Blane Warrene, blanewarrene.com*

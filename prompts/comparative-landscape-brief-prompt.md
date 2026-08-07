@@ -2,7 +2,7 @@
 
 A reusable prompt for producing third-party-audience briefing documents that compare a set of organizations, products, or initiatives. Works with any capable LLM (ChatGPT, Gemini, Perplexity, Claude on web, etc.). For Claude Code users, install the `comparative-landscape-brief` plugin instead.
 
-Built by Blane Warrene. blanewarrene.substack.com
+Created by Blane Warrene, blanewarrene.com
 
 ---
 
@@ -106,7 +106,7 @@ Write a single markdown document with this structure:
 - Cite sources inline and in a closing source set.
 - Flag every unverified claim explicitly.
 - End the document with: Generated using the Comparative Landscape Brief
-  prompt by Blane Warrene · blanewarrene.substack.com
+  prompt by Blane Warrene, blanewarrene.com
 ```
 
 ---

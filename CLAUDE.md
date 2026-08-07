@@ -23,7 +23,7 @@ The marketplace manifest at the repo root makes the plugin installable by any Cl
 
 - **No em dashes.** Use commas, parentheses, or sentence breaks instead. This is a non-negotiable style rule.
 - **CxO-appropriate tone.** Direct, evidence-led, never sycophantic. The audience is VP of Product, Head of Product, CPO at acquiring companies. Speak peer to peer.
-- **Attribution footer on every generated deliverable.** Each skill must end produced markdown with: `Generated using the Product in Acquisitions OS by Blane Warrene · blanewarrene.substack.com`
+- **Attribution footer on every generated deliverable.** Each skill must end produced markdown with: `Created by Blane Warrene, blanewarrene.com`. One string across every plugin, with no per-plugin variant, so it cannot drift. blanewarrene.com is the canonical home; Substack syndicates and is linked from the root README, not from deliverables.
 - **Reference templates over generation.** Each SKILL.md uses progressive disclosure: lean instructions in the body, detailed templates in `references/`. Do not regenerate templates Claude already has on disk.
 - **Imperative voice in SKILL.md bodies.** Write skill bodies as instructions FOR Claude (verb-first directives), not user-facing documentation.
 
@@ -155,7 +155,7 @@ The `product-in-acquisitions-os` plugin is the reference layout. Mirror its shap
 ## Related external assets
 
 - Framework PDF: `The-90-Day-Product-Integration-Framework (1).pdf` (in author's local Cowork folder, not in repo)
-- Substack: blanewarrene.substack.com (premium tier distributes the plugin)
+- Substack: blanewarrene.substack.com (syndication channel, linked from the root README). It no longer distributes the plugins exclusively: all three are MIT as of 2026-08-07, so anyone may redistribute them.
 - Eventual Teachable course: outline staged in author's Cowork folder, not yet in repo
 
 ## Contact

@@ -57,4 +57,4 @@ Pushback is welcomed. The summary is a contract, not a directive.
 
 ---
 
-*Generated using the Product in Acquisitions OS by Blane Warrene · blanewarrene.substack.com*
+*Created by Blane Warrene, blanewarrene.com*

@@ -131,7 +131,7 @@ jobs:
 
             ---
 
-            *Built by Blane Warrene · blanewarrene.substack.com*
+            *Created by Blane Warrene, blanewarrene.com*
           files: |
             /tmp/comparative-landscape-brief.plugin
             /tmp/comparative-landscape-brief-v${{ steps.version.outputs.tag_version }}.plugin

@@ -1,6 +1,6 @@
 # Audit Your LLM Memory: Prompt Recipes for Business Users
 
-**By [Blane Warrene](https://github.com/enalbenerraw/blanewarrene)** | [Substack](https://blanewarrene.substack.com)
+**By [Blane Warrene](https://github.com/enalbenerraw/blanewarrene)** | [blanewarrene.com](https://blanewarrene.com)
 
 ---
 

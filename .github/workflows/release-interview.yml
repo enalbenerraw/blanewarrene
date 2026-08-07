@@ -131,7 +131,7 @@ jobs:
 
             ---
 
-            *Built by Blane Warrene · blanewarrene.substack.com*
+            *Created by Blane Warrene, blanewarrene.com*
           files: |
             /tmp/job-interview-meeting-preparation.plugin
             /tmp/job-interview-meeting-preparation-v${{ steps.version.outputs.tag_version }}.plugin

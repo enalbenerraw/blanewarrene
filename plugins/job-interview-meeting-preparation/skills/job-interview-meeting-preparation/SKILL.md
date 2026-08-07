@@ -236,4 +236,4 @@ The one-pager design is editorial / financial-briefing aesthetic. Do not modify 
 
 End every produced deliverable with this single line:
 
-`Generated using the Job Interview Meeting Preparation plugin by Blane Warrene · blanewarrene.substack.com`
+`Created by Blane Warrene, blanewarrene.com`

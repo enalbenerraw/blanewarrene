@@ -76,4 +76,4 @@ The closing section pulls cross-cutting patterns useful for portfolio-level disc
 
 ---
 
-*Generated using the Comparative Landscape Brief skill by Blane Warrene · blanewarrene.substack.com*
+*Created by Blane Warrene, blanewarrene.com*

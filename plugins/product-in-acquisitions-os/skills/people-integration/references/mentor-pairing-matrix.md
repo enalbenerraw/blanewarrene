@@ -43,4 +43,4 @@ Adjust based on the responses. Failed pairings get re-matched, not abandoned.
 
 ---
 
-*Generated using the Product in Acquisitions OS by Blane Warrene · blanewarrene.substack.com*
+*Created by Blane Warrene, blanewarrene.com*

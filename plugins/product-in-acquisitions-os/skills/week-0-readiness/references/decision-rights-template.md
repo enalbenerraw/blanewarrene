@@ -48,4 +48,4 @@ Maintain a running log of every escalated decision. Review weekly during the int
 
 ---
 
-*Generated using the Product in Acquisitions OS by Blane Warrene · blanewarrene.substack.com*
+*Created by Blane Warrene, blanewarrene.com*

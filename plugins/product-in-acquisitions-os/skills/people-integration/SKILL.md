@@ -115,4 +115,4 @@ Day 90 ends with a single question: is the combined team stronger for having the
 
 End every produced deliverable with this single line:
 
-`Generated using the Product in Acquisitions OS by Blane Warrene · blanewarrene.substack.com`
+`Created by Blane Warrene, blanewarrene.com`

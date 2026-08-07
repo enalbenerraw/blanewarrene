@@ -37,4 +37,4 @@ Write a paragraph explaining the sequencing logic. Reference the customer eviden
 
 ---
 
-*Generated using the Product in Acquisitions OS by Blane Warrene · blanewarrene.substack.com*
+*Created by Blane Warrene, blanewarrene.com*
