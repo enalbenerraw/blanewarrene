@@ -21,3 +21,6 @@ articles/assets/*
 !articles/assets/battle-card-mockup.html
 !articles/assets/battle-card-mockup.png
 evals/results/
+
+# Substack publishing material: local only, never to a public repo
+substack/
