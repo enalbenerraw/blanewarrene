@@ -8,7 +8,13 @@ Items to address before publishing the extension to the Chrome Web Store.
 
 - [x] **Carry the upsell into the packet.** The lite/web packet now ends with a one-line footer pointing to `blanewarrene.com/plugins`, so the pitch travels into the chat after the popup has closed. The footer is scoped to the lite/web surface only; Code and Cowork run the plugin and would be misled by it. The lite packet also trims the captured profile to ~1500 characters (vs the full ~6000 on the plugin surfaces) to keep the free path lighter than the paid one. Still pending: the footer links to `blanewarrene.com/plugins`, which must be live (see Depends on) or the CTA dead-links.
 
-- [ ] **Create real icon artwork.** The manifest wires `icons/icon-{16,32,48,128}.png` (top-level `icons` and `action.default_icon`), currently solid-color placeholders so the extension loads and the package validates. Design branded icons at all four sizes (the 128x128 is the Chrome Web Store listing icon and gets the most scrutiny), drop them in `icons/` overwriting the placeholders, bump the manifest version, and re-tag `meeting-prep-v*`. The release workflow globs in any non-`.md` files, so new icons ship without workflow changes.
+- [x] **Create real icon artwork.** Done 2026-08-13, manifest bumped to 0.2.1. All four sizes replaced, transparent PNG, drawn from the site palette (ink blue `#1F3A5F` tile, cream `#FAFAF7` mark) so the extension matches `blanewarrene.com` and the plugins page.
+
+  **Two marks, not one, and that is deliberate.** 16 and 32 are the same icon at 1x and 2x, so they carry an identical simplified mark: the tile plus two "captured line" bars. 48 and 128 add the four viewfinder corner brackets around those bars. The full mark was tried at 16 first and failed: the brackets merged into a solid frame and the bars collided with them, so it read as a filled box rather than a capture glyph. Corner brackets need roughly 48px to survive.
+
+  If the mark is ever revised, check the 16 first and let it set the constraint. Sizes: 529B / 992B / 2.2KB / 1.7KB.
+
+- [ ] **[owner]** Re-tag `meeting-prep-v0.2.1` to publish the release. The release workflow globs in any non-`.md` file, so the icons ship without workflow changes.
 
 ## Depends on
 
