@@ -12,5 +12,12 @@ Items to address before publishing the extension to the Chrome Web Store.
 
 ## Depends on
 
-- A live `blanewarrene.com/plugins` page (the Plugins page pattern is built; needs the zip upload + page creation per the site's DEPLOY.md).
+- **A live `blanewarrene.com/plugins` page.** Status as of 2026-08-13: **draft created, not published** (page id 193461819, slug `plugins`). Owner still has to review it, publish it, and set the Yoast title/description by hand, because the WP.com API silently drops `_yoast_wpseo_*` on pages (it accepts them on posts, so this is a page-specific gap, not a permissions problem).
+
+  Until that page is published, `blanewarrene.com/plugins` **301s to `/plugins-privacy/`**, so the extension's lite/web CTA footer lands the reader on a privacy policy rather than a plugins page. The site's own header nav has the same bug, since it links `/plugins` too. Publishing the draft fixes both at once, because the redirect only happens while no page owns the `plugins` slug.
+
 - Chrome Web Store listing (one-time $5 dev fee, MV3 review).
+
+## Fixed on the way here (2026-08-13)
+
+The `page-plugins` pattern in `blanewarrene-site` said "Premium subscribers to my Substack get all of them." Every plugin went MIT on Aug 7, and the Aug 18 correction post exists specifically to retract that claim, so the page would have contradicted the post on the day it published. The pattern now states the MIT grant instead. It was also listing 3 of the 4 plugins; **AI Adoption OS** was missing entirely and has been added. Theme bumped to 1.1.4 and the zip rebuilt, so this needs a theme upload to reach the pattern library (the draft page already carries the corrected copy, so publishing it does not wait on the upload).
