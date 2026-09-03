@@ -1,5 +1,7 @@
 # Hello, I'm Blane Warrene
 
+**Chief Product and Technology Officer, [Omatic Software](https://omaticsoftware.com)** · Raleigh-Durham, NC
+
 ## What I Build
 AI-forward product and operations systems: prompt recipes, Claude Code plugins, and small tools that automate product and product marketing workflows. Most of it starts as a workflow I run by hand, then gets packaged so someone else can run it too.
 
@@ -77,5 +79,7 @@ Shipped surfaces that live outside this repo.
 - 📝 [Substack](https://blanewarrene.substack.com/)
 - 📧 [Email](mailto:blane@blanewarrene.com)
 
+Everything in this repository is personal work, built and maintained independently of my employer.
+
 ---
-*AI-forward product and operations executive who builds the operating systems that let B2B SaaS scale. Proven through seven acquisitions and two decades in wealthtech and compliance technology. Raleigh-Durham, NC.*
+*Chief Product and Technology Officer at Omatic Software. AI-forward product and technology executive who builds the operating systems that let B2B SaaS scale. Proven through seven acquisitions and two decades in wealthtech and compliance technology. Raleigh-Durham, NC.*
