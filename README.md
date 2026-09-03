@@ -1,9 +1,15 @@
 # Hello, I'm Blane Warrene
 
+**Chief Product and Technology Officer, [Omatic Software](https://omaticsoftware.com)** · Raleigh-Durham, NC
+
 ## What I Build
 AI-forward product and operations systems: prompt recipes, Claude Code plugins, and small tools that automate product and product marketing workflows. Most of it starts as a workflow I run by hand, then gets packaged so someone else can run it too.
 
 ## What I'm Working On
+
+**In the seat.** Chief Product and Technology Officer at [Omatic Software](https://omaticsoftware.com), owning product, engineering, and platform strategy. The problem is data integration for nonprofit and social good organizations: getting fundraising, CRM, and operational systems to agree on the truth so teams can act on what they know.
+
+**On my own time.**
 - 🧩 Four Claude Code plugins shipping from one marketplace, versioned and released independently
 - 🔌 A Chrome extension that captures meeting context and hands it off to the interview-prep plugin
 - 📚 Prompt recipes for GTM intelligence, competitive briefs, and executive briefings
@@ -77,5 +83,7 @@ Shipped surfaces that live outside this repo.
 - 📝 [Substack](https://blanewarrene.substack.com/)
 - 📧 [Email](mailto:blane@blanewarrene.com)
 
+Everything in this repository is personal work, built and maintained independently of my employer.
+
 ---
-*AI-forward product and operations executive who builds the operating systems that let B2B SaaS scale. Proven through seven acquisitions and two decades in wealthtech and compliance technology. Raleigh-Durham, NC.*
+*Chief Product and Technology Officer at Omatic Software. AI-forward product and technology executive who builds the operating systems that let B2B SaaS scale. Proven through seven acquisitions and two decades in wealthtech and compliance technology. Raleigh-Durham, NC.*
