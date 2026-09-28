@@ -76,6 +76,21 @@ async function init() {
   }
 }
 
+// One line under the meeting type picker naming who is across the table, so
+// the choice is quick. Mirrors the four types the plugin's skill tailors to.
+const MEETING_TYPE_HINTS = {
+  interview: "A recruiter, hiring manager, or panel evaluating you.",
+  "peer or stakeholder": "A peer, internal stakeholder, partner, BD counterpart, or buyer.",
+  operator: "A GM, COO, or functional head, or a PE operating partner.",
+  "board or other CxO": "A director, CEO, investor, or C-suite executive.",
+  "": "The plugin will ask which meeting this is.",
+};
+
+function updateMeetingTypeHint() {
+  const value = document.getElementById("meetingType").value;
+  document.getElementById("meetingTypeHint").textContent = MEETING_TYPE_HINTS[value] || "";
+}
+
 // Lite path (claude.ai web) gets less profile text and an explicit upsell, so
 // the plain-Claude answer stays lighter than the plugin's and the pitch travels
 // into the chat after the popup has closed. Claude Code and Cowork run the
@@ -159,5 +174,7 @@ async function copyHandoff() {
 }
 
 document.getElementById("copyBtn").addEventListener("click", copyHandoff);
+document.getElementById("meetingType").addEventListener("change", updateMeetingTypeHint);
+updateMeetingTypeHint();
 
 init();

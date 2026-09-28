@@ -31,8 +31,8 @@
       "name": "job-interview-meeting-preparation",
       "displayName": "Job Interview and Meeting Preparation",
       "source": "./plugins/job-interview-meeting-preparation",
-      "description": "Prepare a candidate, advisor, or operator for a high-stakes professional meeting. Researches the company and stakeholder, synthesizes the strategic picture, and produces two deliverables: a detailed in-conversation brief and a printable one-pager rendered to HTML and PDF. Covers four meeting types: interview (default), advisory or consulting, partnership or BD, and sales discovery.",
-      "version": "0.4.4",
+      "description": "Prepare for a high-stakes meeting by first choosing which one it is: an interview, a peer or stakeholder, an operator, or a board member or other CxO. Researches the company and stakeholder, tailors the conversation to that meeting type, and produces an in-conversation brief and a printable HTML and PDF one-pager. Run a series of meetings inside a Claude Project so each brief builds on the last.",
+      "version": "0.5.0",
       "category": "career-and-business-development",
       "tags": [
         "interview",
@@ -40,7 +40,8 @@
         "stakeholder-research",
         "executive-briefing",
         "sales-discovery",
-        "advisory"
+        "advisory",
+        "board-prep"
       ],
       "homepage": "https://blanewarrene.com",
       "license": "MIT",
