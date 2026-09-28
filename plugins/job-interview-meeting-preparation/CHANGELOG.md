@@ -5,6 +5,28 @@ All notable changes to this skill are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.5.0] - 2026-09-28
+
+### Changed
+
+- **Organized around the meeting you are preparing for.** The four meeting
+  types are now interview, peer or stakeholder, operator, and board or other
+  CxO. The README opens with a table to pick from, then explains the prep
+  work, and the skill establishes the meeting type before any research.
+- Existing types fold in rather than disappear: advisory and consulting sit
+  under operator; partnership, BD, and sales discovery are variants of peer or
+  stakeholder and keep their specific hooks and closing questions. Older
+  labels are mapped automatically.
+- Operator covers both business operators (GM, COO, functional head) and
+  private-equity operating partners.
+
+### Added
+
+- Board or other CxO tailoring for opening hooks and closing questions.
+- Guidance for meetings in a series. The README recommends running them inside
+  a Claude Project, and the skill builds on earlier briefs, notes what has
+  changed, and suggests a Project when it sees a follow-up meeting outside one.
+
 ## [0.4.4] - 2026-08-07
 
 ### Fixed

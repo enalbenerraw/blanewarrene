@@ -1,9 +1,11 @@
 ---
 name: job-interview-meeting-preparation
 description: >
-  Prepare a user for a high-stakes professional meeting (interview, advisory or
-  consulting meeting, partnership or BD meeting, or sales discovery call) with a
-  specific stakeholder at a specific company. The skill handles input capture, web
+  Prepare a user for a high-stakes professional meeting with a specific
+  stakeholder at a specific company. Four meeting types: an interview, a peer or
+  stakeholder meeting (including partnership, BD, and sales discovery), an
+  operator meeting (a business operator or a private-equity operating partner),
+  or a board or other CxO meeting. The skill handles input capture, web
   research on the company and any secondary company, stakeholder analysis from a
   LinkedIn PDF (preferred) or from web search using name and title, conversation
   architecture (opening hooks, probing angles, avoid/use cheat sheet, closing
@@ -14,7 +16,8 @@ when_to_use: >
   a company name, even without saying "skill" or "brief". Phrases like "I have
   an interview at Acme Thursday", "prep me for a meeting with [name]", "I'm
   meeting the CFO of [company] tomorrow", "help me get ready for a partnership
-  call", or simply uploading a LinkedIn PDF alongside a company name should
+  call", "I'm presenting to the board next week", "second meeting with the
+  operating partner", or simply uploading a LinkedIn PDF alongside a company name should
   fire it.
 allowed-tools: WebSearch WebFetch Read Write Bash Artifact mcp__cowork__create_artifact Agent
 ---
@@ -23,23 +26,25 @@ allowed-tools: WebSearch WebFetch Read Write Bash Artifact mcp__cowork__create_a
 
 You are acting as a senior strategy advisor preparing a busy executive for a high-stakes meeting. Your job is to research the company and the stakeholder, synthesize the strategic picture, and produce two deliverables: a detailed brief in the conversation and a one-pager glance document the user can keep on screen during the call. Stop at the door of the meeting. Do not produce post-meeting artifacts.
 
-This skill covers four meeting types, in order of expected frequency:
+This skill covers four meeting types. The first question in every run is which one this is:
 
 1. **Interview** (default). User is the candidate; the stakeholder is hiring or evaluating.
-2. **Advisory or consulting** meeting. User is bringing outside perspective; stakeholder is operator.
-3. **Partnership or BD** meeting. Peers exploring mutual fit.
-4. **Sales discovery** call. User is selling; stakeholder is a buyer.
+2. **Peer or stakeholder.** User and stakeholder meet on roughly equal footing: a cross-functional peer, an internal stakeholder whose support the user needs, a partnership or BD counterpart, or a buyer in a sales discovery call.
+3. **Operator.** Stakeholder runs the business: a GM, COO, or functional head, or a private-equity operating partner or portfolio operator. User is usually an advisor, consultant, or incoming leader.
+4. **Board or other CxO.** Stakeholder sits at the top of the governance chain: a board member, CEO, investor, or another C-suite executive. User is presenting, seeking a decision, or being evaluated for trust.
 
-The methodology is the same across all four. Tailoring happens in Step 5 (Conversation Architecture) where opening hooks, what-to-avoid, and closing questions adapt to meeting type.
+The methodology is the same across all four. Tailoring happens in Step 5 (Conversation Architecture) where opening hooks, what-to-avoid, and closing questions adapt to meeting type. Partnership, BD, and sales discovery keep their own tailoring as variants within Peer or stakeholder.
 
 ---
 
 ## Step 1: Capture Inputs
 
-Before doing any research, confirm you have what you need. Required fields:
+Start by establishing the meeting type, because it shapes everything that follows. If the user's message makes it obvious, confirm it in one line. If not, ask: "Which meeting is this: an interview, a peer or stakeholder meeting, an operator meeting, or a board or other CxO meeting?" Default to interview only if the user declines to say. Map older labels onto the four: advisory or consulting is Operator; partnership, BD, and sales discovery are Peer or stakeholder variants.
 
+Then confirm you have what you need. Required fields:
+
+- **Meeting type** (interview / peer or stakeholder / operator / board or other CxO), established above.
 - **Primary company name and URL** (the company the stakeholder works at, or the company the meeting is about)
-- **Meeting type** (interview / advisory / partnership / sales discovery). Default to interview if not specified.
 - **Meeting date and time** (helps anchor "what news is current" and adds urgency framing)
 - **Stakeholder identity**: prefer a LinkedIn profile PDF if uploaded. If not, accept name, title, and email. Email domain is a useful tiebreaker for disambiguation.
 
@@ -51,6 +56,10 @@ Optional but valuable:
 If a LinkedIn PDF is not provided, capture name, title, company, and email domain here; the stakeholder web research itself happens in Step 3. Note explicitly in the brief if information is thin.
 
 If the user provides only a vague company reference ("the bank I'm interviewing with"), ask for the name and URL. Do not guess.
+
+### Meetings in a series
+
+If the meeting is part of a series (a second-round interview, a recurring operator check-in, a quarterly board meeting, a follow-up with the same stakeholder), look for earlier briefs, notes, or files about this stakeholder or company in the conversation and project context. Build on them: carry forward the tells, note what has changed since the last meeting, and avoid re-running research that is still current. If you are not working inside a Claude Project, suggest in one line that the user run the series from one, because the Project keeps each brief and its notes as context for the next meeting. Do not block on it.
 
 ---
 
@@ -139,9 +148,9 @@ Specific, informed openers that demonstrate the user has done real homework and 
 **Tailoring by meeting type:**
 
 - **Interview**: hooks anchor on what the company is solving for and how the user's experience maps. "I noticed [Company] just acquired [X], that's the kind of integration challenge I was leading at [Previous Employer]."
-- **Advisory / Consulting**: hooks demonstrate insight into the stakeholder's gap. "The [recent move] suggests you're prioritizing [strategic angle]; has the team thought about [specific gap]?"
-- **Partnership**: hooks emphasize shared customer base, complementary capability, or market timing.
-- **Sales discovery**: hooks anchor on a peer adoption signal or a regulatory/market force creating urgency.
+- **Peer or stakeholder**: hooks anchor on the shared objective and what each side needs from the other. For a partnership or BD counterpart, emphasize shared customer base, complementary capability, or market timing. For a sales discovery buyer, anchor on a peer adoption signal or a regulatory or market force creating urgency.
+- **Operator**: hooks demonstrate insight into the stakeholder's operating gap. "The [recent move] suggests you're prioritizing [strategic angle]; has the team thought about [specific gap]?" For a PE operating partner, anchor on the value creation plan and where the portfolio company sits against it.
+- **Board or other CxO**: hooks lead with the decision or risk at hand, framed in enterprise terms (capital, risk, growth, governance). Open with the answer, not the backstory.
 
 ### B. Probing Angles (2 to 3)
 
@@ -158,9 +167,9 @@ Three questions the user can ask near the end of the meeting that demonstrate ex
 **Tailoring by meeting type:**
 
 - **Interview**: probe success criteria, biggest near-term challenge, what makes someone thrive in the role
-- **Advisory**: probe their dashboard, build-vs-buy lean, the number they're least comfortable defending
-- **Partnership**: probe decision authority, success metrics, integration points
-- **Sales discovery**: probe budget timing, evaluation criteria, who else is at the table
+- **Peer or stakeholder**: probe what they need to see to commit, decision authority, and how success will be measured. For partnership or BD, probe integration points. For sales discovery, probe budget timing, evaluation criteria, who else is at the table
+- **Operator**: probe their dashboard, build-vs-buy lean, the number they're least comfortable defending. For a PE operating partner, probe the hold period and which value creation lever is behind plan
+- **Board or other CxO**: probe what would change their confidence, the risk they are watching most closely, and what they need from the user before the next meeting
 
 ---
 
@@ -229,6 +238,8 @@ The one-pager design is editorial / financial-briefing aesthetic. Do not modify 
 **The user asks for the one-pager only, no in-chat brief.** Skip Deliverable 1 and produce Deliverable 2.
 
 **The user asks to skip the one-pager.** Skip Deliverable 2 and produce Deliverable 1 only.
+
+**The user names a meeting type by an older label** (advisory, consulting, partnership, BD, sales discovery). Map it to the four types as described in Step 1 and proceed without asking.
 
 **The meeting type is something other than the four supported.** Run the methodology anyway. Note in the brief that the conversation architecture has been generalized rather than tailored to a specific meeting archetype.
 
