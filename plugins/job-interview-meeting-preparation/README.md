@@ -1,18 +1,60 @@
 # Job Interview Meeting Preparation
 
-A Claude plugin for preparing a candidate, advisor, or operator for a
-high-stakes professional meeting. Researches the company and
-stakeholder, synthesizes the strategic picture, and produces two
-deliverables: a detailed in-conversation brief and a printable
-one-pager rendered to HTML and PDF.
+A Claude plugin that prepares you for a high-stakes meeting with a
+specific person at a specific company. It researches the company and
+the stakeholder, works out how that person will hear what you say,
+and hands you a brief plus a one-pager to keep on screen during the
+call.
 
-Built originally for interview prep against private-equity portfolio
-companies, where the stakeholder is often a recruiter or operating
-partner with a thesis already formed about the candidate. Generalized
-to also handle advisory and consulting meetings, partnership and BD
-calls, and sales discovery.
+## Start here: which meeting are you preparing for?
+
+Pick the row that matches your meeting. The research is the same for
+all four; what changes is how you open, what you avoid saying, and
+how you close.
+
+| Your meeting | Who is across the table | What the prep sharpens |
+|---|---|---|
+| **An interview** | A recruiter, hiring manager, or panel evaluating you | How your experience maps to the problem they are hiring to solve; questions that make you memorable |
+| **A peer or stakeholder** | A cross-functional peer, an internal stakeholder you need on side, a partner or BD counterpart, or a buyer in sales discovery | The shared objective, what they need to see to commit, and who else shapes the decision |
+| **An operator** | A GM, COO, or functional head running the business, or a private-equity operating partner | Where their operating gap is, the number they least want to defend, and where outside help lands |
+| **A board member or other CxO** | A director, CEO, investor, or C-suite executive | Leading with the decision or risk, enterprise framing (capital, risk, growth, governance), and what they need before the next meeting |
+
+Tell Claude which one it is ("prep me for an operator meeting with
+the COO of Acme on Thursday"). If you do not say, the skill asks
+before it starts research.
+
+The plugin was built originally for interview prep against
+private-equity portfolio companies, where the stakeholder is often a
+recruiter or operating partner with a thesis already formed about the
+candidate.
+
+## Then: what the prep produces
+
+Once the meeting type is set, the skill works in this order:
+
+1. **Research** the company (and any second company that matters to
+   the conversation), in parallel, from primary sources.
+2. **Read the stakeholder**: career arc, credentials, and the
+   "tells" that explain how they think.
+3. **Build the conversation**: opening hooks, probing angles, an
+   avoid/use cheat sheet, and closing questions, tailored to your
+   meeting type.
+4. **Deliver** an in-chat brief and a printable one-pager.
 
 ![Sample one-pager output](skills/job-interview-meeting-preparation/examples/sample-brief.png)
+
+## Preparing for a series of meetings
+
+For meetings that repeat or build on each other (interview rounds, a
+standing operator check-in, quarterly board meetings, a multi-step
+partnership or sales cycle), run the prep inside a **Claude Project**.
+Keep each brief, your post-meeting notes, and any new documents in the
+Project. Each new prep then starts from what you already know: the
+tells carry forward, the brief notes what has changed since the last
+meeting, and research that is still current is not repeated. The
+result is sharper preparation with every meeting in the series. When
+the skill sees a follow-up meeting outside a Project, it will suggest
+moving there.
 
 ## What you get
 
@@ -22,7 +64,7 @@ Two artifacts, every time:
    interpretive "tells" about how they think, the strategic moment
    the company is in, three to five conversation hooks ordered by
    priority, an avoid/use cheat sheet, and three closing questions
-   calibrated to meeting type.
+   calibrated to your meeting type.
 2. **A printable one-pager** in editorial / financial-briefing style.
    Sized to sit at half-screen during a virtual meeting and to print
    cleanly on US Letter if you want it on paper. HTML and PDF both.
@@ -47,6 +89,9 @@ Then trigger the skill in conversation:
 
 ```
 prep me for an interview at <company> on <date>
+prep me for a stakeholder meeting with <name>, <title> at <company>
+prep me for an operator meeting with the COO of <company> on <date>
+prep me for a board meeting at <company> next week
 ```
 
 with a LinkedIn PDF attached if you have one. The skill loads
@@ -69,6 +114,10 @@ not match the designed margins. Web and Cowork sessions need no setup.
 
 Required:
 
+- Meeting type: interview (default), peer or stakeholder, operator,
+  or board or other CxO. Older labels still work: advisory maps to
+  operator; partnership, BD, and sales discovery map to peer or
+  stakeholder.
 - Company name and URL (the company the stakeholder works at, or the
   company the meeting is about)
 - Meeting date and time
@@ -77,8 +126,6 @@ Required:
 
 Optional but valuable:
 
-- Meeting type: interview (default), advisory, partnership, sales
-  discovery
 - A secondary company that needs to be in the conversation (your own
   employer, a target, a partner, a competitor)
 - Meeting objective beyond the obvious (e.g., "I want to leave the
@@ -88,8 +135,9 @@ Optional but valuable:
 
 The full methodology is in [`skills/job-interview-meeting-preparation/SKILL.md`](skills/job-interview-meeting-preparation/SKILL.md). The seven steps:
 
-1. **Capture inputs**: confirm what's provided; don't guess missing
-   pieces.
+1. **Capture inputs**: establish the meeting type first, then confirm
+   what's provided; don't guess missing pieces. For a meeting in a
+   series, build on earlier briefs.
 2. **Announce the plan**: tell the user what the research will cover
    before doing it.
 3. **Research the primary company**: financial trajectory, M&A,
