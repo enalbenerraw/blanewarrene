@@ -11,6 +11,8 @@ This is **Architecture A**: a free front door that drives installs of the premiu
 
 Every field is editable before handoff. You set meeting type and date in the popup.
 
+The meeting type picker matches the plugin's four types: **Interview**, **Peer or stakeholder** (including partnership, BD, and sales discovery), **Operator** (a business operator or a private-equity operating partner), and **Board or other CxO**. A one-line hint under the picker names who is across the table for the selected type. Leave it as **Not specified** and the plugin asks.
+
 ## The handoff packet
 
 The packet always leads with an explicit intent line ("Prep me for an upcoming meeting.") because routing testing showed a bare profile plus URL drops the skill to medium-confidence triggering. With the intent line plus a company name, the skill fires reliably and collects any missing fields itself.
