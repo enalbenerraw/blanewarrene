@@ -52,6 +52,7 @@
     }
     .cta a { color: #c4633f; text-decoration: none; font-weight: 600; }
     .cta a:hover { text-decoration: underline; }
+    .hint { font-size: 10px; color: #999; margin-top: 4px; min-height: 13px; }
     .pagetype { font-size: 10px; color: #999; margin-top: 6px; }
   </style>
 </head>
@@ -81,9 +82,9 @@
       <label for="meetingType">Meeting type</label>
       <select id="meetingType">
         <option value="interview">Interview</option>
-        <option value="advisory">Advisory / consulting</option>
-        <option value="partnership">Partnership / BD</option>
-        <option value="sales discovery">Sales discovery</option>
+        <option value="peer or stakeholder">Peer or stakeholder</option>
+        <option value="operator">Operator</option>
+        <option value="board or other CxO">Board or other CxO</option>
         <option value="">Not specified</option>
       </select>
     </div>
@@ -92,6 +93,7 @@
       <input id="date" placeholder="e.g. Thursday">
     </div>
   </div>
+  <div class="hint" id="meetingTypeHint"></div>
 
   <label for="surface">Paste into</label>
   <select id="surface">
