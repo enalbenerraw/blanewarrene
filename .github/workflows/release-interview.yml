@@ -107,7 +107,7 @@ jobs:
           body: |
             **Job Interview Meeting Preparation** ${{ github.ref_name }}
 
-            Claude plugin for preparing a candidate, advisor, or operator for a high-stakes professional meeting. Researches the company and stakeholder, synthesizes the strategic picture, and produces two deliverables: a detailed in-conversation brief and a printable one-pager rendered to HTML and PDF.
+            Claude plugin for preparing for a high-stakes meeting with a specific person at a specific company. Researches the company and stakeholder, synthesizes the strategic picture, and produces two deliverables: a detailed in-conversation brief and a printable one-pager rendered to HTML and PDF.
 
             ## Install
 
@@ -117,7 +117,7 @@ jobs:
             2. Drop in the `.plugin` file
             3. Confirm install
 
-            The skill triggers automatically when you mention an upcoming meeting at a specific company. Covers four meeting types: interview (default), advisory or consulting, partnership or BD, and sales discovery.
+            The skill triggers automatically when you mention an upcoming meeting at a specific company. Start by choosing the meeting: an interview, a peer or stakeholder, an operator, or a board member or other CxO. For a series of meetings, run it inside a Claude Project so each brief builds on the last.
 
             ## Marketplace install
 
