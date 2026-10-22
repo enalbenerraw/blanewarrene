@@ -26,9 +26,7 @@ If nothing new turned up, no email is sent. Once a week (Monday by default) you 
 
 ## Setup (about 15 minutes, no coding)
 
-The watcher lives in the `chatham-park-grocery-watcher` folder of this repository, and its schedule lives in `.github/workflows/chatham-grocery-watch.yml`. GitHub only runs scheduled jobs from the repository's main branch, so this must be merged into `main` before the daily run starts.
-
-> **Want it in its own repository instead?** Create a new private repo on GitHub, then upload the `chatham-park-grocery-watcher` folder and the `.github/workflows/chatham-grocery-watch.yml` file into it, keeping the same folder layout. Everything below works the same way.
+The watcher's settings are in `config.yaml`, and its schedule is in `.github/workflows/watch.yml`. GitHub only runs scheduled jobs from the repository's `main` branch.
 
 ### Step 1. Get a Gmail app password
 
@@ -79,7 +77,7 @@ After that, it runs by itself every morning.
 
 ## Changing the schedule
 
-Open `.github/workflows/chatham-grocery-watch.yml` on GitHub and click the pencil icon. Find this line:
+Open `.github/workflows/watch.yml` on GitHub and click the pencil icon. Find this line:
 
 ```yaml
     - cron: "0 11 * * *"
@@ -100,7 +98,7 @@ To turn the weekly "nothing new" email off, or move it to a different day, edit 
 
 ## Editing keywords and sources
 
-Everything the watcher looks for is in `chatham-park-grocery-watcher/config.yaml`. Open it on GitHub, click the pencil icon, edit, and commit. Each section has a short note explaining it. Common edits:
+Everything the watcher looks for is in `config.yaml`. Open it on GitHub, click the pencil icon, edit, and commit. Each section has a short note explaining it. Common edits:
 
 - **Add a chain:** add a line under `grocery_chains`, for example `  - Costco`. Keep the two spaces and the dash. A Google News search for `"Chatham Park" Costco` is added automatically.
 - **Add a place:** add a line under `location_terms`.
@@ -129,12 +127,10 @@ Without a verified domain, Resend only delivers to the email address on your Res
 | Run is green but has a yellow warning | One or more sources failed and the rest ran normally. The email footer and the log name the failed source. A site being down for a day is normal. If one fails every day, its address probably changed: update its URL in `config.yaml`. |
 | "Save memory" step fails with `permission denied` | Step 3 was skipped. |
 | Same item emailed twice | Usually the same story under two different headlines and links. Rare, and harmless. |
-| Daily runs stopped | GitHub pauses schedules on public repositories after 60 days without activity. Open the Actions tab and click **Enable workflow**. |
 
 ## Running it on your own computer (optional)
 
 ```bash
-cd chatham-park-grocery-watcher
 pip install -r requirements.txt
 python watcher.py --check-sources
 python watcher.py --dry-run
