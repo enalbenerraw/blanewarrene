@@ -1,0 +1,130 @@
+# Chatham Park Grocery Watcher settings.
+# Edit this file on GitHub (pencil icon) to change what the watcher looks for.
+# Lines starting with # are notes and are ignored.
+
+# ---------------------------------------------------------------------------
+# Matching: an item is flagged only if it mentions at least one LOCATION term
+# AND at least one GROCERY term. Matching ignores upper/lower case.
+# ---------------------------------------------------------------------------
+location_terms:
+  - Chatham Park
+  - Pittsboro
+  - Mosaic
+  - YMCA
+  - South Village
+  - North Village
+
+grocery_terms:
+  - grocery
+  - grocer
+  - supermarket
+  - anchor tenant
+
+# Chain names count as grocery terms. They are also used to build one
+# Google News search per chain (for example: "Chatham Park" Publix).
+grocery_chains:
+  - Publix
+  - Harris Teeter
+  - Food Lion
+  - Wegmans
+  - Whole Foods
+  - Trader Joe's
+  - Aldi
+  - Lidl
+  - Sprouts
+  - Weaver Street Market
+  - Lowes Foods
+  - Fresh Market
+  - Earth Fare
+
+# Old news. An item that mentions one of these, names no other chain, and
+# has none of the "new store" phrases below is marked lower priority. Lower
+# priority items never trigger an email on their own; they are listed at the
+# bottom of the next real digest or weekly heartbeat.
+low_priority_terms:
+  - Lowes Foods
+  - Northwood Landing
+
+# Phrases that mean "a different, new store". An item with one of these stays
+# high priority even if it also mentions the existing Lowes Foods.
+new_store_phrases:
+  - next grocery
+  - new grocery
+  - second grocery
+  - another grocery
+  - future grocery
+  - grocery tenant
+  - anchor tenant
+
+# Ignore items older than this many days (keeps 2023 Lowes Foods stories out).
+max_age_days: 90
+
+# ---------------------------------------------------------------------------
+# Sources. Remove a line to stop checking it; add a line to check more.
+# ---------------------------------------------------------------------------
+google_news:
+  # Searches run as written. One extra search per chain above is added
+  # automatically in the form: "Chatham Park" <chain>
+  queries:
+    - '"Chatham Park" grocery'
+    - Pittsboro grocery store
+    - '"Chatham Park" YMCA retail'
+    - '"Chatham Park" supermarket'
+    - Pittsboro "anchor tenant"
+    - Pittsboro supermarket
+    # Local outlets via Google News. These still work if a site's own feed breaks.
+    - '"Chatham Park" site:chathamnewsrecord.com'
+    - '"Chatham Park" site:chapelboro.com'
+    - '"Chatham Park" site:chathamjournal.com'
+  add_chain_queries: true
+  # Limit Google News to recent results (for example 7d, 30d, 90d).
+  recent: 90d
+
+# Local news feeds. For each outlet, the watcher tries the URLs in order and
+# uses the first one that returns a working feed.
+local_feeds:
+  - name: Chatham News + Record
+    urls:
+      - https://www.chathamnewsrecord.com/feed/
+      - https://chathamnewsrecord.com/feed/
+      - https://www.chathamnewsrecord.com/rss/
+  - name: Chapelboro
+    urls:
+      - https://chapelboro.com/feed
+      - https://chapelboro.com/category/news/feed
+  - name: Chatham Journal
+    urls:
+      - https://www.chathamjournal.com/feed/
+      - https://chathamjournal.com/feed/
+      - https://www.chathamjournal.com/rss.xml
+
+# Town of Pittsboro agendas. The town uses the CivicPlus (CivicEngage)
+# "Agenda Center" at pittsboronc.gov/AgendaCenter.
+town_agendas:
+  enabled: true
+  base_url: https://www.pittsboronc.gov
+  # Only meetings whose board name contains one of these words are scanned.
+  # Leave the list empty to scan every board.
+  boards:
+    - Commissioners
+    - Planning
+  # Only look at agendas for meetings within this many days (past or future).
+  lookback_days: 60
+  # Download the full agenda packet (site plans, staff reports) when available.
+  # Packets are where a tenant usually shows up first.
+  download_packets: true
+  # Skip files bigger than this, so one huge packet cannot stall a run.
+  max_file_mb: 60
+
+# ---------------------------------------------------------------------------
+# Email
+# ---------------------------------------------------------------------------
+email:
+  # gmail (Gmail with an app password) or resend (resend.com API key).
+  provider: gmail
+  subject_prefix: "Chatham Park grocery watch"
+  # Send a short "nothing new" email once a week so you know it is running.
+  # Set to false to only email when there is news.
+  weekly_heartbeat: true
+  # Day for the heartbeat: Monday, Tuesday, ... Sunday.
+  heartbeat_day: Monday
