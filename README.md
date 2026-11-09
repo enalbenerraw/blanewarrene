@@ -13,7 +13,7 @@ AI-forward product and operations systems: prompt recipes, Claude Code plugins, 
 - 🧩 Four Claude Code plugins shipping from one marketplace, versioned and released independently
 - 🔌 A Chrome extension that captures meeting context and hands it off to the interview-prep plugin
 - 📚 Prompt recipes for GTM intelligence, competitive briefs, and executive briefings
-- 🤝 Simplifying how product managers build Claude Skills and Gemini Gems, and leverage GitHub and AI
+- 🤝 Simplifying how product managers build Claude Skills and Gemini Gems, and use GitHub and AI
 
 ## Claude Code Plugins
 
@@ -85,5 +85,4 @@ Shipped surfaces that live outside this repo.
 
 Everything in this repository is personal work, built and maintained independently of my employer.
 
----
-*Chief Product and Technology Officer at Omatic Software. AI-forward product and technology executive who builds the operating systems that let B2B SaaS scale. Proven through seven acquisitions and two decades in wealthtech and compliance technology. Raleigh-Durham, NC.*
+*Chief Product and Technology Officer at Omatic Software, building the operating systems that let B2B SaaS scale. Proven through seven acquisitions and two decades in wealthtech and compliance technology. Raleigh-Durham, NC.*
