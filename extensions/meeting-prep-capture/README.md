@@ -2,7 +2,7 @@
 
 A thin capture-and-handoff Chrome extension for the **Job Interview Meeting Preparation** Claude plugin. It does no AI of its own. It grabs the page you are on (a LinkedIn profile or a company site), packages it into the input shape the plugin's skill expects, and copies a ready-to-paste handoff packet. Claude, with the plugin installed, does the actual research and brief.
 
-This is **Architecture A**: a free front door that drives installs of the premium plugin. The capture is free; the brief lives behind the plugin. The popup CTA points to `blanewarrene.com/plugins`, the canonical hub, so distribution can be re-routed without reshipping the extension.
+This is **Architecture A**: the extension is a front door to the plugin. It captures; the plugin, free and MIT-licensed like everything in this repo, writes the brief. The popup CTA points to `blanewarrene.com/plugins`, the canonical hub, so distribution can be re-routed without reshipping the extension.
 
 ## What it captures
 
@@ -29,9 +29,9 @@ Date: <date>
 <profile text>
 ```
 
-Pick where you are pasting with the **Paste into** selector, then click **Copy handoff packet**. The plugin only runs inside Claude Code and Cowork, so those two surfaces just copy the packet; you paste into a session you already have open. Claude.ai web is offered only as an explicit lite option: selecting it copies and opens `claude.ai/new`, but the status line warns that the plugin does not run there, so the prep is the lighter, plain-Claude version. This replaces the earlier default of silently opening `claude.ai/new`, which dropped even paying subscribers onto the one surface where the plugin cannot fire.
+Pick where you are pasting with the **Paste into** selector, then click **Copy handoff packet**. The plugin only runs inside Claude Code and Cowork, so those two surfaces just copy the packet; you paste into a session you already have open. Claude.ai web is offered only as an explicit lite option: selecting it copies and opens `claude.ai/new`, but the status line warns that the plugin does not run there, so the prep is the lighter, plain-Claude version. This replaces the earlier default of silently opening `claude.ai/new`, which dropped plugin users onto the one surface where the plugin cannot fire.
 
-The lite/web packet differs from the Code and Cowork packets in two ways, both to keep the free path genuinely lighter than the paid one: it carries less captured profile text (~1500 characters instead of the full ~6000), and it ends with a one-line footer pointing to `blanewarrene.com/plugins`, so the upsell travels into the chat after the popup has closed. Code and Cowork run the plugin and produce the full brief, so they get the full profile text and no footer.
+The lite/web packet differs from the Code and Cowork packets in two ways, because plain Claude cannot use the plugin's research workflow: it carries less captured profile text (~1500 characters instead of the full ~6000), and it ends with a one-line footer pointing to `blanewarrene.com/plugins`, so the pointer to the full plugin travels into the chat after the popup has closed. Code and Cowork run the plugin and produce the full brief, so they get the full profile text and no footer.
 
 ## Load it (unpacked)
 
