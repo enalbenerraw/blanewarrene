@@ -87,4 +87,4 @@ Shipped surfaces that live outside this repo.
 
 Everything in this repository is personal work, built and maintained independently of my employer.
 
-*Chief Product and Technology Officer at Omatic Software, building the operating systems that let B2B SaaS scale. Proven through seven acquisitions and two decades in wealthtech and compliance technology. Raleigh-Durham, NC.*
+*Chief Product and Technology Officer at Omatic Software, building the operating systems that let B2B SaaS scale. Proven through eight acquisitions and two decades in wealthtech and compliance technology. Raleigh-Durham, NC.*
