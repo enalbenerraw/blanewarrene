@@ -91,6 +91,26 @@
       "author": {
         "name": "Blane Warrene"
       }
+    },
+    {
+      "name": "four-agent-fleet",
+      "displayName": "Four-Agent Fleet",
+      "source": "./plugins/four-agent-fleet",
+      "description": "A four-role subagent fleet with hard role boundaries. A cheap explorer finds things, an implementer makes scoped changes, a reviewer judges plans and diffs at full model strength, and a researcher pulls sourced answers from the web and your Notion workspace. A routing skill tells the main agent when to delegate and what it keeps for itself.",
+      "version": "0.1.0",
+      "category": "ai-operations",
+      "tags": [
+        "subagents",
+        "delegation",
+        "code-review",
+        "research",
+        "model-routing"
+      ],
+      "homepage": "https://blanewarrene.com",
+      "license": "MIT",
+      "author": {
+        "name": "Blane Warrene"
+      }
     }
   ]
 }

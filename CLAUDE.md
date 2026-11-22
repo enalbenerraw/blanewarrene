@@ -70,9 +70,10 @@ Each plugin versions and ships independently using a plugin-specific tag prefix.
 | `job-interview-meeting-preparation` | `interview-v<version>` | `.github/workflows/release-interview.yml` |
 | `comparative-landscape-brief` | `clb-v<version>` | `.github/workflows/release-clb.yml` |
 | `ai-adoption-os` | `adopt-v<version>` | `.github/workflows/release-adopt.yml` |
+| `four-agent-fleet` | `fleet-v<version>` | `.github/workflows/release-fleet.yml` |
 | `meeting-prep-capture` (Chrome extension) | `meeting-prep-v<version>` | `.github/workflows/release-meeting-prep.yml` |
 
-The release workflows trigger on the short prefix tags above (`pia-v*`, `interview-v*`, `clb-v*`, `adopt-v*`, `meeting-prep-v*`). That short prefix is the convention; the tag you push must use it or no workflow fires.
+The release workflows trigger on the short prefix tags above (`pia-v*`, `interview-v*`, `clb-v*`, `adopt-v*`, `fleet-v*`, `meeting-prep-v*`). That short prefix is the convention; the tag you push must use it or no workflow fires.
 
 The `meeting-prep-capture` extension is not a marketplace plugin. Its workflow validates the manifest (must be Manifest V3), enforces that the tag matches `manifest.json` `version`, then zips the loadable extension (manifest at the zip root, docs excluded) and attaches it to a GitHub release for upload to the Chrome Web Store. There is no `marketplace.json` entry to sync for it.
 

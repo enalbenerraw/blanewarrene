@@ -10,14 +10,14 @@ AI-forward product and operations systems: prompt recipes, Claude Code plugins, 
 **In the seat.** Chief Product and Technology Officer at [Omatic Software](https://omaticsoftware.com), owning product, engineering, and platform strategy. The problem is data integration for nonprofit and social good organizations: getting fundraising, CRM, and operational systems to agree on the truth so teams can act on what they know.
 
 **On my own time.**
-- 🧩 Four Claude Code plugins shipping from one marketplace, versioned and released independently
+- 🧩 Five Claude Code plugins shipping from one marketplace, versioned and released independently
 - 🔌 A Chrome extension that captures meeting context and hands it off to the interview-prep plugin
 - 📚 Prompt recipes for GTM intelligence, competitive briefs, and executive briefings
 - 🤝 Simplifying how product managers build Claude Skills and Gemini Gems, and use GitHub and AI
 
 ## Claude Code Plugins
 
-Four plugins ship from one marketplace. Add the marketplace once, then install whichever you want:
+Five plugins ship from one marketplace. Add the marketplace once, then install whichever you want:
 
 ```bash
 claude plugin marketplace add enalbenerraw/blanewarrene
@@ -25,6 +25,7 @@ claude plugin install product-in-acquisitions-os@blanewarrene-marketplace
 claude plugin install job-interview-meeting-preparation@blanewarrene-marketplace
 claude plugin install comparative-landscape-brief@blanewarrene-marketplace
 claude plugin install ai-adoption-os@blanewarrene-marketplace
+claude plugin install four-agent-fleet@blanewarrene-marketplace
 ```
 
 Or from inside a Claude Code session, add the marketplace and browse:
@@ -41,6 +42,7 @@ Run `/reload-plugins` after installing or updating. Plugin changes do not take e
 | [Job Interview Meeting Preparation](plugins/job-interview-meeting-preparation/) | Prep for a high-stakes meeting: pick interview, peer or stakeholder, operator, or board or other CxO, and the prep tailors to it. Works best across a series of meetings inside a Claude Project. Produces an in-chat brief and a printable HTML/PDF one-pager. |
 | [Market Intelligence](plugins/comparative-landscape-brief/) | Five skills sharing one verified research subagent: compare 3 to 8 entities side by side, brief one company in depth, build a landscape and battle card as styled HTML, run a competitive wedge analysis against a named rival, or prepare for a specific commercial call. Every quantitative claim gets a third-party verification pass. Installs as `comparative-landscape-brief`. |
 | [AI Adoption OS](plugins/ai-adoption-os/) | Turn AI curiosity into a working plan at a 25 to 150 person company. Four skills an operator runs standalone or in sequence: inventory the tool stack and find where AI fits, survey employees to surface the AI use already happening, build a prompt cookbook for your vertical, and assemble an internal enablement course. Each interviews you first and produces a completed document, not a blank template. |
+| [Four-Agent Fleet](plugins/four-agent-fleet/) | Four subagents with hard role boundaries: a Haiku explorer finds things, a Sonnet implementer makes scoped changes, a reviewer plans and checks diffs at full model strength, and a Sonnet researcher pulls sourced answers from the web and Notion. A routing skill tells the main agent when to delegate and what it keeps. |
 
 Plugin privacy policy: [blanewarrene.com/plugins-privacy](https://blanewarrene.com/plugins-privacy/).
 

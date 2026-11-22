@@ -1,0 +1,145 @@
+name: Release Four-Agent Fleet plugin
+
+on:
+  push:
+    tags:
+      - 'fleet-v*'
+
+permissions:
+  contents: write
+
+jobs:
+  package-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Validate plugin manifest
+        run: |
+          MANIFEST="plugins/four-agent-fleet/.claude-plugin/plugin.json"
+          if [ ! -f "$MANIFEST" ]; then
+            echo "ERROR: plugin.json not found at $MANIFEST"
+            exit 1
+          fi
+          python3 -m json.tool "$MANIFEST" > /dev/null
+          echo "plugin.json is valid JSON"
+
+      - name: Extract plugin version
+        id: version
+        run: |
+          VERSION=$(python3 -c "import json; print(json.load(open('plugins/four-agent-fleet/.claude-plugin/plugin.json'))['version'])")
+          TAG_VERSION="${GITHUB_REF_NAME#fleet-v}"
+          echo "manifest_version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "tag_version=$TAG_VERSION" >> "$GITHUB_OUTPUT"
+          echo "Manifest version: $VERSION"
+          echo "Tag version: $TAG_VERSION"
+          if [ "$VERSION" != "$TAG_VERSION" ]; then
+            echo "WARNING: tag ($TAG_VERSION) does not match manifest version ($VERSION)"
+            echo "Continuing, but consider keeping them in sync."
+          fi
+
+      - name: Verify all skills have frontmatter
+        run: |
+          for skill_md in plugins/four-agent-fleet/skills/*/SKILL.md; do
+            if ! head -5 "$skill_md" | grep -q "^name:"; then
+              echo "ERROR: missing 'name:' frontmatter in $skill_md"
+              exit 1
+            fi
+            echo "OK: $skill_md"
+          done
+
+      - name: Check for em dashes (style rule)
+        run: |
+          if grep -r "—" plugins/four-agent-fleet/ > /dev/null 2>&1; then
+            echo "ERROR: found em dashes in plugin content (style rule violation)"
+            grep -rn "—" plugins/four-agent-fleet/ | head -10
+            exit 1
+          fi
+          echo "PASS: no em dashes found"
+
+      - name: Sync marketplace.json on main
+        run: |
+          PLUGIN_VERSION="${{ steps.version.outputs.manifest_version }}"
+          git worktree add /tmp/main-worktree main
+          cd /tmp/main-worktree
+          MARKETPLACE_FILE=".claude-plugin/marketplace.json"
+          CURRENT=$(python3 -c "import json; d=json.load(open('$MARKETPLACE_FILE')); print([p['version'] for p in d['plugins'] if p['name']=='four-agent-fleet'][0])")
+          if [ "$CURRENT" = "$PLUGIN_VERSION" ]; then
+            echo "marketplace.json already at $PLUGIN_VERSION; no update needed"
+            exit 0
+          fi
+          python3 -c "
+          import json
+          path = '$MARKETPLACE_FILE'
+          with open(path) as f:
+              data = json.load(f)
+          for p in data['plugins']:
+              if p['name'] == 'four-agent-fleet':
+                  p['version'] = '$PLUGIN_VERSION'
+          with open(path, 'w') as f:
+              json.dump(data, f, indent=2)
+              f.write('\n')
+          "
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$MARKETPLACE_FILE"
+          git commit -m "Sync marketplace.json to four-agent-fleet v$PLUGIN_VERSION"
+          git push origin main
+
+      - name: Package plugin
+        run: |
+          cd plugins/four-agent-fleet
+          zip -r "/tmp/four-agent-fleet.plugin" . -x "*.DS_Store"
+          ls -la /tmp/four-agent-fleet.plugin
+
+      - name: Also create versioned filename
+        run: |
+          cp "/tmp/four-agent-fleet.plugin" "/tmp/four-agent-fleet-v${{ steps.version.outputs.tag_version }}.plugin"
+          ls -la /tmp/*.plugin
+
+      - name: Create GitHub release
+        uses: softprops/action-gh-release@v3
+        with:
+          name: "Four-Agent Fleet ${{ github.ref_name }}"
+          body: |
+            **Four-Agent Fleet** ${{ github.ref_name }}
+
+            A four-role subagent fleet with hard role boundaries: explorer (Haiku), implementer (Sonnet), reviewer (Opus, high effort), and researcher (Sonnet). A routing skill tells the main agent when to delegate and what it keeps.
+
+            ## Install
+
+            Download `four-agent-fleet.plugin` below, then in Claude Cowork or Claude Code:
+
+            1. Open the plugin install panel
+            2. Drop in the `.plugin` file
+            3. Confirm install
+
+            | Agent | Job |
+            |-------|-----|
+            | `explorer` | Read-only discovery: where things live |
+            | `implementer` | Scoped changes, verified, never committed on its own |
+            | `reviewer` | Plan review before, adversarial review after |
+            | `researcher` | Sourced web research and read-only Notion lookups |
+
+            ## Marketplace install
+
+            ```bash
+            claude plugin marketplace add enalbenerraw/blanewarrene
+            claude plugin install four-agent-fleet@blanewarrene-marketplace
+            ```
+
+            ## What's in this release
+
+            See `plugins/four-agent-fleet/README.md` for full details.
+
+            ---
+
+            *Created by Blane Warrene, blanewarrene.com*
+          files: |
+            /tmp/four-agent-fleet.plugin
+            /tmp/four-agent-fleet-v${{ steps.version.outputs.tag_version }}.plugin
+          draft: false
+          prerelease: false
