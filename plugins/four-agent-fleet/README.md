@@ -11,6 +11,34 @@ Four subagents with hard role boundaries, plus a routing skill that tells the ma
 
 The `fleet-routing` skill runs the standard sequence for non-trivial work: explorer locates, reviewer plans, implementer builds, reviewer checks, and the main agent reports. It also defines what never leaves the main agent: synthesis, user communication, commits, deploys, and Notion writes.
 
+## Where this came from
+
+This plugin packages two ideas:
+
+- **The four-agent system I run in Claude Code**, written up in [A Four-Agent Starter Fleet for Claude Code (with a Notion brain)](https://blanewarrene.com/2026/06/24/a-four-agent-starter-fleet-for-claude-code/) (June 24, 2026). The plugin turns those personal agent files into something anyone can install, including Claude Desktop users who never touch a terminal.
+- **Cost awareness, prompted by Uday Kamath's** [From $19 to $0.16: A Step-by-Step Guide to Cutting the Cost of LLM Inference](https://udaykamath.substack.com/p/from-19-to-016-a-step-by-step-guide) (November 21, 2026). His guide works at the GPU serving layer. Its discipline carries over: measure cost per unit of work, keep the stable prefix stable so it caches, and spend the expensive tier only where it earns its keep.
+
+## How the fleet keeps cost down
+
+Claude Code and Cowork make the API calls, so caching, Batch, and `max_tokens` are theirs to manage. The plugin controls the levers that remain:
+
+| Lever | What the plugin does |
+|-------|---------------------|
+| Model routing | Discovery on Haiku, execution and research on Sonnet, judgment pinned to Opus so it never silently inherits a pricier or weaker session model |
+| Effort | `low` for the explorer, `medium` for the implementer and researcher, `high` only for the reviewer |
+| Output control | Every report is length-capped (150 to 300 words, or 7 ranked findings), because each report is re-read at the main session's input rate |
+| Cache-friendly prompts | Agent prompts are static, with no dates or per-run values, and the routing skill continues a finished agent instead of starting a cold one |
+
+**By the numbers (Claude API list prices per million tokens, November 2026):**
+
+| Model | Input | Output |
+|-------|-------|--------|
+| Claude Haiku 5.5 | $0.10 | $0.50 |
+| Claude Sonnet 5.5 | $2.00 | $10.00 |
+| Claude Opus 5.5 | $4.00 | $20.00 |
+
+On a subscription plan you pay in usage limits rather than dollars, and the same routing stretches them the same way.
+
 ## Install
 
 ```bash
@@ -20,7 +48,14 @@ claude plugin install four-agent-fleet@blanewarrene-marketplace
 
 Run `/reload-plugins` afterward to apply it to a running session.
 
-Works in Claude Code and in Cowork. In Cowork, install through **Customize** in the desktop sidebar, or drop in the `.plugin` file from the latest release.
+### Claude Desktop
+
+1. Download `four-agent-fleet.plugin` from the [latest release](https://github.com/enalbenerraw/blanewarrene/releases/tag/fleet-v0.1.0).
+2. In the Claude Desktop app, open **Cowork**, then **Customize** in the sidebar.
+3. Drop in the `.plugin` file and confirm.
+4. Ask "which subagents do you have?" to confirm all four loaded.
+
+Subagents run in Cowork and Claude Code. Plain chat has no subagents, so the fleet does not apply there.
 
 ## Who this is for
 
